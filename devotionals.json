@@ -1,0 +1,76 @@
+{
+  "devotionals": [
+    {
+      "date": "2024-01-01",
+      "title": "New Beginnings",
+      "passage": "Genesis 1:1-5",
+      "passageText": "In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters. And God said, \"Let there be light,\" and there was light. God saw that the light was good, and he separated the light from the darkness. God called the light \"day,\" and the darkness he called \"night.\" And there was evening, and there was morning—the first day.",
+      "article": "<p>As we begin a new year, we're invited to reflect on the theme of new beginnings. The creation account reminds us that God's first act was to bring light into darkness, order from chaos. This same God who spoke creation into existence is ready to bring new light into our lives.</p><p>Whether you're starting fresh after a difficult season or simply want to deepen your spiritual journey, remember that transformation is always possible. God doesn't require perfection; He requires willingness. As you begin this devotional journey, ask yourself: What areas of my life need God's light? Where have I been living in darkness?</p><p>Take time today to acknowledge God's desire to bring order and light to your circumstances. Trust that He is at work, just as He was in creation, and His work is always good.</p>",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What new beginning are you hoping God will bring into your life this year?",
+          "type": "textarea"
+        },
+        {
+          "id": 2,
+          "text": "In what area of your life do you need God's light the most right now?",
+          "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "How will you respond to God's invitation for transformation this week?",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "title": "Faith in the Darkness",
+      "passage": "Psalm 23:4",
+      "passageText": "Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.",
+      "article": "<p>There are moments in life when we find ourselves walking through difficult seasons—times of uncertainty, loss, or struggle. The psalmist acknowledges this reality but declares something revolutionary: even in the darkest valleys, there is no reason to fear, because God is present.</p><p>This isn't about denying the darkness or pretending difficulties don't exist. Rather, it's about recognizing that God's presence transforms how we experience our circumstances. The rod and staff mentioned here are tools of guidance and protection—images of a shepherd caring for his sheep.</p><p>Whatever valley you're walking through today, remember that you are not alone. God is intimately aware of your situation and remains faithful even when circumstances suggest otherwise. Your faith doesn't need to be perfect; it only needs to be placed in a perfect God.</p>",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What 'dark valley' are you currently walking through, if any?",
+          "type": "textarea"
+        },
+        {
+          "id": 2,
+          "text": "How have you experienced God's presence during difficult times in the past?",
+          "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "What is one way you can practice trusting God more today?",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
+      "date": "2024-01-03",
+      "title": "Purpose and Direction",
+      "passage": "Proverbs 16:9",
+      "passageText": "In their hearts humans plan their course, but the Lord establishes their steps.",
+      "article": "<p>We often spend considerable time planning our lives—mapping out careers, relationships, goals, and timelines. There's nothing inherently wrong with this; planning is wise and responsible. However, this proverb reminds us that ultimately, God's direction supersedes our plans.</p><p>This doesn't mean we should be passive or lazy. Rather, it invites us into a partnership with God where we plan intentionally but hold our plans loosely, remaining open to God's guidance and direction. Sometimes His path looks different from what we envisioned, but His way is always better than ours.</p><p>As you think about your life direction, ask yourself: Am I planning as if I'm ultimately in control? Or am I planning while staying open to how God might redirect my steps? Trust that even when your plans change, you're moving in the direction God intends.</p>",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What plans are you holding onto most tightly right now? Why?",
+          "type": "textarea"
+        },
+        {
+          "id": 2,
+          "text": "Can you think of a time when God's direction differed from your plans? What did you learn?",
+          "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "How can you better align your plans with God's will this week?",
+          "type": "textarea"
+        }
+      ]
+    }
+  ]
+}
