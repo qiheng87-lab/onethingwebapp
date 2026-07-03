@@ -23,7 +23,7 @@ async function registerServiceWorker() {
 // Load devotional data from JSON
 async function loadDevotionals() {
   try {
-    const response = await fetch('./devotionals.json');
+    const response = await fetch('/onethingwebapp/devotionals.json');
     if (!response.ok) throw new Error('Failed to load devotionals');
     
     const data = await response.json();
