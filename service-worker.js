@@ -1,11 +1,11 @@
 const CACHE_NAME = 'devotional-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/manifest.json',
-  '/devotionals.json'
+  '/onethingwebapp/',
+  '/onethingwebapp/index.html',
+  '/onethingwebapp/styles.css',
+  '/onethingwebapp/app.js',
+  '/onethingwebapp/manifest.json',
+  '/onethingwebapp/devotionals.json'
 ];
 
 // Install event
