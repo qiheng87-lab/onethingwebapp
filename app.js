@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     try {
-      await navigator.serviceWorker.register('service-worker.js');
+      await navigator.serviceWorker.register('./service-worker.js');
       console.log('Service Worker registered');
     } catch (error) {
       console.log('Service Worker registration failed:', error);
@@ -23,7 +23,7 @@ async function registerServiceWorker() {
 // Load devotional data from JSON
 async function loadDevotionals() {
   try {
-    const response = await fetch('devotionals.json');
+    const response = await fetch('./devotionals.json');
     if (!response.ok) throw new Error('Failed to load devotionals');
     
     const data = await response.json();
