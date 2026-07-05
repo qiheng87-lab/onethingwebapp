@@ -1,49 +1,63 @@
 {
   "devotionals": [
     {
-      "date": "2026-07-01",
-      "title": "New Beginnings",
-      "passage": "Genesis 1:1-5",
-      "passageText": "In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters. And God said, \"Let there be light,\" and there was light. God saw that the light was good, and he separated the light from the darkness. God called the light \"day,\" and the darkness he called \"night.\" And there was evening, and there was morning—the first day.",
-      "article": "<p>As we begin a new year, we're invited to reflect on the theme of new beginnings. The creation account reminds us that God's first act was to bring light into darkness, order from chaos. This same God who spoke creation into existence is ready to bring new light into our lives.</p><p>Whether you're starting fresh after a difficult season or simply want to deepen your spiritual journey, remember that transformation is always possible. God doesn't require perfection; He requires willingness. As you begin this devotional journey, ask yourself: What areas of my life need God's light? Where have I been living in darkness?</p><p>Take time today to acknowledge God's desire to bring order and light to your circumstances. Trust that He is at work, just as He was in creation, and His work is always good.</p>",
+      "date": "2026-08-03",
+      "title": "A Brief History of Glory Presbyterian Church",
+      "passage": "Ephesians 5:27",
+      "passageText": "so that he might present the church to himself in splendor, without spot or wrinkle or any such thing, that she might be holy and without blemish.",
+      "article": "<p>Glory Presbyterian Church was founded in 1881 and is recognised as the first Chinese Presbyterian church in Singapore. Here, "Chinese" refers especially to Chinese immigrants who came south from China to Singapore, rather than to Straits-born Chinese. Its history, however, can be traced back to 1856.</p><p>
+In 1856, Rev. Thomas Mckenzie came to Singapore and worked with Elder Tan See Boo. Over the next four and a half years, he successfully establishes a mission among the Chinese before leaving for Victoria, Australia, in 1861. </p><p>
+In 1861, Rev. Benjamin Peach Keasberry of the London Missionary Society partnered Catechist Ching Kwang and Preacher Tan See Boo to establish a preaching point in Bukit Timah at Adam Road. </p><p>
+In 1862, land was granted by the government to build a church at the seventh-and-a-half milestone of Bukit Timah. Funds were raised by the Malay Chapel. The church was first known as the "Horse-Cart Road End Chapel”（马车路尾礼拜堂)...(to continue) </p><p>
+
+</p>",
       "questions": [
         {
           "id": 1,
-          "text": "What new beginning are you hoping God will bring into your life this year?",
+          "text": "Observation: Where do you see God's faithfulness in Glory's history?",
           "type": "textarea"
         },
         {
           "id": 2,
-          "text": "In what area of your life do you need God's light the most right now?",
+          "text": "Meaning: In 2026, our church announced that a church upgrading plan is in the pipeline. What is the significance of the two current buildings, built in 1887 and 1956, to Glory Church?",
           "type": "textarea"
         },
         {
           "id": 3,
-          "text": "How will you respond to God's invitation for transformation this week?",
+          "text": "Application: How does remembering our church history deepen our thanksgiving to God?",
           "type": "textarea"
         }
       ]
     },
     {
-      "date": "2026-07-02",
-      "title": "Faith in the Darkness",
-      "passage": "Psalm 23:4",
-      "passageText": "Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.",
-      "article": "<p>There are moments in life when we find ourselves walking through difficult seasons—times of uncertainty, loss, or struggle. The psalmist acknowledges this reality but declares something revolutionary: even in the darkest valleys, there is no reason to fear, because God is present.</p><p>This isn't about denying the darkness or pretending difficulties don't exist. Rather, it's about recognizing that God's presence transforms how we experience our circumstances. The rod and staff mentioned here are tools of guidance and protection—images of a shepherd caring for his sheep.</p><p>Whatever valley you're walking through today, remember that you are not alone. God is intimately aware of your situation and remains faithful even when circumstances suggest otherwise. Your faith doesn't need to be perfect; it only needs to be placed in a perfect God.</p>",
+      "date": "2026-08-04",
+      "title": "",
+      "passage": "Philippians 1:1-2",
+      "passageText": "1:1 Paul and Timothy, servants of Christ Jesus, <br><br>
+
+To all the saints in Christ Jesus who are at Philippi, with the overseers and deacons:
+<br><br>
+2 Grace to you and peace from God our Father and the Lord Jesus Christ.",
+      "article": "",
       "questions": [
         {
           "id": 1,
-          "text": "What 'dark valley' are you currently walking through, if any?",
+          "text": "Context // Philippi was a wealthy gold producing Roman colony in Macedonia. They worshipped the Roman Emperors as well as Egyptian and other gods. Paul first visited them around AD 49 (See Acts 16:1-40) and established there the 1st church in Europe. Paul wrote this letter while in prison in Rome about 13 years later in AD 62.",
           "type": "textarea"
         },
         {
           "id": 2,
-          "text": "How have you experienced God's presence during difficult times in the past?",
+          "text": "Observation // Who is writing to the Philippian Church? How are the authors described? (Is this surprising to you? Why?) Which 3 groups of people did they write to? What greeting does the author give to the church?",
           "type": "textarea"
         },
         {
           "id": 3,
-          "text": "What is one way you can practice trusting God more today?",
+          "text": "Meaning // The words "saints in Christ" means those who are holy and set apart by Jesus. Why do you think Paul calls the Philippian church by this title? How does this relate to his greeting of grace and peace after this? Where does grace and peace come from?",
+          "type": "textarea"
+        },
+        {
+          "id": 2,
+          "text": "Application // From God and Jesus comes grace (undeserved favor) and the peace of God (4:7). As Paul reminds the Phlippian church of this, let us too be reminded and think about when in our lives have we experienced this grace and peace. Where will you need God's grace and peace this week? Take some time to praise God for His grace and peace.",
           "type": "textarea"
         }
       ]
@@ -74,3 +88,4 @@
     }
   ]
 }
+
