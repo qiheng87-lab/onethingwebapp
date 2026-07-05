@@ -26,9 +26,9 @@
     },
     {
       "date": "2026-08-04",
-      "title": "",
+      "title": "Test",
       "passage": "Philippians 1:1-2",
-      "passageText": "1:1 Paul and Timothy, servants of Christ Jesus, <br><br> To all the saints in Christ Jesus who are at Philippi, with the overseers and deacons: <br><br> 2 Grace to you and peace from God our Father and the Lord Jesus Christ.",
+      "passageText": "1:1 Paul and Timothy, servants of Christ Jesus, To all the saints in Christ Jesus who are at Philippi, with the overseers and deacons: 2 Grace to you and peace from God our Father and the Lord Jesus Christ.",
       "article": "",
       "questions": [
         {
@@ -43,7 +43,7 @@
         },
         {
           "id": 3,
-          "text": "Meaning // The words /"saints in Christ/" means those who are holy and set apart by Jesus. Why do you think Paul calls the Philippian church by this title? How does this relate to his greeting of grace and peace after this? Where does grace and peace come from?",
+          "text": "Meaning // The words 'saints in Christ' means those who are holy and set apart by Jesus. Why do you think Paul calls the Philippian church by this title? How does this relate to his greeting of grace and peace after this? Where does grace and peace come from?",
           "type": "textarea"
         },
         {
