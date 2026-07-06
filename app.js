@@ -55,7 +55,7 @@ async function loadDevotionals() {
     
     // Find first available devotional
     if (devotionalData.length > 0) {
-      const firstDate = new Date(devotionalData[0].date);
+      const firstDate = new Date(devotionalData[1].date);
       currentDate = firstDate;
     }
     displayDevotion();
