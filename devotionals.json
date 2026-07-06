@@ -79,7 +79,9 @@
           "id": 4,
           "text": "Application // God is working in our lives. Where have you seen God's good work in you this past year - even if incomplete? In the last year, which believer have you seen God do His good work in? What does that good work look like (it could be salvation, transformation in character, fleeing sin, sharing the gospel)? Take some time to pray for him/her with joy as we see God do His good work.",
           "type": "textarea"
-        },
+        }
+      ]
+      },
      {
       "date": "2026-08-06",
       "title": "",
@@ -109,7 +111,5 @@
         }
       ]
     }   
-      ]
-    }
   ]
 }
