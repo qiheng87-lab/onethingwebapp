@@ -273,7 +273,7 @@ function previousMonth() {
   calendarDate.setMonth(calendarDate.getMonth() - 1);
   renderCalendar();
 }
-function nextMonth() {
+function goToNextMonth() {
   calendarDate.setMonth(calendarDate.getMonth() + 1);
   renderCalendar();
 }
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   // Month navigation
   prevMonth.addEventListener('click', previousMonth);
-  nextMonth.addEventListener('click', nextMonth);
+  nextMonth.addEventListener('click', goToNextMonth);
   // Date navigation
   prevBtn.addEventListener('click', previousDay);
   nextBtn.addEventListener('click', nextDay);
