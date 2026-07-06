@@ -1,18 +1,38 @@
-let devotionalData = [];
 let currentDate = new Date();
-
-// Initialize app
-document.addEventListener('DOMContentLoaded', () => {
-  registerServiceWorker();
-  loadDevotionals();
-  updateDateDisplay();
-});
+let calendarDate = new Date();
+let devotionalData = [];
+let calendarOpen = false;
+// DOM Elements
+const dateDisplay = document.getElementById('dateDisplay');
+const calendarToggle = document.getElementById('calendarToggle');
+const calendarContainer = document.getElementById('calendarContainer');
+const monthYear = document.getElementById('monthYear');
+const calendarDays = document.getElementById('calendarDays');
+const prevMonth = document.getElementById('prevMonth');
+const nextMonth = document.getElementById('nextMonth');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn2 = document.getElementById('prevBtn2');
+const nextBtn2 = document.getElementById('nextBtn2');
+// ============================================
+// DATE FORMATTING
+// ============================================
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+function updateDateDisplay() {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  dateDisplay.textContent = currentDate.toLocaleDateString('en-US', options);
+}
 
 // Service Worker Registration
 async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     try {
-      await navigator.serviceWorker.register('/onethingwebapp/service-worker.js');
+      await navigator.serviceWorker.register('service-worker.js');
       console.log('Service Worker registered');
     } catch (error) {
       console.log('Service Worker registration failed:', error);
@@ -20,183 +40,282 @@ async function registerServiceWorker() {
   }
 }
 
-// Load devotional data from JSON
+// ============================================
+// LOAD DEVOTIONALS
+// ============================================
 async function loadDevotionals() {
   try {
     const response = await fetch('/onethingwebapp/devotionals.json');
     if (!response.ok) throw new Error('Failed to load devotionals');
-    
     const data = await response.json();
     devotionalData = data.devotionals;
-    
+    // Find first available devotional
+    if (devotionalData.length > 0) {
+      const firstDate = new Date(devotionalData[0].date);
+      currentDate = firstDate;
+    }
     displayDevotion();
+    renderCalendar();
+    updateNavigationButtons();
   } catch (error) {
     showError('Unable to load devotional. Please check your connection.');
     console.error('Error loading devotionals:', error);
   }
 }
-
-// Format date as YYYY-MM-DD
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
-// Update date display
-function updateDateDisplay() {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const dateStr = currentDate.toLocaleDateString('en-US', options);
-  document.getElementById('dateDisplay').textContent = dateStr;
-}
-
-// Display devotion for current date
+// ============================================
+// DISPLAY DEVOTION
+// ============================================
 function displayDevotion() {
   const dateStr = formatDate(currentDate);
   const devotion = devotionalData.find(d => d.date === dateStr);
-
-  if (!devotion) {
-  // CLEAR ALL CONTENT first
+  // Clear all content first
   document.getElementById('title').textContent = '';
   document.getElementById('passageRef').textContent = '';
   document.getElementById('passageText').textContent = '';
   document.getElementById('article').innerHTML = '';
   document.getElementById('questionsContainer').innerHTML = '';
-  
-  showError('No devotional available for this date.');
-  updateDateDisplay();
-  return;
-}
-
+  if (!devotion) {
+    document.getElementById('title').textContent = 'No Devotional';
+    document.getElementById('article').innerHTML = `
+      <p style="text-align: center; color: #999; font-size: 1.1rem; margin-top: 2rem;">
+        There is no devotional entry for this date.
+        <br><br>
+        Use the calendar or arrow buttons to navigate to a different date.
+      </p>
+    `;
+    
+    showError('No devotional available for this date.');
+    updateDateDisplay();
+    closeCalendar();
+    updateNavigationButtons();
+    return;
+  }
   hideError();
-  hideLoading();
-
-  // Populate content
+  // Display devotional content
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
   document.getElementById('article').innerHTML = devotion.article;
-
-  // Build questions
+  // Render questions
   const questionsContainer = document.getElementById('questionsContainer');
   questionsContainer.innerHTML = '';
-
-  devotion.questions.forEach((question, index) => {
+  devotion.questions.forEach((question) => {
     const questionDiv = document.createElement('div');
-    questionDiv.className = 'question-item';
-
-    const label = document.createElement('label');
-    label.htmlFor = `question-${index}`;
-    label.textContent = question.text;
-
-    let input;
-    if (question.type === 'textarea') {
-      input = document.createElement('textarea');
-      input.className = 'question-textarea';
-    } else {
-      input = document.createElement('input');
-      input.type = 'text';
-      input.className = 'question-input';
-    }
-
-    input.id = `question-${index}`;
-    input.placeholder = 'Your response...';
-
-    questionDiv.appendChild(label);
-    questionDiv.appendChild(input);
+    questionDiv.className = 'question';
+    questionDiv.innerHTML = `
+      <label>${question.text}</label>
+      <textarea 
+        placeholder="Type your reflection here..." 
+        data-question-id="${question.id}"
+        class="question-input"
+      ></textarea>
+    `;
     questionsContainer.appendChild(questionDiv);
+    // Load saved answer if exists
+    const saved = localStorage.getItem(`devotion_${dateStr}_q${question.id}`);
+    if (saved) {
+      questionDiv.querySelector('textarea').value = saved;
+    }
   });
-
-  // Load saved responses
-  loadSavedResponses();
-
-  // Show content
-  document.getElementById('devotionalContent').style.display = 'block';
-  document.getElementById('loading').style.display = 'none';
-}
-
-// Save responses to localStorage
-function saveResponses() {
-  const dateStr = formatDate(currentDate);
-  const responses = {};
-
-  document.querySelectorAll('.question-textarea, .question-input').forEach(input => {
-    responses[input.id] = input.value;
+  // Save answers on input
+  document.querySelectorAll('.question-input').forEach(textarea => {
+    textarea.addEventListener('input', () => {
+      const questionId = textarea.getAttribute('data-question-id');
+      localStorage.setItem(`devotion_${dateStr}_q${questionId}`, textarea.value);
+    });
   });
-
-  const key = `devotion-responses-${dateStr}`;
-  localStorage.setItem(key, JSON.stringify(responses));
-
-  showStatus('Responses saved successfully!', 'success');
+  updateDateDisplay();
+  closeCalendar();
+  updateNavigationButtons();
 }
-
-// Load saved responses from localStorage
-function loadSavedResponses() {
-  const dateStr = formatDate(currentDate);
-  const key = `devotion-responses-${dateStr}`;
-  const saved = localStorage.getItem(key);
-
-  if (saved) {
-    const responses = JSON.parse(saved);
-    Object.entries(responses).forEach(([id, value]) => {
-      const input = document.getElementById(id);
-      if (input) {
-        input.value = value;
-      }
-    });
+// ============================================
+// NAVIGATION FUNCTIONS
+// ============================================
+function getNextAvailableDate(direction = 1) {
+  let checkDate = new Date(currentDate);
+  let attempts = 0;
+  const maxAttempts = 365;
+  while (attempts < maxAttempts) {
+    checkDate.setDate(checkDate.getDate() + direction);
+    const dateStr = formatDate(checkDate);
+    
+    if (devotionalData.some(d => d.date === dateStr)) {
+      return checkDate;
+    }
+    attempts++;
   }
+  return null;
 }
-
-// Clear responses
-function clearResponses() {
-  if (confirm('Are you sure you want to clear all answers?')) {
-    document.querySelectorAll('.question-textarea, .question-input').forEach(input => {
-      input.value = '';
-    });
-    showStatus('Answers cleared.', 'success');
-  }
-}
-
-// Navigate to previous day
 function previousDay() {
-  currentDate.setDate(currentDate.getDate() - 1);
-  updateDateDisplay();
-  displayDevotion();
+  const prevDate = getNextAvailableDate(-1);
+  
+  if (prevDate) {
+    currentDate = prevDate;
+    displayDevotion();
+    renderCalendar();
+  } else {
+    showError('No previous devotional available.');
+  }
 }
-
-// Navigate to next day
 function nextDay() {
-  currentDate.setDate(currentDate.getDate() + 1);
-  updateDateDisplay();
-  displayDevotion();
+  const nextDate = getNextAvailableDate(1);
+  
+  if (nextDate) {
+    currentDate = nextDate;
+    displayDevotion();
+    renderCalendar();
+  } else {
+    showError('No next devotional available.');
+  }
 }
-
-// Show status message
-function showStatus(message, type) {
-  const statusEl = document.getElementById('statusMessage');
-  statusEl.textContent = message;
-  statusEl.className = `status-message ${type}`;
-  statusEl.style.display = 'block';
-
-  setTimeout(() => {
-    statusEl.style.display = 'none';
-  }, 3000);
+function updateNavigationButtons() {
+  const prevDate = getNextAvailableDate(-1);
+  const nextDate = getNextAvailableDate(1);
+  // Disable previous button if no earlier devotional
+  prevBtn.disabled = !prevDate;
+  prevBtn2.disabled = !prevDate;
+  
+  // Disable next button if no later devotional
+  nextBtn.disabled = !nextDate;
+  nextBtn2.disabled = !nextDate;
+  // Update button styling
+  if (prevBtn.disabled) {
+    prevBtn.style.opacity = '0.5';
+    prevBtn.style.cursor = 'not-allowed';
+    prevBtn2.style.opacity = '0.5';
+    prevBtn2.style.cursor = 'not-allowed';
+  } else {
+    prevBtn.style.opacity = '1';
+    prevBtn.style.cursor = 'pointer';
+    prevBtn2.style.opacity = '1';
+    prevBtn2.style.cursor = 'pointer';
+  }
+  if (nextBtn.disabled) {
+    nextBtn.style.opacity = '0.5';
+    nextBtn.style.cursor = 'not-allowed';
+    nextBtn2.style.opacity = '0.5';
+    nextBtn2.style.cursor = 'not-allowed';
+  } else {
+    nextBtn.style.opacity = '1';
+    nextBtn.style.cursor = 'pointer';
+    nextBtn2.style.opacity = '1';
+    nextBtn2.style.cursor = 'pointer';
+  }
 }
-
-// Show error message
+// ============================================
+// CALENDAR FUNCTIONS
+// ============================================
+function renderCalendar() {
+  const year = calendarDate.getFullYear();
+  const month = calendarDate.getMonth();
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  monthYear.textContent = `${monthNames[month]} ${year}`;
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  calendarDays.innerHTML = '';
+  // Empty cells for days before month starts
+  for (let i = 0; i < firstDay; i++) {
+    const emptyDay = document.createElement('div');
+    emptyDay.className = 'calendar-day empty';
+    calendarDays.appendChild(emptyDay);
+  }
+  // Days of month
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayDate = new Date(year, month, day);
+    const dayStr = formatDate(dayDate);
+    const dayElement = document.createElement('div');
+    dayElement.className = 'calendar-day';
+    dayElement.textContent = day;
+    const hasDevotional = devotionalData.some(d => d.date === dayStr);
+    const today = new Date();
+    const isToday = formatDate(today) === dayStr;
+    const isSelected = formatDate(currentDate) === dayStr;
+    // Add classes
+    if (isToday) {
+      dayElement.classList.add('today');
+    } else if (isSelected) {
+      dayElement.classList.add('selected');
+    } else if (hasDevotional) {
+      dayElement.classList.add('has-devotion');
+    } else {
+      dayElement.classList.add('no-devotion');
+    }
+    // Add click handler only if devotional exists
+    if (hasDevotional) {
+      dayElement.classList.add('clickable');
+      dayElement.addEventListener('click', () => {
+        currentDate = new Date(year, month, day);
+        displayDevotion();
+        renderCalendar();
+      });
+    }
+    calendarDays.appendChild(dayElement);
+  }
+}
+function toggleCalendar() {
+  calendarOpen = !calendarOpen;
+  if (calendarOpen) {
+    calendarContainer.classList.add('open');
+    calendarToggle.classList.add('active');
+    calendarDate = new Date(currentDate);
+    renderCalendar();
+  } else {
+    closeCalendar();
+  }
+}
+function closeCalendar() {
+  calendarOpen = false;
+  calendarContainer.classList.remove('open');
+  calendarToggle.classList.remove('active');
+}
+function previousMonth() {
+  calendarDate.setMonth(calendarDate.getMonth() - 1);
+  renderCalendar();
+}
+function nextMonth() {
+  calendarDate.setMonth(calendarDate.getMonth() + 1);
+  renderCalendar();
+}
+// ============================================
+// ERROR HANDLING
+// ============================================
 function showError(message) {
-  const errorEl = document.getElementById('error');
-  document.getElementById('errorMessage').textContent = message;
-  errorEl.style.display = 'block';
+  const errorElement = document.getElementById('errorMessage');
+  errorElement.textContent = message;
+  errorElement.style.display = 'block';
 }
-
-// Hide error message
 function hideError() {
-  document.getElementById('error').style.display = 'none';
+  document.getElementById('errorMessage').style.display = 'none';
 }
-
-// Hide loading
-function hideLoading() {
-  document.getElementById('loading').style.display = 'none';
-}
+// ============================================
+// EVENT LISTENERS
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadDevotionals();
+  registerServiceWorker();
+  
+  // Calendar toggle
+  calendarToggle.addEventListener('click', toggleCalendar);
+  // Close calendar when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!calendarContainer.contains(e.target) && 
+        !calendarToggle.contains(e.target) && 
+        calendarOpen) {
+      closeCalendar();
+    }
+  });
+  // Month navigation
+  prevMonth.addEventListener('click', previousMonth);
+  nextMonth.addEventListener('click', nextMonth);
+  // Date navigation
+  prevBtn.addEventListener('click', previousDay);
+  nextBtn.addEventListener('click', nextDay);
+  prevBtn2.addEventListener('click', previousDay);
+  nextBtn2.addEventListener('click', nextDay);
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') previousDay();
+    if (e.key === 'ArrowRight') nextDay();
+  });
+});
