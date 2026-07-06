@@ -49,6 +49,10 @@ async function loadDevotionals() {
     if (!response.ok) throw new Error('Failed to load devotionals');
     const data = await response.json();
     devotionalData = data.devotionals;
+    
+    // Sort devotionals by date to ensure correct order
+    devotionalData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
     // Find first available devotional
     if (devotionalData.length > 0) {
       const firstDate = new Date(devotionalData[0].date);
