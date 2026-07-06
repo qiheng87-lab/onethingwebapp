@@ -57,9 +57,17 @@ function displayDevotion() {
   const devotion = devotionalData.find(d => d.date === dateStr);
 
   if (!devotion) {
-    showError('No devotional available for this date.');
-    return;
-  }
+  // CLEAR ALL CONTENT first
+  document.getElementById('title').textContent = '';
+  document.getElementById('passageRef').textContent = '';
+  document.getElementById('passageText').textContent = '';
+  document.getElementById('article').innerHTML = '';
+  document.getElementById('questionsContainer').innerHTML = '';
+  
+  showError('No devotional available for this date.');
+  updateDateDisplay();
+  return;
+}
 
   hideError();
   hideLoading();
