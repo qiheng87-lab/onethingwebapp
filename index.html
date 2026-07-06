@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2c3e50">
-  <meta name="description" content="Daily Devotional App">
-  
- <!-- Web App Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily Devotional App - Read, reflect, and grow spiritually with daily Bible passages and guided reflections.">
+    <meta name="theme-color" content="#667eea">
+<!-- Web App Meta Tags -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="mobile-web-app-title" content="Daily Devotional">
@@ -17,85 +16,74 @@
   <link rel="icon" type="image/png" href="/onethingwebapp/icon-192.png">
 
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="/onethingwebapp/styles.css">
-  
-  <title>Daily Devotional</title>
+    <title>Daily Devotional</title>
+    <link rel="stylesheet" href="/onethingwebapp/styles.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
-      <h1>One Thing - Daily Devotional</h1>
-      <div class="date-navigation">
-        <button id="prevBtn" onclick="previousDay()">&larr; Yesterday</button>
-        <span id="dateDisplay"></span>
-        <button id="nextBtn" onclick="nextDay()">Tomorrow &rarr;</button>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="content">
-      <!-- Loading State -->
-      <div id="loading" class="loading">
-        <p>Loading devotional...</p>
-      </div>
-
-      <!-- Error State -->
-      <div id="error" class="error" style="display: none;">
-        <p id="errorMessage"></p>
-      </div>
-
-      <!-- Devotional Content -->
-      <article id="devotionalContent" style="display: none;">
-        <!-- Title -->
-        <h2 id="title"></h2>
-
-        <!-- Bible Passage -->
-        <section class="passage-section">
-          <h3>Scripture Reading</h3>
-          <div class="passage">
-            <p class="passage-ref" id="passageRef"></p>
-            <p class="passage-text" id="passageText"></p>
-          </div>
-        </section>
-
-        <!-- Article -->
-        <section class="article-section">
-          <h3>Reflection</h3>
-          <div id="article" class="article"></div>
-        </section>
-
-        <!-- Questions -->
-        <section class="questions-section">
-          <h3>Reflection Questions</h3>
-          <form id="questionsForm">
-            <div id="questionsContainer"></div>
-          </form>
-        </section>
-
-        <!-- Save Button -->
-        <div class="button-group">
-          <button type="button" onclick="saveResponses()" class="btn btn-primary">
-            Save Responses
-          </button>
-          <button type="button" onclick="clearResponses()" class="btn btn-secondary">
-            Clear Answers
-          </button>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📖 Daily Devotional</h1>
+        </header>
+        <!-- Date Navigation Section -->
+        <div class="date-section">
+            <!-- Date Display with Arrow Buttons -->
+            <div class="date-display">
+                <button class="nav-btn prev-btn" id="prevBtn" title="Previous Day (←)">←</button>
+                <div class="current-date" id="dateDisplay">Loading...</div>
+                <button class="nav-btn next-btn" id="nextBtn" title="Next Day (→)">→</button>
+            </div>
+            <!-- Calendar Toggle Button -->
+            <button class="calendar-toggle" id="calendarToggle" title="Open Calendar">📅</button>
         </div>
-
-        <!-- Status Message -->
-        <div id="statusMessage" class="status-message" style="display: none;"></div>
-      </article>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2026 Qi H</p>
-    </footer>
-  </div>
-
-  <!-- Scripts -->
-  <script src="/onethingwebapp/app.js"></script>
+        <!-- Expandable Calendar -->
+        <div class="calendar-container" id="calendarContainer">
+            <div class="calendar-header">
+                <button class="calendar-nav" id="prevMonth" title="Previous Month">❮</button>
+                <h2 id="monthYear">January 2026</h2>
+                <button class="calendar-nav" id="nextMonth" title="Next Month">❯</button>
+            </div>
+            <!-- Calendar Weekday Headers -->
+            <div class="calendar-weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <!-- Calendar Days Grid -->
+            <div class="calendar-days" id="calendarDays"></div>
+        </div>
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading" style="display: none;">Loading devotional...</div>
+        <!-- Main Content -->
+        <main class="devotional-content">
+            <!-- Title -->
+            <h2 id="title"></h2>
+            <!-- Passage Section -->
+            <div class="passage-section">
+                <h3 id="passageRef"></h3>
+                <p id="passageText"></p>
+            </div>
+            <!-- Article Content -->
+            <article id="article"></article>
+            <!-- Reflection Questions -->
+            <section class="questions-section">
+                <h3>✍️ Reflection Questions</h3>
+                <div id="questionsContainer"></div>
+            </section>
+            <!-- Navigation Buttons -->
+            <div class="button-group">
+                <button id="prevBtn2" class="nav-btn" title="Previous Day (←)">← Previous Day</button>
+                <button id="nextBtn2" class="nav-btn" title="Next Day (→)">Next Day →</button>
+            </div>
+        </main>
+    </div>
+    <!-- Scripts -->
+    <script src="/onethingwebapp/app.js"></script>
 </body>
 </html>
