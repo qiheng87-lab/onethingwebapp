@@ -26,7 +26,7 @@
     },
     {
       "date": "2026-08-04",
-      "title": "Test",
+      "title": "",
       "passage": "Philippians 1:1-2",
       "passageText": "1:1 Paul and Timothy, servants of Christ Jesus, To all the saints in Christ Jesus who are at Philippi, with the overseers and deacons: 2 Grace to you and peace from God our Father and the Lord Jesus Christ.",
       "article": "",
@@ -55,26 +55,60 @@
     },
     {
       "date": "2026-08-05",
-      "title": "Purpose and Direction",
-      "passage": "Proverbs 16:9",
-      "passageText": "In their hearts humans plan their course, but the Lord establishes their steps.",
-      "article": "<p>We often spend considerable time planning our lives—mapping out careers, relationships, goals, and timelines. There's nothing inherently wrong with this; planning is wise and responsible. However, this proverb reminds us that ultimately, God's direction supersedes our plans.</p><p>This doesn't mean we should be passive or lazy. Rather, it invites us into a partnership with God where we plan intentionally but hold our plans loosely, remaining open to God's guidance and direction. Sometimes His path looks different from what we envisioned, but His way is always better than ours.</p><p>As you think about your life direction, ask yourself: Am I planning as if I'm ultimately in control? Or am I planning while staying open to how God might redirect my steps? Trust that even when your plans change, you're moving in the direction God intends.</p>",
+      "title": "",
+      "passage": "Philippians 1:3-6",
+      "passageText": "3 I thank my God in all my remembrance of you, 4 always in every prayer of mine for you all making my prayer with joy, 5 because of your partnership in the gospel from the first day until now. 6 And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ.",
+      "article": "",
       "questions": [
         {
           "id": 1,
-          "text": "What plans are you holding onto most tightly right now? Why?",
+          "text": "Context // What do you remember from the passage yesterday?",
           "type": "textarea"
         },
         {
           "id": 2,
-          "text": "Can you think of a time when God's direction differed from your plans? What did you learn?",
+          "text": "Observation // What does Paul thank God in prayer for? How is he feeling as he prays? Why? Who produces this partnership and good work?",
           "type": "textarea"
         },
         {
           "id": 3,
-          "text": "How can you better align your plans with God's will this week?",
+          "text": "Meaning // What do you learn about God's work in the gospel (in the past, present and future)? What gives Paul joy and confidence as he prays for the Philippian church?",
+          "type": "textarea"
+        },
+        {
+          "id": 4,
+          "text": "Application // God is working in our lives. Where have you seen God's good work in you this past year - even if incomplete? In the last year, which believer have you seen God do His good work in? What does that good work look like (it could be salvation, transformation in character, fleeing sin, sharing the gospel)? Take some time to pray for him/her with joy as we see God do His good work.",
+          "type": "textarea"
+        },
+     {
+      "date": "2026-08-06",
+      "title": "",
+      "passage": "Philippians 1:1-2",
+      "passageText": "1:1 Paul and Timothy, servants of Christ Jesus, To all the saints in Christ Jesus who are at Philippi, with the overseers and deacons: 2 Grace to you and peace from God our Father and the Lord Jesus Christ.",
+      "article": "",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Context // Philippi was a wealthy gold producing Roman colony in Macedonia. They worshipped the Roman Emperors as well as Egyptian and other gods. Paul first visited them around AD 49 (See Acts 16:1-40) and established there the 1st church in Europe. Paul wrote this letter while in prison in Rome about 13 years later in AD 62.",
+          "type": "textarea"
+        },
+        {
+          "id": 2,
+          "text": "Observation // Who is writing to the Philippian Church? How are the authors described? (Is this surprising to you? Why?) Which 3 groups of people did they write to? What greeting does the author give to the church?",
+          "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "Meaning // The words \"saints in Christ\" means those who are holy and set apart by Jesus. Why do you think Paul calls the Philippian church by this title? How does this relate to his greeting of grace and peace after this? Where does grace and peace come from?",
+          "type": "textarea"
+        },
+        {
+          "id": 4,
+          "text": "Application // From God and Jesus comes grace (undeserved favor) and the peace of God (4:7). As Paul reminds the Phlippian church of this, let us too be reminded and think about when in our lives have we experienced this grace and peace. Where will you need God's grace and peace this week? Take some time to praise God for His grace and peace.",
           "type": "textarea"
         }
+      ]
+    }   
       ]
     }
   ]
