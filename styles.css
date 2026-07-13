@@ -367,6 +367,7 @@ main h2 {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.25rem;
+  white-space: pre-wrap;
   border-left: 4px solid var(--primary-color);
 }
 
@@ -384,7 +385,6 @@ main h2 {
   font-style: italic;
   word-break: break-word;
   margin: 1rem 0;
-  white-space: pre-wrap;
 }
 
 /* ============================================
