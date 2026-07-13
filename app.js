@@ -1,8 +1,3 @@
-let currentDate = new Date();
-let calendarDate = new Date();
-let devotionalData = [];
-let calendarOpen = false;
-
 // Unregister any existing service workers
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then((registrations) => {
@@ -12,6 +7,11 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+let currentDate = new Date();
+let calendarDate = new Date();
+let devotionalData = [];
+let calendarOpen = false;
 
 // DOM Elements
 const dateDisplay = document.getElementById('dateDisplay');
