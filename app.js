@@ -2,6 +2,17 @@ let currentDate = new Date();
 let calendarDate = new Date();
 let devotionalData = [];
 let calendarOpen = false;
+
+// Unregister any existing service workers
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => {
+      registration.unregister();
+      console.log('Service Worker unregistered');
+    });
+  });
+}
+
 // DOM Elements
 const dateDisplay = document.getElementById('dateDisplay');
 const calendarToggle = document.getElementById('calendarToggle');
