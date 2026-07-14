@@ -260,10 +260,14 @@ function renderCalendar() {
     // 1. Completed (green)
     if (isCompleted && hasDevotional) {
       dayElement.classList.add('completed');
+      dayElement.style.backgroundColor = '#34a853';  // Force green
+      dayElement.style.color = 'white';
     }
     // 2. Today (blue) - only if not selected
     if (isToday && hasDevotional && !isSelected) {
       dayElement.classList.add('today');
+      dayElement.style.backgroundColor = '#ff9800';  // Force orange
+      dayElement.style.color = 'white';
     }
     // 3. Selected (orange) - HIGHEST PRIORITY
     if (isSelected) {
