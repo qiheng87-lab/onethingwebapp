@@ -443,6 +443,41 @@ function goToNextMonth() {
   renderCalendar();
 }
 
+// TESTING Completion function
+function testCompletionTracking() {
+  console.log('🧪 TESTING COMPLETION TRACKING...');
+  
+  // Get first devotional date
+  const firstDate = devotionalData[0]?.date;
+  
+  if (!firstDate) {
+    console.error('❌ No devotionals found');
+    return;
+  }
+  
+  console.log('📅 Testing with date:', firstDate);
+  
+  // Check current state
+  const beforeCompletion = isDevotionCompleted(firstDate);
+  console.log('Before marking:', beforeCompletion);
+  
+  // Mark as completed
+  markDevotionAsCompleted(firstDate);
+  
+  // Check after
+  const afterCompletion = isDevotionCompleted(firstDate);
+  console.log('After marking:', afterCompletion);
+  
+  // Check localStorage
+  const storageValue = localStorage.getItem(`devotion_${firstDate}_completed`);
+  console.log('In localStorage:', storageValue);
+  
+  // Re-render calendar
+  renderCalendar();
+  
+  console.log('🧪 TEST COMPLETE');
+}
+
 // ============================================
 // ERROR HANDLING
 // ============================================
