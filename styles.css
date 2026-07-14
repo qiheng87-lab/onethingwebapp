@@ -493,6 +493,44 @@ article p:first-child {
 }
 
 /* ============================================
+   FINISHED DEVOTIONAL BUTTON
+   ============================================ */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+.finished-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    min-width: 200px;
+}
+.finished-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+.finished-btn:active {
+    transform: translateY(0);
+}
+.finished-btn.completed {
+    background: linear-gradient(135deg, #34a853 0%, #0d652d 100%);
+    box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+}
+.finished-btn.completed:hover {
+    box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
+}
+
+/* ============================================
    LOADING STATE
    ============================================ */
 
