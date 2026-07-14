@@ -367,7 +367,6 @@ main h2 {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.25rem;
-  white-space: pre-wrap;
   border-left: 4px solid var(--primary-color);
 }
 
@@ -383,6 +382,7 @@ main h2 {
   line-height: 1.7;
   font-size: 0.95rem;
   font-style: italic;
+  white-space: pre-wrap;
   word-break: break-word;
 }
 
@@ -395,12 +395,12 @@ article {
   color: var(--text-light);
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
-  white-space: pre-wrap;
 }
 
 article p {
   margin-bottom: 0.8rem;
   word-break: break-word;
+  white-space: pre-wrap;
 }
 
 article strong {
