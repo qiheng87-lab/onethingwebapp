@@ -367,14 +367,14 @@ main h2 {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.25rem;
-  white-space: pre-wrap;
+  white-space: pre;
   border-left: 4px solid var(--primary-color);
 }
 
 .passage-section h3 {
   color: var(--primary-color);
   font-size: 1rem;
-  // margin-bottom: 0.6rem;
+  <!-- margin-bottom: 0.6rem; -->
   font-weight: 600;
 }
 
@@ -395,7 +395,7 @@ article {
   color: var(--text-light);
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
-  white-space: pre-wrap;
+  white-space: pre;
 }
 
 article p {
