@@ -384,7 +384,6 @@ main h2 {
   font-size: 0.95rem;
   font-style: italic;
   word-break: break-word;
-  margin: 1rem 0;
 }
 
 /* ============================================
@@ -401,7 +400,6 @@ article {
 
 article p {
   margin-bottom: 0.8rem;
-  margin: 1rem 0;
   word-break: break-word;
 }
 
