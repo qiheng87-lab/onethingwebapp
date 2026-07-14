@@ -120,20 +120,41 @@ async function loadDevotionals() {
 }
 
 // ============================================
+// COMPLETION TRACKING
+// ============================================
+function isDevotionCompleted(dateStr) {
+  return localStorage.getItem(`devotion_${dateStr}_completed`) === 'true';
+}
+function markDevotionAsCompleted(dateStr) {
+  localStorage.setItem(`devotion_${dateStr}_completed`, 'true');
+  console.log('✅ Devotional marked as completed:', dateStr);
+}
+function updateFinishedButtonState(dateStr) {
+  const finishedBtn = document.getElementById('finishedBtn');
+  const isCompleted = isDevotionCompleted(dateStr);
+  
+  if (isCompleted) {
+    finishedBtn.classList.add('completed');
+    finishedBtn.textContent = '✅ Completed';
+    finishedBtn.disabled = true;
+  } else {
+    finishedBtn.classList.remove('completed');
+    finishedBtn.textContent = '✅ Mark as Finished';
+    finishedBtn.disabled = false;
+  }
+}
+// ============================================
 // DISPLAY DEVOTION
 // ============================================
-
 function displayDevotion() {
   const dateStr = formatDate(currentDate);
   const devotion = devotionalData.find(d => d.date === dateStr);
-
   // Clear all content first
   document.getElementById('title').textContent = '';
   document.getElementById('passageRef').textContent = '';
   document.getElementById('passageText').textContent = '';
   document.getElementById('article').innerHTML = '';
   document.getElementById('questionsContainer').innerHTML = '';
-
   if (!devotion) {
     document.getElementById('title').textContent = 'No Devotional';
     document.getElementById('article').innerHTML = `
@@ -150,19 +171,23 @@ function displayDevotion() {
     updateNavigationButtons();
     return;
   }
-
   hideError();
-
   // Display devotional content
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
-  document.getElementById('article').innerHTML = devotion.article;
-
+  
+  // Convert \n\n to <p> tags
+  const paragraphs = devotion.article
+    .split('\n\n')
+    .filter(p => p.trim())
+    .map(p => `<p>${p.trim()}</p>`)
+    .join('');
+  
+  document.getElementById('article').innerHTML = paragraphs;
   // Render questions
   const questionsContainer = document.getElementById('questionsContainer');
   questionsContainer.innerHTML = '';
-
   devotion.questions.forEach((question) => {
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
@@ -175,14 +200,12 @@ function displayDevotion() {
       ></textarea>
     `;
     questionsContainer.appendChild(questionDiv);
-
     // Load saved answer if exists
     const saved = localStorage.getItem(`devotion_${dateStr}_q${question.id}`);
     if (saved) {
       questionDiv.querySelector('textarea').value = saved;
     }
   });
-
   // Save answers on input
   document.querySelectorAll('.question-input').forEach(textarea => {
     textarea.addEventListener('input', () => {
@@ -190,10 +213,70 @@ function displayDevotion() {
       localStorage.setItem(`devotion_${dateStr}_q${questionId}`, textarea.value);
     });
   });
-
+  // ⭐ UPDATE FINISHED BUTTON STATE ⭐
+  updateFinishedButtonState(dateStr);
   updateDateDisplay();
   closeCalendar();
   updateNavigationButtons();
+}
+// ============================================
+// RENDER CALENDAR WITH COMPLETION TRACKING
+// ============================================
+function renderCalendar() {
+  const year = calendarDate.getFullYear();
+  const month = calendarDate.getMonth();
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  monthYear.textContent = `${monthNames[month]} ${year}`;
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  calendarDays.innerHTML = '';
+  // Empty cells for days before month starts
+  for (let i = 0; i < firstDay; i++) {
+    const emptyDay = document.createElement('div');
+    emptyDay.className = 'calendar-day empty';
+    calendarDays.appendChild(emptyDay);
+  }
+  // Days of month
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayDate = new Date(year, month, day);
+    const dayStr = formatDate(dayDate);
+    const dayElement = document.createElement('div');
+    dayElement.className = 'calendar-day';
+    dayElement.textContent = day;
+    const hasDevotional = devotionalData.some(d => d.date === dayStr);
+    const isCompleted = isDevotionCompleted(dayStr);
+    const today = new Date();
+    const isToday = formatDate(today) === dayStr;
+    const isSelected = formatDate(currentDate) === dayStr;
+    // Add classes
+    if (hasDevotional) {
+      dayElement.classList.add('has-devotion', 'clickable');
+    } else {
+      dayElement.classList.add('no-devotion');
+    }
+    // ⭐ ADD COMPLETION CLASS ⭐
+    if (isCompleted && hasDevotional) {
+      dayElement.classList.add('completed');
+    }
+    // ⭐ ORANGE FOR SELECTED (highest priority) ⭐
+    if (isSelected) {
+      dayElement.classList.add('selected');
+    }
+    // Blue for today (if not selected)
+    else if (isToday && hasDevotional) {
+      dayElement.classList.add('today');
+    }
+    // Add click handler only if devotional exists
+    if (hasDevotional) {
+      dayElement.addEventListener('click', () => {
+        currentDate = new Date(year, month, day);
+        displayDevotion();
+        renderCalendar();
+      });
+    }
+    calendarDays.appendChild(dayElement);
+  }
 }
 
 // ============================================
