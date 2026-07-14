@@ -282,7 +282,7 @@ header h1 {
 } */
 
 /* ============================================
-   CALENDAR DAY COMPLETION INDICATORS
+   CALENDAR DAY STYLES
    ============================================ */
 .calendar-day {
     padding: 0.75rem;
@@ -292,10 +292,15 @@ header h1 {
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .calendar-day.empty {
     cursor: default;
     background-color: transparent;
+    border: none;
 }
 .calendar-day.no-devotion {
     color: #999;
@@ -306,13 +311,35 @@ header h1 {
     color: var(--text-light);
     background-color: var(--bg-secondary);
 }
-.calendar-day.has-devotion:hover {
+.calendar-day.has-devotion:hover:not(.selected):not(.completed) {
     background-color: rgba(102, 126, 234, 0.1);
 }
-.calendar-day.has-devotion.clickable {
-    cursor: pointer;
+/* ⭐ COMPLETED - GREEN WITH CHECKMARK (BASE STYLE) ⭐ */
+.calendar-day.completed {
+    background-color: #34a853;
+    color: white;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
-/* ⭐ SELECTED DAY - ORANGE HIGHLIGHT ⭐ */
+.calendar-day.completed:hover:not(.selected) {
+    background-color: #2d8659;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+.calendar-day.completed::after {
+    content: ' ✓';
+    font-weight: bold;
+    margin-left: 2px;
+}
+/* TODAY - BLUE HIGHLIGHT */
+.calendar-day.today {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+}
+.calendar-day.today:hover:not(.selected) {
+    background-color: #5568d3;
+}
+/* ⭐ SELECTED - ORANGE (OVERRIDES EVERYTHING) ⭐ */
 .calendar-day.selected {
     background-color: #ff9800;
     color: white;
@@ -321,38 +348,13 @@ header h1 {
 }
 .calendar-day.selected:hover {
     background-color: #f57c00;
-}
-/* ⭐ COMPLETED DAY - GREEN INDICATOR ⭐ */
-.calendar-day.completed {
-    background-color: #34a853;
-    color: white;
-    font-weight: 600;
-}
-.calendar-day.completed::after {
-    content: ' ✓';
-    font-weight: bold;
-}
-.calendar-day.completed:hover {
-    background-color: #2d8659;
-}
-/* TODAY - BLUE HIGHLIGHT */
-.calendar-day.today {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: 700;
-}
-.calendar-day.today:hover {
-    background-color: #5568d3;
-}
-/* BOTH TODAY AND SELECTED */
-.calendar-day.today.selected {
-    background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
     box-shadow: 0 0 0 2px var(--primary-color);
 }
-/* BOTH COMPLETED AND SELECTED */
-.calendar-day.completed.selected::after {
+/* Show checkmark even on selected completed days */
+.calendar-day.selected.completed::after {
     content: ' ✓';
     font-weight: bold;
+    margin-left: 2px;
 }
 /* ============================================
    RESPONSIVE DESIGN
