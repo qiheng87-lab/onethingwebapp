@@ -255,7 +255,7 @@ function renderCalendar() {
       dayElement.classList.add('no-devotion');
     }
     // ⭐ ADD COMPLETION CLASS ⭐
-    if (isCompleted && hasDevotional) {
+    if (isCompleted) {
       dayElement.classList.add('completed');
     }
     // ⭐ ORANGE FOR SELECTED (highest priority) ⭐
