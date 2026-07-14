@@ -74,8 +74,7 @@ const prevMonth = document.getElementById('prevMonth');
 const nextMonth = document.getElementById('nextMonth');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const prevBtn2 = document.getElementById('prevBtn2');
-const nextBtn2 = document.getElementById('nextBtn2');
+
 
 // ============================================
 // LOAD DEVOTIONALS (WITH CACHE BUSTING)
@@ -331,35 +330,25 @@ function updateNavigationButtons() {
 
   // Disable previous button if no earlier devotional
   prevBtn.disabled = !prevDate;
-  prevBtn2.disabled = !prevDate;
   
   // Disable next button if no later devotional
   nextBtn.disabled = !nextDate;
-  nextBtn2.disabled = !nextDate;
 
   // Update button styling
   if (prevBtn.disabled) {
     prevBtn.style.opacity = '0.5';
     prevBtn.style.cursor = 'not-allowed';
-    prevBtn2.style.opacity = '0.5';
-    prevBtn2.style.cursor = 'not-allowed';
   } else {
     prevBtn.style.opacity = '1';
     prevBtn.style.cursor = 'pointer';
-    prevBtn2.style.opacity = '1';
-    prevBtn2.style.cursor = 'pointer';
   }
 
   if (nextBtn.disabled) {
     nextBtn.style.opacity = '0.5';
     nextBtn.style.cursor = 'not-allowed';
-    nextBtn2.style.opacity = '0.5';
-    nextBtn2.style.cursor = 'not-allowed';
   } else {
     nextBtn.style.opacity = '1';
     nextBtn.style.cursor = 'pointer';
-    nextBtn2.style.opacity = '1';
-    nextBtn2.style.cursor = 'pointer';
   }
 }
 
