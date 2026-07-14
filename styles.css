@@ -350,10 +350,6 @@ header h1 {
     box-shadow: 0 0 0 2px var(--primary-color);
 }
 /* BOTH COMPLETED AND SELECTED */
-.calendar-day.completed.selected {
-    background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
-    color: white;
-}
 .calendar-day.completed.selected::after {
     content: ' ✓';
     font-weight: bold;
