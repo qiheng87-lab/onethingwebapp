@@ -476,6 +476,16 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 App starting...');
   
   loadDevotionals();
+
+    // ⭐ FINISHED BUTTON EVENT LISTENER ⭐
+  const finishedBtn = document.getElementById('finishedBtn');
+  finishedBtn.addEventListener('click', () => {
+    const dateStr = formatDate(currentDate);
+    markDevotionAsCompleted(dateStr);
+    updateFinishedButtonState(dateStr);
+    renderCalendar();
+    console.log('🎉 Devotional completed and button updated');
+  });
   
   // Calendar toggle
   calendarToggle.addEventListener('click', toggleCalendar);
@@ -493,12 +503,10 @@ document.addEventListener('DOMContentLoaded', () => {
   prevMonth.addEventListener('click', previousMonth);
   nextMonth.addEventListener('click', goToNextMonth);
 
-  // Date navigation
+ // Date navigation
   prevBtn.addEventListener('click', previousDay);
   nextBtn.addEventListener('click', nextDay);
-  prevBtn2.addEventListener('click', previousDay);
-  nextBtn2.addEventListener('click', nextDay);
-
+ 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') previousDay();
