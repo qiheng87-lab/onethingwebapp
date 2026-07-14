@@ -248,25 +248,28 @@ function renderCalendar() {
     const today = new Date();
     const isToday = formatDate(today) === dayStr;
     const isSelected = formatDate(currentDate) === dayStr;
-    // Add classes
-    if (hasDevotional) {
-      dayElement.classList.add('has-devotion', 'clickable');
-    } else {
+    
+     // Base classes
+    if (!hasDevotional) {
       dayElement.classList.add('no-devotion');
+    } else {
+      dayElement.classList.add('has-devotion', 'clickable');
     }
-    // ⭐ ADD COMPLETION CLASS ⭐
-    if (isCompleted) {
+    // ⭐ APPLY CLASSES IN PRIORITY ORDER ⭐
+    
+    // 1. Completed (green)
+    if (isCompleted && hasDevotional) {
       dayElement.classList.add('completed');
     }
-    // ⭐ ORANGE FOR SELECTED (highest priority) ⭐
+    // 2. Today (blue) - only if not selected
+    if (isToday && hasDevotional && !isSelected) {
+      dayElement.classList.add('today');
+    }
+    // 3. Selected (orange) - HIGHEST PRIORITY
     if (isSelected) {
       dayElement.classList.add('selected');
     }
-    // Blue for today (if not selected)
-    else if (isToday && hasDevotional) {
-      dayElement.classList.add('today');
-    }
-    // Add click handler only if devotional exists
+    // Add click handler
     if (hasDevotional) {
       dayElement.addEventListener('click', () => {
         currentDate = new Date(year, month, day);
@@ -277,6 +280,7 @@ function renderCalendar() {
     calendarDays.appendChild(dayElement);
   }
 }
+
 
 // ============================================
 // NAVIGATION FUNCTIONS
