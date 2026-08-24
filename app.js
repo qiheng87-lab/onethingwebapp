@@ -2,6 +2,11 @@ let currentDate = new Date();
 let calendarDate = new Date();
 let devotionalData = [];
 let calendarOpen = false;
+const btnConnect = document.getElementById('gdrive-connect');
+const btnSync    = document.getElementById('gdrive-syncnow');
+const status     = document.getElementById('sync-status');
+let tokenClient = null;
+let accessToken = null;
 
 // ============================================
 // SERVICE WORKER MANAGEMENT
@@ -50,11 +55,7 @@ if ('serviceWorker' in navigator) {
 // GIS AND GAPI INTEGRATION
 //=============================================
 
-const btnConnect = document.getElementById('gdrive-connect');
-const btnSync    = document.getElementById('gdrive-syncnow');
-const status     = document.getElementById('sync-status');
-let tokenClient = null;
-let accessToken = null;
+
 function initAuth() {
   tokenClient = google.accounts.oauth2.initTokenClient({
     client_id: '1012408130696-850s7g60iajq12c20sfoujbi4ngpf9dr.apps.googleusercontent.com',
