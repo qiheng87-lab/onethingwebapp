@@ -30,8 +30,13 @@
 <body>
     <div class="container">
 
-         <!-- Google Sign In -->
-        <!-- Only visible when we NEED the user to interact -->
+<!-- Google Sign In -->
+<!-- Google Identity Services -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- Google API Client (for Drive REST wrappers) -->
+<script src="https://apis.google.com/js/api.js" async defer></script>
+
+<!-- Only visible when we NEED the user to interact -->
 <button id="gdrive-connect" style="display: none;">
   📥 Sign in to Back Up Responses
 </button>
