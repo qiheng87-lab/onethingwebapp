@@ -45,6 +45,56 @@ if ('serviceWorker' in navigator) {
   }, 60000); // Every minute
 }
 
+
+// ============================================
+// GIS AND GAPI INTEGRATION
+//=============================================
+
+const btnConnect = document.getElementById('gdrive-connect');
+const btnSync    = document.getElementById('gdrive-syncnow');
+const status     = document.getElementById('sync-status');
+let tokenClient = null;
+let accessToken = null;
+function initAuth() {
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: '1012408130696-850s7g60iajq12c20sfoujbi4ngpf9dr.apps.googleusercontent.com',
+    scope: 'https://www.googleapis.com/auth/drive.appdata',
+    callback: (tokenResponse) => {
+      if (tokenResponse.error) {
+        // Silent failed or user closed popup
+        btnConnect.style.display = 'inline-block';
+        status.textContent = 'Sign-in required';
+        return;
+      }
+      // Success! We have a token.
+      accessToken = tokenResponse.access_token;
+      gapi.client.setToken({ access_token: accessToken });
+      btnConnect.style.display = 'none';
+      btnSync.style.display = 'inline-block';
+      status.textContent = 'Connected';
+      
+      // Auto-sync as soon as we're authorized
+      startSync();
+    }
+  });
+}
+// --- Run on app boot ---
+window.addEventListener('load', async () => {
+  await initGapiClient(); // loads gapi discovery docs
+  initAuth();
+  // Try invisible re-auth first.
+  // If user already approved and has a Google session, this just works.
+  tokenClient.requestAccessToken({ prompt: 'none' });
+});
+// --- Buttons wired to user gestures ---
+btnConnect.addEventListener('click', () => {
+  // This MUST be inside a click handler so the popup isn't blocked
+  tokenClient.requestAccessToken({ prompt: 'consent' });
+});
+btnSync.addEventListener('click', () => {
+  startSync();
+});
+
 // ============================================
 // DATE FORMATTING
 // ============================================
