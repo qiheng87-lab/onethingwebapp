@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devotional Sync</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; }
+    #gdrive-signin {
+      display: none;
+      padding: 0.6rem 1.2rem;
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #sync-status { margin-left: 1rem; color: #555; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>My Devotional</h1>
+  
+  <div id="auth-section">
+    <button id="gdrive-signin" type="button">
+      📥 Connect Google Drive Backup
+    </button>
+    <span id="sync-status">Loading…</span>
+  </div>
+  <!-- 1. Load Google libraries FIRST -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- 2. Your code comes AFTER -->
+  <script>
+    // ================================
+    //  CONFIG
+    // ================================
+    const CLIENT_ID = 'http://1012408130696-850s7g60iajq12c20sfoujbi4ngpf9dr.apps.googleusercontent.com';
+    const SCOPES    = 'https://www.googleapis.com/auth/drive.appdata';
+    const FILE_NAME = 'devotionals.json';
+    // ================================
+    //  STATE
+    // ================================
+    let tokenClient = null;
+    let accessToken = null;
+    let gapiReady   = false;
+    const signInBtn = document.getElementById('gdrive-signin');
+    const statusEl  = document.getElementById('sync-status');
+    // ================================
+    //  1. INITIALIZE GAPI CLIENT
+    // ================================
+    // This function MUST be declared before anything calls it.
+    function initGapiClient() {
+      return new Promise((resolve, reject) => {
+        if (typeof gapi === 'undefined' || !gapi.load) {
+          reject(new Error('GAPI library not present'));
+          return;
+        }
+        gapi.load('client', async () => {
+          try {
+            await gapi.client.init({
+              discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+            });
+            gapiReady = true;
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        });
+      });
+    }
+    // ================================
+    //  2. INITIALIZE GIS AUTH
+    // ================================
+    function initGis() {
+      if (!window.google || !google.accounts || !google.accounts.oauth2) {
+        throw new Error('GIS library not present');
+      }
+      tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: (res) => {
+          if (res.error) {
+            console.warn('GIS callback error:', res);
+            statusEl.textContent = 'Sign-in required';
+            signInBtn.style.display = 'inline-block';
+            return;
+          }
+          // SUCCESS: we have an access token
+          accessToken = res.access_token;
+          gapi.client.setToken({ access_token: accessToken });
+          signInBtn.style.display = 'none';
+          statusEl.textContent = 'Connected — syncing…';
+          startSync();
+        }
+      });
+    }
+    // ================================
+    //  3. BUTTON CLICK HANDLER
+    // ================================
+    signInBtn.addEventListener('click', () => {
+      if (!tokenClient) {
+        alert('Google libraries still loading.');
+        return;
+      }
+      // Direct call inside user gesture — no setTimeout!
+      tokenClient.requestAccessToken({ prompt: 'consent' });
+    });
+    // ================================
+    //  4. DRIVE API HELPERS
+    // ================================
+    async function findSyncFile() {
+      const res = await gapi.client.drive.files.list({
+        q: `name='${FILE_NAME}' and trashed=false`,
+        spaces: 'appDataFolder',
+        fields: 'files(id, modifiedTime)'
+      });
+      return res.result.files?.[0] ?? null;
+    }
+    async function createHiddenFile(data) {
+      const meta = await gapi.client.drive.files.create({
+        resource: {
+          name: FILE_NAME,
+          mimeType: 'application/json',
+          parents: ['appDataFolder']
+        },
+        fields: 'id'
+      });
+      await uploadToFile(meta.result.id, data);
+      return meta.result.id;
+    }
+    async function uploadToFile(fileId, data) {
+      await gapi.client.request({
+        path: `/upload/drive/v3/files/${fileId}`,
+        method: 'PATCH',
+        params: { uploadType: 'media' },
+        body: JSON.stringify(data)
+      });
+    }
+    // ================================
+    //  5. SYNC ENGINE
+    // ================================
+    async function startSync() {
+      if (!gapiReady || !accessToken) return;
+      try {
+        const localData = JSON.parse(localStorage.getItem('devData') || '{}');
+        const file = await findSyncFile();
+        if (!file) {
+          await createHiddenFile(localData);
+          statusEl.textContent = 'Backup created';
+        } else {
+          await uploadToFile(file.id, localData);
+          statusEl.textContent = 'Synced to Drive';
+        }
+      } catch (err) {
+        console.error('Sync error:', err);
+        statusEl.textContent = 'Sync failed';
+      }
+    }
+    // ================================
+    //  6. BOOT SEQUENCE (ORDER MATTERS!)
+    // ================================
+    async function boot() {
+      try {
+        // Step A: GAPI (synchronous script, but needs internal loading)
+        await initGapiClient();
+        // Step B: GIS (loaded async — we must wait for it)
+        let waits = 0;
+        while ((!window.google || !google.accounts?.oauth2) && waits < 50) {
+          await new Promise(r => setTimeout(r, 100));
+          waits++;
+        }
+        if (!window.google?.accounts?.oauth2) {
+          throw new Error('Google Identity Services failed to load');
+        }
+        initGis();
+        // Step C: Attempt silent sign-in (no popup)
+        tokenClient.requestAccessToken({ prompt: 'none' });
+      } catch (err) {
+        console.error('Boot failed:', err);
+        statusEl.textContent = 'Error loading Google services';
+      }
+    }
+    // Run everything
+    boot();
+  </script>
+</body>
+</html>
