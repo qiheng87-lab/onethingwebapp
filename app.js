@@ -539,9 +539,9 @@ document.addEventListener('DOMContentLoaded', () => {
 finishedBtn.addEventListener('click', () => {
   const dateStr = formatDate(currentDate);
   toggleDevotionCompletion(dateStr);
-});
+
     console.log('🎉 button state updated');
-  });
+});
   
   // Calendar toggle
   calendarToggle.addEventListener('click', toggleCalendar);
