@@ -175,24 +175,32 @@ async function loadDevotionals() {
 function isDevotionCompleted(dateStr) {
   return localStorage.getItem(`devotion_${dateStr}_completed`) === 'true';
 }
-function markDevotionAsCompleted(dateStr) {
-  localStorage.setItem(`devotion_${dateStr}_completed`, 'true');
-  console.log('✅ Devotional marked as completed:', dateStr);
+// Renamed to reflect the new toggle behavior
+function toggleDevotionCompletion(dateStr) {
+  const currentlyComplete = isDevotionCompleted(dateStr);
+  if (currentlyComplete) {
+    localStorage.removeItem(`devotion_${dateStr}_completed`); // unmark
+    console.log('🔄 Devotional unmarked:', dateStr);
+  } else {
+    localStorage.setItem(`devotion_${dateStr}_completed`, 'true'); // mark
+    console.log('✅ Devotional marked as completed:', dateStr);
+  }
+  updateFinishedButtonState(dateStr);
 }
 function updateFinishedButtonState(dateStr) {
   const finishedBtn = document.getElementById('finishedBtn');
   const isComplete = isDevotionCompleted(dateStr);
-  
   if (isComplete) {
     finishedBtn.classList.add('completed');
     finishedBtn.textContent = '✅ Completed';
-    finishedBtn.disabled = false;
+    // IMPORTANT: Remove or comment out the line below
+    // finishedBtn.disabled = true; 
   } else {
     finishedBtn.classList.remove('completed');
     finishedBtn.textContent = '✅ Mark as Finished';
-    finishedBtn.disabled = false;
   }
 }
+
 // ============================================
 // DISPLAY DEVOTION
 // ============================================
@@ -502,40 +510,6 @@ function goToNextMonth() {
   renderCalendar();
 }
 
-// TESTING Completion function
-function testCompletionTracking() {
-  console.log('🧪 TESTING COMPLETION TRACKING...');
-  
-  // Get first devotional date
-  const firstDate = devotionalData[0]?.date;
-  
-  if (!firstDate) {
-    console.error('❌ No devotionals found');
-    return;
-  }
-  
-  console.log('📅 Testing with date:', firstDate);
-  
-  // Check current state
-  const beforeCompletion = isDevotionCompleted(firstDate);
-  console.log('Before marking:', beforeCompletion);
-  
-  // Mark as completed
-  markDevotionAsCompleted(firstDate);
-  
-  // Check after
-  const afterCompletion = isDevotionCompleted(firstDate);
-  console.log('After marking:', afterCompletion);
-  
-  // Check localStorage
-  const storageValue = localStorage.getItem(`devotion_${firstDate}_completed`);
-  console.log('In localStorage:', storageValue);
-  
-  // Re-render calendar
-  renderCalendar();
-  
-  console.log('🧪 TEST COMPLETE');
-}
 
 // ============================================
 // ERROR HANDLING
@@ -561,13 +535,12 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDevotionals();
 
     // ⭐ FINISHED BUTTON EVENT LISTENER ⭐
-  const finishedBtn = document.getElementById('finishedBtn');
-  finishedBtn.addEventListener('click', () => {
-    const dateStr = formatDate(currentDate);
-    markDevotionAsCompleted(dateStr);
-    updateFinishedButtonState(dateStr);
-    renderCalendar();
-    console.log('🎉 Devotional completed and button updated');
+ const finishedBtn = document.getElementById('finishedBtn');
+finishedBtn.addEventListener('click', () => {
+  const dateStr = formatDate(currentDate);
+  toggleDevotionCompletion(dateStr);
+});
+    console.log('🎉 button state updated');
   });
   
   // Calendar toggle
