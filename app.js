@@ -181,12 +181,12 @@ function markDevotionAsCompleted(dateStr) {
 }
 function updateFinishedButtonState(dateStr) {
   const finishedBtn = document.getElementById('finishedBtn');
-  const isCompleted = isDevotionCompleted(dateStr);
+  const isComplete = isDevotionCompleted(dateStr);
   
-  if (isCompleted) {
+  if (isComplete) {
     finishedBtn.classList.add('completed');
     finishedBtn.textContent = '✅ Completed';
-    finishedBtn.disabled = true;
+    finishedBtn.disabled = false;
   } else {
     finishedBtn.classList.remove('completed');
     finishedBtn.textContent = '✅ Mark as Finished';
