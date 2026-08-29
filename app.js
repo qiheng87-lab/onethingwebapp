@@ -136,7 +136,7 @@ async function loadDevotionals() {
   try {
     // Add timestamp to force fresh fetch
     const timestamp = new Date().getTime();
-    const response = await fetch(`/devotionals.json?t=${timestamp}`, {
+    const response = await fetch(`/onethingwebapp/devotionals.json?t=${timestamp}`, {
       // Force network request, ignore cache
       cache: 'no-store',
       headers: {
