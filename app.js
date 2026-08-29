@@ -7,7 +7,7 @@ const btnSync    = document.getElementById('gdrive-syncnow');
 const status     = document.getElementById('sync-status');
 let tokenClient = null;
 let accessToken = null;
-
+/*
 // ============================================
 // SERVICE WORKER MANAGEMENT
 // ============================================
@@ -50,12 +50,12 @@ if ('serviceWorker' in navigator) {
   }, 60000); // Every minute
 }
 
-
+*/
 // ============================================
 // GIS AND GAPI INTEGRATION
 //=============================================
 
-
+/*
 function initAuth() {
   tokenClient = google.accounts.oauth2.initTokenClient({
     client_id: '1012408130696-850s7g60iajq12c20sfoujbi4ngpf9dr.apps.googleusercontent.com',
@@ -95,6 +95,7 @@ btnConnect.addEventListener('click', () => {
 btnSync.addEventListener('click', () => {
   startSync();
 });
+*/
 
 // ============================================
 // DATE FORMATTING
@@ -135,7 +136,7 @@ async function loadDevotionals() {
   try {
     // Add timestamp to force fresh fetch
     const timestamp = new Date().getTime();
-    const response = await fetch(`/onethingwebapp/devotionals.json?t=${timestamp}`, {
+    const response = await fetch(`/devotionals.json?t=${timestamp}`, {
       // Force network request, ignore cache
       cache: 'no-store',
       headers: {
@@ -155,11 +156,13 @@ async function loadDevotionals() {
 
     console.log('✅ Devotionals loaded:', devotionalData.length, 'entries');
 
+    /* blocked out for testing
     // Set current date to the second devotional entry
     if (devotionalData.length > 1) {
       currentDate = new Date(devotionalData[1].date);
     }
-
+    */
+    
     displayDevotion();
     renderCalendar();
     updateNavigationButtons();

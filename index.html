@@ -24,21 +24,18 @@
     <title>One Thing (mobile version)</title>
    
     <!-- Update whenever there are changes -->
-<link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.1.03">
+<link rel="stylesheet" href="/styles.css?v=2.1.03">
      
 </head>
 <body>
     <div class="container">
-
-<!-- Google Sign In -->
-<!-- Google Identity Services -->
+<!--
+<!- Google Sign In ->
+<!- Google Identity Services ->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<!-- Google API Client (for Drive REST wrappers) -->
+<!- Google API Client (for Drive REST wrappers) ->
 <script src="https://apis.google.com/js/api.js"></script>
-
-
-
-
+-->
         
         <!-- Header -->
         <header>
@@ -56,16 +53,20 @@
             <!-- Calendar Toggle Button -->
             <button class="calendar-toggle" id="calendarToggle" title="Open Calendar">📅</button>
         </div>
-        <div><!-- Only visible when we NEED the user to interact -->
+
+<!-- Block below for GIS and GAPI -->
+<!--        <div><!- Only visible when we NEED the user to interact ->
 <button id="gdrive-connect" style="display: inline-block;">
   📥 Sign in to Back Up Responses
 </button>
-<!-- Only visible when already connected -->
+<!- Only visible when already connected ->
 <button id="gdrive-syncnow" style="display: none;">
   🔄 Sync Now
 </button>
         </div>
 <span id="sync-status"></span>
+    -->
+
         <!-- Expandable Calendar -->
         <div class="calendar-container" id="calendarContainer">
             <div class="calendar-header">
@@ -113,6 +114,6 @@
         </main>
     </div>
     <!-- Scripts -->
-   <script src="/onethingwebapp/app.js?v=2.1.03" defer></script>
+   <script src="/app.js?v=2.1.03" defer></script>
 </body>
 </html>
