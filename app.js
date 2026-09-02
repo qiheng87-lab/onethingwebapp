@@ -98,6 +98,132 @@ btnSync.addEventListener('click', () => {
 */
 
 // ============================================
+// HAMBURGER MENU MANAGEMENT
+// ============================================
+function initializeMenuBar() {
+ const hamburgerBtn = document.getElementById('hamburgerBtn');
+ const menuBar = document.getElementById('menuBar');
+ const menuButtons = document.querySelectorAll('.menu-btn');
+ const sections = document.querySelectorAll('.section');
+ // Toggle menu when hamburger button is clicked
+ hamburgerBtn.addEventListener('click', () => {
+   menuBar.classList.toggle('open');
+   hamburgerBtn.classList.toggle('active');
+   console.log('🍔 Menu toggled');
+ });
+ // Handle menu button clicks
+ menuButtons.forEach(button => {
+   button.addEventListener('click', () => {
+     const sectionId = button.getAttribute('data-section');
+    
+     // Remove active class from all buttons and sections
+     menuButtons.forEach(btn => btn.classList.remove('active'));
+     sections.forEach(section => section.classList.remove('active'));
+    
+     // Add active class to clicked button and corresponding section
+     button.classList.add('active');
+     document.getElementById(sectionId).classList.add('active');
+    
+     // Close menu and hamburger button
+     menuBar.classList.remove('open');
+     hamburgerBtn.classList.remove('active');
+    
+     // Close calendar if open
+     closeCalendar();
+    
+     // Scroll to top
+     window.scrollTo(0, 0);
+    
+     console.log('📄 Switched to section:', sectionId);
+   });
+ });
+ // Close menu when clicking outside
+ document.addEventListener('click', (e) => {
+   const isHamburger = e.target === hamburgerBtn || hamburgerBtn.contains(e.target);
+   const isMenu = e.target === menuBar || menuBar.contains(e.target);
+  
+   if (!isHamburger && !isMenu && menuBar.classList.contains('open')) {
+     menuBar.classList.remove('open');
+     hamburgerBtn.classList.remove('active');
+   }
+ });
+}
+
+initializeMenuBar();
+
+// ============================================
+// LOAD STATIC CONTENT (Sermon Series & Why Spend Time)
+// ============================================
+function loadStaticContent() {
+ // Sermon Series Content
+ const sermonContent = document.getElementById('sermonContent');
+ if (sermonContent) {
+   sermonContent.innerHTML = `
+     <p>
+       Welcome to our Sermon Series! This is an introductory section where you can learn about
+       the theme and purpose of our current sermon series.
+     </p>
+     <h3>Series Overview</h3>
+     <p>
+       This sermon series is designed to help you deepen your understanding of God's Word
+       and apply biblical principles to your daily life.
+     </p>
+     <h3>What to Expect</h3>
+     <ul>
+       <li>Weekly sermons focusing on a unified theme</li>
+       <li>In-depth biblical analysis and commentary</li>
+       <li>Practical applications for modern living</li>
+       <li>Opportunity for growth and spiritual development</li>
+     </ul>
+     <p>
+       We encourage you to engage fully with each message and consider how God might be
+       speaking to your heart through this series.
+     </p>
+   `;
+ }
+ // Why Spend Time with God Content
+ const whyContent = document.getElementById('whyContent');
+ if (whyContent) {
+   whyContent.innerHTML = `
+     <h3>Developing a Deeper Relationship with God</h3>
+     <p>
+       Spending time with God is one of the most transformative practices a Christian can
+       develop. It's not just a religious obligation, but an invitation to experience God's
+       presence and love in a personal way.
+     </p>
+    
+     <h3>Key Benefits</h3>
+     <ul>
+       <li><strong>Spiritual Growth:</strong> Regular time with God strengthens your faith and deepens your understanding of Scripture.</li>
+       <li><strong>Peace and Comfort:</strong> God's presence brings comfort during difficult times and peace that transcends understanding.</li>
+       <li><strong>Guidance:</strong> When you spend time seeking God, He directs your steps and helps you make wise decisions.</li>
+       <li><strong>Transformation:</strong> Consistent fellowship with God changes your character and helps you become more like Christ.</li>
+       <li><strong>Answered Prayers:</strong> Drawing near to God opens the door for Him to work in your life in mighty ways.</li>
+     </ul>
+     <h3>How to Spend Time with God</h3>
+     <ul>
+       <li><strong>Prayer:</strong> Talk to God honestly about your thoughts, feelings, and concerns.</li>
+       <li><strong>Bible Reading:</strong> Read and meditate on Scripture to hear God's voice.</li>
+       <li><strong>Reflection:</strong> Take time to reflect on what God is teaching you.</li>
+       <li><strong>Worship:</strong> Praise God through music, singing, or other forms of worship.</li>
+       <li><strong>Devotionals:</strong> Use devotional guides to structure your time with God.</li>
+     </ul>
+     <h3>Start Today</h3>
+     <p>
+       Don't wait for the perfect time or perfect circumstances. Start spending time with God
+       today, even if it's just 10 minutes. As you make it a habit, you'll discover the joy
+       and blessing that comes from knowing God intimately.
+     </p>
+     <p>
+       <em>"Draw near to God, and he will draw near to you." - James 4:8</em>
+     </p>
+   `;
+ }
+}
+
+loadStaticContent();
+
+// ============================================
 // DATE FORMATTING
 // ============================================
 
@@ -136,6 +262,7 @@ async function loadDevotionals() {
   try {
     // Add timestamp to force fresh fetch
     const timestamp = new Date().getTime();
+    // replace with '/devotionals.json' for local testing
     const response = await fetch(`/onethingwebapp/devotionals.json?t=${timestamp}`, {
       // Force network request, ignore cache
       cache: 'no-store',

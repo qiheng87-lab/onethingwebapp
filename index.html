@@ -24,8 +24,10 @@
     <title>One Thing (mobile version)</title>
    
     <!-- Update whenever there are changes -->
-<link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.1.03">
-     
+<link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.2.01">     
+<!-- Use below for local testing 
+<link rel="stylesheet" href="/styles.css?v=2.1.03"> 
+-->     
 </head>
 <body>
     <div class="container">
@@ -41,7 +43,37 @@
         <header>
             <h1>ONE THING</h1>
             A GPC Devotional Resource
+
+        <!-- ⭐ HAMBURGER MENU BUTTON ⭐ -->
+           <button class="hamburger-btn" id="hamburgerBtn" title="Menu">
+               <span></span>
+               <span></span>
+               <span></span>
+           </button>
+
         </header>
+        <!-- ⭐ EXPANDABLE MENU ⭐ -->
+       <nav class="menu-bar" id="menuBar">
+           <button class="menu-btn active" data-section="daily-devotional">
+               Today's Devotional
+           </button>
+           <button class="menu-btn" data-section="sermon-series">
+               Current Sermon Series Intro
+           </button>
+           <button class="menu-btn" data-section="why-spend-time">
+               Why Spend Time with God?
+           </button>
+            <button class="menu-btn" data-section="about-one-thing">
+               About One Thing
+           </button>
+           <button class="menu-btn" data-section="connect-with-GPC">
+               Connect with GPC
+           </button>
+       </nav>
+
+       <!-- ⭐ DAILY DEVOTIONAL SECTION ⭐ -->
+       <section id="daily-devotional" class="section active">
+
         <!-- Date Navigation Section -->
         <div class="date-section">
             <!-- Date Display with Arrow Buttons -->
@@ -112,8 +144,26 @@
                     <button id="finishedBtn" class="finished-btn">✅ Mark as Finished</button>
                 </div>
         </main>
+        </section>
+    <!-- ⭐ SERMON SERIES SECTION ⭐ -->
+       <section id="sermon-series" class="section">
+           <div class="content-section">
+               <h2>Sermon Series Introduction</h2>
+               <div id="sermonContent"></div>
+           </div>
+       </section>
+    <!-- ⭐ WHY SPEND TIME WITH GOD SECTION ⭐ -->
+       <section id="why-spend-time" class="section">
+           <div class="content-section">
+               <h2>Why Spend Time with God</h2>
+               <div id="whyContent"></div>
+           </div>
+       </section>
+
     </div>
     <!-- Scripts -->
-   <script src="/onethingwebapp/app.js?v=2.1.03" defer></script>
+   <script src="/onethingwebapp/app.js?v=2.2.01" defer></script>
+   <!-- Use below for local testing
+   <script src="/app.js?v=2.1.03" defer></script>  -->
 </body>
 </html>

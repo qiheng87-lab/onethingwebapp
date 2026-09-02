@@ -44,7 +44,7 @@ body {
 }
 
 /* ============================================
-   HEADER
+   HEADER WITH HAMBURGER MENU
    ============================================ */
 
 header {
@@ -65,6 +65,251 @@ header h1 {
   font-weight: 700;
   margin: 0;
 }
+
+.header-with-menu {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1rem 1.5rem;
+}
+.header-with-menu h1 {
+   flex: 1;
+   margin: 0;
+   font-size: 1.5rem;
+   text-align: center;
+}
+/* ============================================
+  HAMBURGER BUTTON
+  ============================================ */
+.hamburger-btn {
+  /* explicit square touch target (WCAG friendly) */
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 1rem auto;      /* keeps your button centered on the page */
+  background: transparent;
+  /* border: 2px solid #1a1a1a; */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  /* geometry tokens */
+  --line-width: 24px;
+  --line-height: 3px;
+  --offset: 9px;          /* = (visual gap + line-height) / 2. 
+                             9px gives a ~6px gap between lines */
+}
+/* 
+  display: flex;
+   --line-width: 24px;
+  --line-height: 3px;
+  --line-gap: 6px;
+  Distance from center of top line to center of middle line:
+  --translate-offset: calc(var(--line-height) + var(--line-gap));
+   margin: 1rem auto;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 48px;
+   height: 48px;
+   background-color: rgb(10, 34, 216);
+   border: none;
+   cursor: pointer;
+   padding: 0.5rem; [ensures a good mobile tap target]
+   gap: var(--line-gap);
+   transition: all 0.3s ease;
+} */ 
+.hamburger-btn:hover {
+   opacity: 0.8;
+}
+.hamburger-btn span {
+   position: absolute;
+  /* center every span dead in the middle of the 48×48 button */
+  left: 50%;
+  top: 50%;
+  width: var(--line-width);
+  height: var(--line-height);
+  margin-left: calc(var(--line-width) / -2);  /* -12px */
+  margin-top: calc(var(--line-height) / -2);   /* -1.5px */
+  background: #1a1a1a;
+  border-radius: 2px;
+   transition: all 0.3s ease;
+   
+}
+
+/* Resting state – spread lines vertically */
+.hamburger-btn span:nth-child(1) { transform: translateY(calc(var(--offset) * -1)); }
+.hamburger-btn span:nth-child(2) { transform: translateY(0); }
+.hamburger-btn span:nth-child(3) { transform: translateY(var(--offset)); }
+/* Active state – collapse to center and rotate */
+.hamburger-btn.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+.hamburger-btn.active span:nth-child(2) { opacity: 0; }
+.hamburger-btn.active span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+/* Hamburger animation - transform to X when menu is open 
+.hamburger-btn.active span:nth-child(1) {
+   transform: rotate(45deg) translate(5px, 7px);
+}
+.hamburger-btn.active span:nth-child(2) {
+   opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+   transform: rotate(-45deg) translate(5px, -7px);
+} */
+
+
+/* ============================================
+  EXPANDABLE MENU BAR
+  ============================================ */
+.menu-bar {
+   display: none;
+   flex-direction: column;
+   gap: 0;
+   background-color: var(--bg-secondary);
+   border-radius: 2px;
+   overflow: hidden;
+   margin-bottom: 1.5rem;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   animation: slideDown 0.3s ease;
+}
+.menu-bar.open {
+   display: flex;
+}
+@keyframes slideDown {
+   from {
+       opacity: 0;
+       max-height: 0;
+       transform: translateY(-10px);
+   }
+   to {
+       opacity: 1;
+       max-height: 500px;
+       transform: translateY(0);
+   }
+}
+.menu-btn {
+   padding: 1rem 1.5rem;
+   border: none;
+   background-color: transparent;
+   color: #1a1a1a;
+   font-size: 1rem;
+   font-weight: 500;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   text-align: left;
+   border-left: 4px solid transparent;
+}
+.menu-btn:hover {
+   background-color: var(--hover-bg, rgba(102, 126, 234, 0.1));
+   color: var(--primary-color);
+}
+.menu-btn.active {
+   background-color: rgba(191, 191, 191, 0.2);
+   color: #1a1a1a;
+   border-left-color: #1a1a1a;
+   font-weight: 600;
+}
+/* ============================================
+  SECTION STYLES
+  ============================================ */
+.section {
+   display: none;
+   animation: fadeIn 0.3s ease-in;
+}
+.section.active {
+   display: block;
+}
+@keyframes fadeIn {
+   from {
+       opacity: 0;
+       transform: translateY(10px);
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+.content-section {
+   background-color: var(--bg-secondary);
+   padding: 2rem;
+   border-radius: 12px;
+   margin: 1.5rem 0;
+}
+.content-section h2 {
+   margin-top: 0;
+   color: var(--primary-color);
+   font-size: 1.8rem;
+   margin-bottom: 1.5rem;
+}
+.content-section p {
+   line-height: 1.8;
+   color: var(--text-light);
+   margin-bottom: 1rem;
+}
+.content-section ul,
+.content-section ol {
+   margin: 1rem 0;
+   padding-left: 2rem;
+   color: var(--text-light);
+   line-height: 1.8;
+}
+.content-section li {
+   margin-bottom: 0.5rem;
+}
+/* ============================================
+  RESPONSIVE DESIGN
+  ============================================ */
+@media (max-width: 768px) {
+   .header-with-menu {
+       padding: 1rem;
+   }
+   .header-with-menu h1 {
+       font-size: 1.3rem;
+   }
+   .hamburger-btn {
+       width: 35px;
+       height: 35px;
+   }
+   .hamburger-btn span {
+       width: 20px;
+       height: 2.5px;
+   }
+   .menu-btn {
+       padding: 0.85rem 1.25rem;
+       font-size: 0.95rem;
+   }
+   .content-section {
+       padding: 1.5rem;
+   }
+   .content-section h2 {
+       font-size: 1.5rem;
+   }
+}
+@media (max-width: 480px) {
+   .header-with-menu h1 {
+       font-size: 1.1rem;
+   }
+   .hamburger-btn {
+       width: 32px;
+       height: 32px;
+       gap: 4px;
+   }
+   .hamburger-btn span {
+       width: 18px;
+       height: 2px;
+   }
+   .content-section {
+       padding: 1rem;
+       margin: 1rem 0;
+   }
+   .content-section h2 {
+       font-size: 1.3rem;
+   }
+}
+
 
 /* ============================================
    DATE SECTION
