@@ -1,16 +1,4 @@
 /* ==========================================
-   CONFIG
-   ========================================== */
-const firebaseConfig = {
-  apiKey: 'AIzaSyBnla41Vp5_MmYNoQyKpzAfN0F5fblwMNA',
-  authDomain: 'otwa-prototype.firebaseapp.com',
-  projectId: 'otwa-prototype',
-  storageBucket: 'otwa-prototype.firebasestorage.app',
-  messagingSenderId: '642106168851',
-  appId: '1:642106168851:web:7c0c8ba1199c2699a391e6'
-};
-const DRIVE_FILENAME = 'otwa-app-data.json';   // hidden in Drive appDataFolder
-/* ==========================================
    IMPORTS
    ========================================== */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
@@ -23,37 +11,41 @@ import {
   GoogleAuthProvider
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 /* ==========================================
-   INIT FIREBASE
+   CONFIG & INIT
    ========================================== */
+const firebaseConfig = {
+  apiKey: 'AIzaSyBnla41Vp5_MmYNoQyKpzAfN0F5fblwMNA',
+  authDomain: 'otwa-prototype.firebaseapp.com',
+  projectId: 'otwa-prototype',
+  storageBucket: 'otwa-prototype.firebasestorage.app',
+  messagingSenderId: '642106168851',
+  appId: '1:642106168851:web:7c0c8ba1199c2699a391e6'
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/drive.appdata');
+const googleProvider = new GoogleAuthProvider();
+googleProvider.addScope('https://www.googleapis.com/auth/drive.appdata');
+googleProvider.setCustomParameters({ prompt: 'consent' });
 /* ==========================================
    STATE
    ========================================== */
+const DRIVE_FILENAME = 'otwa-app-data.json';
 let googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
+let backupIntervalId = null; // <-- NEW
 /* ==========================================
    DOM REFS
    ========================================== */
 const $ = (id) => document.getElementById(id);
-const ui = {
-  signin:  $('fs-signin'),
-  signout: $('fs-signout'),
-  user:    $('fs-user'),
-  syncRow: $('fs-sync-row'),
-  backup:  $('fs-backup'),
-  restore: $('fs-restore'),
-  status:  $('fs-status')
-};
-/* ==========================================
-   HELPERS
-   ========================================== */
+
 function setStatus(msg, isError = false) {
+  if (!ui.status) return;
   ui.status.textContent = msg;
   ui.status.style.color = isError ? '#c62828' : '#2e7d32';
   if (msg) setTimeout(() => { if (ui.status.textContent === msg) ui.status.textContent = ''; }, 5000);
 }
+/* ==========================================
+   localStorage HELPERS
+   ========================================== */
 function localStorageToObject() {
   const obj = {};
   for (let i = 0; i < localStorage.length; i++) {
@@ -64,9 +56,7 @@ function localStorageToObject() {
 }
 function objectToLocalStorage(obj) {
   localStorage.clear();
-  for (const [k, v] of Object.entries(obj)) {
-    localStorage.setItem(k, v);
-  }
+  for (const [k, v] of Object.entries(obj)) localStorage.setItem(k, v);
 }
 /* ==========================================
    TOKEN MANAGEMENT
@@ -74,15 +64,14 @@ function objectToLocalStorage(obj) {
 async function getValidToken() {
   if (googleAccessToken) return googleAccessToken;
   if (!auth.currentUser) throw new Error('Not signed in');
-  setStatus('Refreshing sign-in…');
-  const result = await reauthenticateWithPopup(auth.currentUser, provider);
+  const result = await reauthenticateWithPopup(auth.currentUser, googleProvider);
   const cred = GoogleAuthProvider.credentialFromResult(result);
   googleAccessToken = cred.accessToken;
   sessionStorage.setItem('fs_gtoken', googleAccessToken);
   return googleAccessToken;
 }
 /* ==========================================
-   DRIVE API
+   DRIVE API HELPERS
    ========================================== */
 async function findBackupFile(token) {
   const q = `name='${DRIVE_FILENAME}' and trashed=false`;
@@ -125,93 +114,176 @@ async function uploadBackup(token, payload, fileId = null) {
   return res.json();
 }
 async function downloadBackup(fileId, token) {
-  const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  const res = await fetch(
+    `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
   if (!res.ok) throw new Error(`Drive download failed: ${res.status}`);
   return res.json();
 }
 /* ==========================================
-   ACTIONS
+   CORE SYNC LOGIC (UI-agnostic)
+   ========================================== */
+async function performBackup() {
+  const token = await getValidToken();
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    origin: location.origin,
+    data: localStorageToObject()
+  };
+  const existing = await findBackupFile(token);
+  await uploadBackup(token, payload, existing?.id);
+}
+async function performRestore() {
+  const token = await getValidToken();
+  const existing = await findBackupFile(token);
+  if (!existing) return false;
+  const remote = await downloadBackup(existing.id, token);
+  if (remote && remote.data) {
+    objectToLocalStorage(remote.data);
+    return true;
+  }
+  return false;
+}
+/* ==========================================
+   AUTO-BACKUP TIMER  <-- NEW SECTION
+   ========================================== */
+function startAutoBackup() {
+  stopAutoBackup();
+  backupIntervalId = setInterval(async () => {
+    try {
+      await performBackup();
+      console.log('[AutoBackup] Silent backup complete');
+    } catch (err) {
+      console.error('[AutoBackup] Silent backup failed:', err);
+      if (err.status === 401 || err.message?.includes('401')) {
+        googleAccessToken = null;
+        sessionStorage.removeItem('fs_gtoken');
+      }
+    }
+  }, 60000); // 60 seconds
+}
+function stopAutoBackup() {
+  if (backupIntervalId) {
+    clearInterval(backupIntervalId);
+    backupIntervalId = null;
+  }
+}
+/* ==========================================
+   UI HANDLERS
    ========================================== */
 async function handleSignIn() {
   try {
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, googleProvider);
     const cred = GoogleAuthProvider.credentialFromResult(result);
+    if (!cred?.accessToken) {
+      setStatus('Drive permission not granted.', true);
+      return;
+    }
     googleAccessToken = cred.accessToken;
     sessionStorage.setItem('fs_gtoken', googleAccessToken);
-    setStatus('Signed in.');
+    // <-- NEW: Auto-restore on fresh sign-in, then reload if data changed
+    try {
+      const didRestore = await performRestore();
+      if (didRestore) {
+        location.reload(); // refresh app with restored data
+      }
+    } catch (restoreErr) {
+      console.error('Auto-restore failed:', restoreErr);
+      // Stay on page; backup interval will start via onAuthStateChanged
+    }
   } catch (err) {
     console.error(err);
     setStatus('Sign-in cancelled or failed.', true);
   }
 }
 async function handleSignOut() {
+  stopAutoBackup(); // <-- NEW
   await signOut(auth);
   googleAccessToken = null;
   sessionStorage.removeItem('fs_gtoken');
   setStatus('Signed out.');
 }
-async function handleBackup() {
+async function handleBackup() { // Manual button
   try {
-    const token = await getValidToken();
-    const payload = {
-      exportedAt: new Date().toISOString(),
-      origin: location.origin,
-      data: localStorageToObject()
-    };
-    const existing = await findBackupFile(token);
-    await uploadBackup(token, payload, existing?.id);
-    setStatus(`Backed up ${Object.keys(payload.data).length} keys to Drive.`);
+    await performBackup();
+    setStatus('Backed up to Drive.');
   } catch (err) {
     console.error(err);
     if (err.status === 401 || err.message?.includes('401')) {
       googleAccessToken = null;
       sessionStorage.removeItem('fs_gtoken');
     }
-    setStatus('Backup failed. Sign in again if your session expired.', true);
+    setStatus('Backup failed.', true);
   }
 }
-async function handleRestore() {
+async function handleRestore() { // Manual button
   try {
-    const token = await getValidToken();
-    const existing = await findBackupFile(token);
-    if (!existing) {
-      setStatus('No backup found in Drive app folder.', true);
-      return;
-    }
-    const remote = await downloadBackup(existing.id, token);
-    if (remote && remote.data) {
-      objectToLocalStorage(remote.data);
-      setStatus(`Restored from backup (${remote.exportedAt || 'unknown date'}). Reload if your UI needs to reflect changes.`);
-    } else {
-      setStatus('Backup file was empty or unreadable.', true);
-    }
+    const didRestore = await performRestore();
+    if (didRestore) setStatus('Restored from Drive.');
+    else setStatus('No backup found.', true);
   } catch (err) {
     console.error(err);
     if (err.status === 401 || err.message?.includes('401')) {
       googleAccessToken = null;
       sessionStorage.removeItem('fs_gtoken');
     }
-    setStatus('Restore failed. Sign in again if your session expired.', true);
+    setStatus('Restore failed.', true);
   }
 }
 /* ==========================================
-   UI WIRING
+   EVENT WIRING
    ========================================== */
-ui.signin.addEventListener('click', handleSignIn);
-ui.signout.addEventListener('click', handleSignOut);
-ui.backup.addEventListener('click', handleBackup);
-ui.restore.addEventListener('click', handleRestore);
+// Keep the Drive token warm while the user is actively using the app.
+// This prevents the 60-second interval from hitting an expired token.
+let isWarmingToken = false;
+document.addEventListener('click', async () => {
+  if (!auth.currentUser || googleAccessToken || isWarmingToken) return;
+  isWarmingToken = true;
+  try {
+    const result = await reauthenticateWithPopup(auth.currentUser, googleProvider);
+    const cred = GoogleAuthProvider.credentialFromResult(result);
+    googleAccessToken = cred.accessToken;
+    sessionStorage.setItem('fs_gtoken', googleAccessToken);
+    console.log('[Token] Refreshed silently on user click');
+  } catch (e) {
+    // Ignore: user might dismiss the popup; interval will try again later
+  }
+  isWarmingToken = false;
+});
+
+
+if (ui.authLink) {
+  ui.authLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (auth.currentUser) {
+      handleSignOut();
+    } else {
+      handleSignIn();
+    }
+  });
+}
+if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
+if (ui.restore) ui.restore.addEventListener('click', handleRestore);
+
 onAuthStateChanged(auth, (user) => {
+  if (!ui.authLink) return;
   if (user) {
-    ui.signin.style.display = 'none';
-    ui.signout.style.display = '';
-    ui.syncRow.style.display = 'flex';
-    ui.user.textContent = user.email || user.displayName || 'Signed in';
+    // Signed in state
+    ui.authLink.textContent = 'Sign Out';
+    ui.authLink.classList.add('fs-signed-in'); // hook for your CSS
+    if (ui.userInfo) ui.userInfo.textContent = user.email || user.displayName || '';
+    if (ui.syncRow)  ui.syncRow.style.display = 'flex';
+    googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
+    startAutoBackup(); // resume silent 1-minute sync
   } else {
-    ui.signin.style.display = '';
-    ui.signout.style.display = 'none';
-    ui.syncRow.style.display = 'none';
-    ui.user.textContent = '';
+    // Signed out state
+    ui.authLink.textContent = 'Sync with Google Sign-In';
+    ui.authLink.classList.remove('fs-signed-in');
+    if (ui.userInfo) ui.userInfo.textContent = '';
+    if (ui.syncRow)  ui.syncRow.style.display = 'none';
+    stopAutoBackup(); // stop timer
+    googleAccessToken = null;
+    sessionStorage.removeItem('fs_gtoken');
   }
 });
