@@ -37,6 +37,15 @@ let backupIntervalId = null; // <-- NEW
    ========================================== */
 const $ = (id) => document.getElementById(id);
 
+const ui = {
+  authBtn: $('fs-auth-btn'),
+  userInfo: $('fs-user-info'),
+  syncRow: $('fs-sync-row'),
+  backup:  $('fs-backup'),
+  restore: $('fs-restore'),
+  status:  $('fs-status')
+};
+
 function setStatus(msg, isError = false) {
   if (!ui.status) return;
   ui.status.textContent = msg;
@@ -253,9 +262,8 @@ document.addEventListener('click', async () => {
 });
 
 
-if (ui.authLink) {
-  ui.authLink.addEventListener('click', (e) => {
-    e.preventDefault();
+if (ui.authBtn) {
+  ui.authBtn.addEventListener('click', () => {
     if (auth.currentUser) {
       handleSignOut();
     } else {
@@ -267,19 +275,19 @@ if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
 if (ui.restore) ui.restore.addEventListener('click', handleRestore);
 
 onAuthStateChanged(auth, (user) => {
-  if (!ui.authLink) return;
+  if (!ui.authBtn) return;
   if (user) {
     // Signed in state
-    ui.authLink.textContent = 'Sign Out';
-    ui.authLink.classList.add('fs-signed-in'); // hook for your CSS
+    ui.authBtn.textContent = 'Sign Out';
+    ui.authBtn.classList.add('fs-signed-in'); // hook for your CSS
     if (ui.userInfo) ui.userInfo.textContent = user.email || user.displayName || '';
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
     startAutoBackup(); // resume silent 1-minute sync
   } else {
     // Signed out state
-    ui.authLink.textContent = 'Sync with Google Sign-In';
-    ui.authLink.classList.remove('fs-signed-in');
+    ui.authBtn.textContent = 'Sync with Google Sign-In';
+    ui.authBtn.classList.remove('fs-signed-in');
     if (ui.userInfo) ui.userInfo.textContent = '';
     if (ui.syncRow)  ui.syncRow.style.display = 'none';
     stopAutoBackup(); // stop timer
