@@ -51,51 +51,7 @@ if ('serviceWorker' in navigator) {
 }
 
 */
-// ============================================
-// GIS AND GAPI INTEGRATION
-//=============================================
 
-/*
-function initAuth() {
-  tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: '1012408130696-850s7g60iajq12c20sfoujbi4ngpf9dr.apps.googleusercontent.com',
-    scope: 'https://www.googleapis.com/auth/drive.appdata',
-    callback: (tokenResponse) => {
-      if (tokenResponse.error) {
-        // Silent failed or user closed popup
-        btnConnect.style.display = 'inline-block';
-        status.textContent = 'Sign-in required';
-        return;
-      }
-      // Success! We have a token.
-      accessToken = tokenResponse.access_token;
-      gapi.client.setToken({ access_token: accessToken });
-      btnConnect.style.display = 'none';
-      btnSync.style.display = 'inline-block';
-      status.textContent = 'Connected';
-      
-      // Auto-sync as soon as we're authorized
-      startSync();
-    }
-  });
-}
-// --- Run on app boot ---
-window.addEventListener('load', async () => {
-  await initGapiClient(); // loads gapi discovery docs
-  initAuth();
-  // Try invisible re-auth first.
-  // If user already approved and has a Google session, this just works.
-  tokenClient.requestAccessToken({ prompt: 'none' });
-});
-// --- Buttons wired to user gestures ---
-btnConnect.addEventListener('click', () => {
-  // This MUST be inside a click handler so the popup isn't blocked
-  tokenClient.requestAccessToken({ prompt: 'consent' });
-});
-btnSync.addEventListener('click', () => {
-  startSync();
-});
-*/
 
 // ============================================
 // HAMBURGER MENU MANAGEMENT
@@ -262,7 +218,7 @@ async function loadDevotionals() {
   try {
     // Add timestamp to force fresh fetch
     const timestamp = new Date().getTime();
-    // replace with '/devotionals.json' for local testing
+    // replace with '/onethingwebapp/devotionals.json' for web testing
     const response = await fetch(`/onethingwebapp/devotionals.json?t=${timestamp}`, {
       // Force network request, ignore cache
       cache: 'no-store',
@@ -302,8 +258,25 @@ async function loadDevotionals() {
 // ============================================
 // COMPLETION TRACKING
 // ============================================
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+function getTodayStr() {
+  const n = new Date();
+  return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`;
+}
+// Move a YYYY-MM-DD string backward or forward N days safely
+function offsetDateStr(dateStr, days) {
+  const d = new Date(`${dateStr}T00:00:00`);
+  d.setDate(d.getDate() + days);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+
 function isDevotionCompleted(dateStr) {
   return localStorage.getItem(`devotion_${dateStr}_completed`) === 'true';
+  
 }
 // Renamed to reflect the new toggle behavior
 function toggleDevotionCompletion(dateStr) {
@@ -313,9 +286,12 @@ function toggleDevotionCompletion(dateStr) {
     console.log('🔄 Devotional unmarked:', dateStr);
   } else {
     localStorage.setItem(`devotion_${dateStr}_completed`, 'true'); // mark
+    localStorage.setItem(`devotion_${dateStr}_completedOn`, getTodayStr());
     console.log('✅ Devotional marked as completed:', dateStr);
   }
   updateFinishedButtonState(dateStr);
+  console.log('➡️ toggle finished, calling renderStreakUI');
+  renderStreakUI();
 }
 function updateFinishedButtonState(dateStr) {
   const finishedBtn = document.getElementById('finishedBtn');
@@ -327,9 +303,63 @@ function updateFinishedButtonState(dateStr) {
     // finishedBtn.disabled = true; 
   } else {
     finishedBtn.classList.remove('completed');
-    finishedBtn.textContent = '✅ Mark as Finished';
+    finishedBtn.textContent = 'Mark as Finished';
   }
 }
+
+/* =========================================================
+   STREAK LOGIC
+   ========================================================= */
+/**
+ * Returns true ONLY if the devotion was completed AND the click happened
+ * on the devotional's own calendar day.
+ */
+function wasCompletedOnTime(dateStr) {
+  if (!isDevotionCompleted(dateStr)) return false;
+  
+  // Read from the same individual key that toggleDevotionCompletion writes to
+  const clickDate = localStorage.getItem(`devotion_${dateStr}_completedOn`);
+  
+  // Legacy / missing timestamp
+  if (!clickDate) return false;
+  
+  return clickDate === dateStr;
+}
+/**
+ * Calculates the current streak dynamically from the ground truth.
+ * No separate "streak counter" is stored; this derives it every time.
+ */
+function getStreak() {
+  const todayStr = getTodayStr();
+  let cursorStr = todayStr;
+
+  if (!wasCompletedOnTime(cursorStr)) {
+    cursorStr = offsetDateStr(todayStr, -1);
+  }
+  
+  let streak = 0;
+  while (wasCompletedOnTime(cursorStr)) {
+    streak++;
+    cursorStr = offsetDateStr(cursorStr, -1);
+  }
+  
+  return streak;
+}
+
+/* =========================================================
+   UI WIRING (ties finishedBtn and streak display together)
+   ========================================================= */
+function renderStreakUI() {
+  const streak = getStreak();
+  console.log('🔎 getStreak() returned:', streak);
+  const countEl = document.getElementById('streak-count'); // your 🔥 element
+  console.log('🔎 Found streak-count element?', !!countEl);
+  if (countEl) countEl.textContent = streak;
+  }
+
+// Run once on load so the fire icon shows immediately
+renderStreakUI();
+
 
 // ============================================
 // DISPLAY DEVOTION
@@ -403,6 +433,7 @@ function displayDevotion() {
   });
   // ⭐ UPDATE FINISHED BUTTON STATE ⭐
   updateFinishedButtonState(dateStr);
+  renderStreakUI();
   updateDateDisplay();
   closeCalendar();
   updateNavigationButtons();
