@@ -211,6 +211,10 @@ header h1 {
    color: #1a1a1a;
    border-left-color: #1a1a1a;
    font-weight: 600;
+
+#fs-auth-link.fs-signed-in {
+  color: #cc8787; /* colour change to indicate sign-out action */
+}
 }
 /* ============================================
   SECTION STYLES
