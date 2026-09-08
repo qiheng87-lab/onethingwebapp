@@ -212,7 +212,7 @@ header h1 {
    border-left-color: #1a1a1a;
    font-weight: 600;
 
-#fs-auth-link.fs-signed-in {
+#fs-auth-btn.fs-signed-in {
   color: #cc8787; /* colour change to indicate sign-out action */
 }
 }
