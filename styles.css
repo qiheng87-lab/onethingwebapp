@@ -730,7 +730,7 @@ main.devotional-content {
 
 .passage-section h3 {
   color: var(--primary-color);
-  font-size: 1rem;
+  font-size: calc(var(--dev-content-scale) * 1);
   margin-bottom: 0.6rem;
   font-weight: 600;
 }
@@ -738,7 +738,7 @@ main.devotional-content {
 .passage-section p {
   color: var(--text-light);
   line-height: 1.7;
-  font-size: 0.95rem;
+  font-size: calc(var(--dev-content-scale) * 0.95)
   font-style: italic;
   white-space: pre-wrap;
   word-break: break-word;
@@ -752,7 +752,7 @@ article {
   line-height: 1.7;
   color: var(--text-light);
   margin-bottom: 1.5rem;
-  font-size: 0.95rem;
+  font-size: calc(var(--dev-content-scale) * 0.95);
   white-space: pre-wrap;
 }
 
@@ -785,7 +785,7 @@ article p:first-child {
 .questions-section h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: calc(var(--dev-content-scale) * 1.1);
   font-weight: 700;
 }
 
@@ -802,7 +802,7 @@ article p:first-child {
   color: var(--secondary-color);
   font-weight: 600;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: calc(var(--dev-content-scale) * 0.9);
   word-break: break-word;
 }
 
@@ -813,7 +813,7 @@ article p:first-child {
   border: 2px solid var(--border-color);
   border-radius: 6px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: calc(var(--dev-content-scale) * 1);
   color: var(--text-color);
   resize: vertical;
   transition: all 0.2s ease;
@@ -862,7 +862,7 @@ article p:first-child {
 }
 .finished-btn {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: calc(var(--dev-content-scale) * 1);
     font-weight: 600;
     color: white;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
