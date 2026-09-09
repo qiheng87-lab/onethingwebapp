@@ -255,6 +255,55 @@ async function loadDevotionals() {
   }
 }
 
+
+(function () {
+    const section = document.getElementById('daily-devotional');
+    if (!section) return;
+    const content = section.querySelector('main.devotional-content');
+    const display = section.querySelector('.font-size-value');
+    const buttons = section.querySelectorAll('button[data-font-action]');
+    const CONFIG = {
+        min: 0.75,    // 75%
+        max: 2.0,     // 200%
+        step: 0.125,  // 12.5% per click
+        storageKey: 'gpc-devotional-font-scale'
+    };
+    // Load saved scale or start at 1.0 (100% / 1rem)
+    let current = parseFloat(localStorage.getItem(CONFIG.storageKey));
+    if (Number.isNaN(current)) current = 1.0;
+    function setScale(size) {
+        // Clamp and avoid float drift
+        size = Math.max(CONFIG.min, Math.min(CONFIG.max, size));
+        size = parseFloat(size.toFixed(3));
+        current = size;
+        // Apply scale ONLY to the <main> element via CSS variable
+        content.style.setProperty('--dev-content-scale', `${size}rem`);
+        // Update visible percentage (e.g., "100%")
+        if (display) display.textContent = `${Math.round(size * 100)}%`;
+        // Save preference
+        localStorage.setItem(CONFIG.storageKey, size);
+        // Disable buttons at extremes
+        buttons.forEach(btn => {
+            const action = btn.dataset.fontAction;
+            btn.disabled =
+                (action === 'increase' && current >= CONFIG.max) ||
+                (action === 'decrease' && current <= CONFIG.min);
+        });
+    }
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            switch (btn.dataset.fontAction) {
+                case 'increase': setScale(current + CONFIG.step); break;
+                case 'decrease': setScale(current - CONFIG.step); break;
+                case 'reset':    setScale(1.0); break;
+            }
+        });
+    });
+    // Initialize on load (restores saved user preference)
+    setScale(current);
+})();
+
+
 // ============================================
 // COMPLETION TRACKING
 // ============================================

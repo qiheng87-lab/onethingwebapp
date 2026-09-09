@@ -674,6 +674,48 @@ main h2 {
   word-break: break-word;
 }
 
+/* === Devotional Text-Size Controls === */
+.font-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+    padding: 0 0.25rem;
+}
+.font-controls .font-btn {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+.font-controls .font-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+.font-controls .font-size-value {
+    min-width: 3.5ch;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    font-variant-numeric: tabular-nums;
+}
+/* This is the ONLY element that scales */
+main.devotional-content {
+    font-size: var(--dev-content-scale, 1rem);
+    /* optional smooth transition */
+    transition: font-size 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+    main.devotional-content {
+        transition: none;
+    }
+}
+
 /* ============================================
    PASSAGE SECTION
    ============================================ */
