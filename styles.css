@@ -211,11 +211,25 @@ header h1 {
    color: #1a1a1a;
    border-left-color: #1a1a1a;
    font-weight: 600;
+}
+
+.menu-btn1 {
+   padding: 1rem 1.5rem;
+   border: none;
+   background-color: transparent;
+   color: #1a1a1a;
+   font-size: 1rem;
+   font-weight: 500;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   text-align: left;
+   border-left: 4px solid transparent;
+}
 
 #fs-auth-btn.fs-signed-in {
   color: #cc8787; /* colour change to indicate sign-out action */
 }
-}
+
 /* ============================================
   SECTION STYLES
   ============================================ */
