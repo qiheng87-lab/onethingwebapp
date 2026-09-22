@@ -108,7 +108,7 @@ function initializeMenuBar() {
 initializeMenuBar();
 
 // ============================================
-// LOAD STATIC CONTENT (Sermon Series & Why Spend Time)
+// LOAD STATIC CONTENT (Sermon Series, Why Spend Time, Connect with GPC)
 // ============================================
 function loadStaticContent() {
  // Sermon Series Content
