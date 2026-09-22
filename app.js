@@ -157,9 +157,9 @@ function loadStaticContent() {
    `;
  }
 // Connect with GPC Content
- const connectContent = document.getElementById('connectContent');
- if (connectContent) {
-   connectContent.innerHTML = `
+ const gpcContent = document.getElementById('gpcContent');
+ if (gpcContent) {
+   gpcContent.innerHTML = `
     <p>
        The <i>One Thing</i> devotional web app is developed and owned by Glory Presbyterian Church (English Service), and is intended for use by congregational members to help them grow deeper in God's word through reflection and studies based on the Sunday sermons. 
     </p>
