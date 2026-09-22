@@ -167,7 +167,7 @@ function loadStaticContent() {
        We are a church based in Singapore. While you are free to use this devotional resource for your personal benefit and spiritual growth, we invite you to learn more about our church and connect with us through our website and social media channels, or come and visit us in person!
     </p>
     <p> 
-      Click <a href="https://linktr.ee/glorypchurch" target="_blank" rel="noopener noreferrer"><i>here</i></a> to find out more about us!
+      Click to find out more about us!
     </p>
    `;
  }
