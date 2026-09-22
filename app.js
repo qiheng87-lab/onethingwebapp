@@ -115,64 +115,60 @@ function loadStaticContent() {
  const sermonContent = document.getElementById('sermonContent');
  if (sermonContent) {
    sermonContent.innerHTML = `
-     <p>
-       Welcome to our Sermon Series! This is an introductory section where you can learn about
-       the theme and purpose of our current sermon series.
-     </p>
-     <h3>Series Overview</h3>
-     <p>
-       This sermon series is designed to help you deepen your understanding of God's Word
-       and apply biblical principles to your daily life.
-     </p>
-     <h3>What to Expect</h3>
-     <ul>
-       <li>Weekly sermons focusing on a unified theme</li>
-       <li>In-depth biblical analysis and commentary</li>
-       <li>Practical applications for modern living</li>
-       <li>Opportunity for growth and spiritual development</li>
-     </ul>
-     <p>
-       We encourage you to engage fully with each message and consider how God might be
-       speaking to your heart through this series.
-     </p>
+     <h3>Advent Sermon Series: God With Us — Living the Advent Together</h3>
+    <p>
+     <i>"The Word became flesh and made his dwelling among us." — John 1:14</i>
+    </p>
+    <p>
+     Advent is a time of holy anticipation—a season to reflect on Christ's first coming and long for His return, we are invited to grow deeper as His missional community — carriers of hope, makers of peace, people of joy, and agents of love. Each week, we focus on one virtue that Christ fulfills and brings to His people: Hope, Peace, Joy, and Love. These are not seasonal emotions, but Gospel realities rooted in the Incarnation. As the world longs for meaning and healing, the church is called to embody these virtues in community and mission. The Advent series draws us deeper into the Gospel and prepares us to be agents of Christ's Kingdom. Each theme highlights how the incarnation of Christ shapes our communal identity and missional witness—helping us grow together as God's people in a broken world. 
+    </p>
+    <p>
+    Advent Reflection in Missional Community. This devotional series will span across 4 weeks leading up to Christmas and is designed to help individuals and Care Groups engage deeply with the themes of Advent — Hope, Peace, Joy, and Love — through Scripture, discussion, and prayer, while aligning with Vision 2026: Growing Together as His Missional Community. This will bring us to the final Sunday of the year, which calls us to reflective gratitude unto God for the past year and look ahead to Vision 2027: Broadening His Mission Impact.
+    </p>
    `;
  }
  // Why Spend Time with God Content
  const whyContent = document.getElementById('whyContent');
  if (whyContent) {
    whyContent.innerHTML = `
-     <h3>Developing a Deeper Relationship with God</h3>
-     <p>
-       Spending time with God is one of the most transformative practices a Christian can
-       develop. It's not just a religious obligation, but an invitation to experience God's
-       presence and love in a personal way.
-     </p>
-    
-     <h3>Key Benefits</h3>
-     <ul>
-       <li><strong>Spiritual Growth:</strong> Regular time with God strengthens your faith and deepens your understanding of Scripture.</li>
-       <li><strong>Peace and Comfort:</strong> God's presence brings comfort during difficult times and peace that transcends understanding.</li>
-       <li><strong>Guidance:</strong> When you spend time seeking God, He directs your steps and helps you make wise decisions.</li>
-       <li><strong>Transformation:</strong> Consistent fellowship with God changes your character and helps you become more like Christ.</li>
-       <li><strong>Answered Prayers:</strong> Drawing near to God opens the door for Him to work in your life in mighty ways.</li>
-     </ul>
-     <h3>How to Spend Time with God</h3>
-     <ul>
-       <li><strong>Prayer:</strong> Talk to God honestly about your thoughts, feelings, and concerns.</li>
-       <li><strong>Bible Reading:</strong> Read and meditate on Scripture to hear God's voice.</li>
-       <li><strong>Reflection:</strong> Take time to reflect on what God is teaching you.</li>
-       <li><strong>Worship:</strong> Praise God through music, singing, or other forms of worship.</li>
-       <li><strong>Devotionals:</strong> Use devotional guides to structure your time with God.</li>
-     </ul>
-     <h3>Start Today</h3>
-     <p>
-       Don't wait for the perfect time or perfect circumstances. Start spending time with God
-       today, even if it's just 10 minutes. As you make it a habit, you'll discover the joy
-       and blessing that comes from knowing God intimately.
-     </p>
-     <p>
-       <em>"Draw near to God, and he will draw near to you." - James 4:8</em>
-     </p>
+    <p>
+       The God of the universe is near! NOT far away! And wants to speak to you through His Word. And just as our bodies need food to keep it going, we need the spiritual food for our souls (Jesus answered, "It is written: 'Man shall not live on bread alone, but on every word that comes from the mouth of God.'" Matthew 4:4).
+    </p>
+    <p>
+       We understand God's heart for us and for the world as we seek His face in His Word. If we don't understand a certain passage of Scripture, we can ask God to help us understand it. You can also ask your friends and mentors. It is through daily prayer, confession and the reading and application of God's Word that we will grow in our knowledge of who God is and solidify our resolve to follow Him all the days of our lives. 
+    </p>
+    <h3>How To Spend Time with God?</h3>
+    <p>
+       <b>COMING INTO GOD'S PRESENCE.</b> Find a fixed time each day to meet with God (if possible, in the morning before the busyness of the day begins). Enter prayerfully and quietly into an awareness of God's presence. Take 2-5 minutes to keep silence as you acknowledge God's presence. Centre your thoughts on God and let go of distractions. Sing a praise song to God, begin with worship! Ask God to help you hear Him today. <br>"Be still before the Lord and wait patiently for him" Psalm 37:7 
+    </p>   
+    <p>
+       <b>LISTENING TO GOD.</b> Prayerfully read through the Bible passage. Use the following outline (COMA) to meditate on God's word. 
+       <ul>
+         <li><b>CONTEXT:</b> briefly take note who this passage was originally written to, what was said before this </li>
+         <li><b>OBSERVATION:</b> write down one or two things that you see in the passage. </li>
+         <li><b>MEANING:</b> think through what the passage means. What does it say about God, humans, the world etc.? </li>
+         <li><b>APPLICATION:</b> consider a specific area from the passage that you want to apply in your life. Share it with a friend.</li>
+       </ul>
+       <b>PRAY:</b> write out a prayerto God in response to His word 
+    </p>
+    <p>
+       <b>PRAYING FOR THE WORLD, CHURCH, SELF.</b> End your time with God by speaking to Him about His world around you.
+    </p>
+   `;
+ }
+// Connect with GPC Content
+ const connectContent = document.getElementById('connectContent');
+ if (connectContent) {
+   connectContent.innerHTML = `
+    <p>
+       The <i>One Thing</i> devotional web app is developed and owned by Glory Presbyterian Church (English Service), and is intended for use by congregational members to help them grow deeper in God's word through reflection and studies based on the Sunday sermons. 
+    </p>
+    <p>
+       We are a church based in Singapore. While you are free to use this devotional resource for your personal benefit and spiritual growth, we invite you to learn more about our church and connect with us through our website and social media channels, or come and visit us in person!
+    </p>
+    <p> 
+      Click <a href="https://linktr.ee/glorypchurch" target="_blank" rel="noopener noreferrer"><i>here</i></a> to find out more about us!
+    </p>
    `;
  }
 }
