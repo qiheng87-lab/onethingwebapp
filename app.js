@@ -440,7 +440,7 @@ function displayDevotion() {
   hideError();
   // Display devotional content
   document.getElementById('title').textContent = devotion.title;
-  document.getElementById('passageRef').textContent = devotion.passage;
+  document.getElementById('passageRef').textContent = "Read " +devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
   
   // Convert \n\n to <p> tags
