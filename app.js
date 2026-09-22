@@ -77,6 +77,7 @@ function initializeMenuBar() {
      sections.forEach(section => section.classList.remove('active'));
     
      // Add active class to clicked button and corresponding section
+     console.log('Raw sectionId value:', JSON.stringify(sectionId));
      button.classList.add('active');
      document.getElementById(sectionId).classList.add('active');
     
