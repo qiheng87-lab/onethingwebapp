@@ -140,20 +140,22 @@ function loadStaticContent() {
     </p>
     <h3>How To Spend Time with God?</h3>
     <p>
-       <b>COMING INTO GOD'S PRESENCE.</b> Find a fixed time each day to meet with God (if possible, in the morning before the busyness of the day begins). Enter prayerfully and quietly into an awareness of God's presence. Take 2-5 minutes to keep silence as you acknowledge God's presence. Centre your thoughts on God and let go of distractions. Sing a praise song to God, begin with worship! Ask God to help you hear Him today. <br>"Be still before the Lord and wait patiently for him" Psalm 37:7 
+       <br><b>Coming into God's Presence.</b> Find a fixed time each day to meet with God (if possible, in the morning before the busyness of the day begins). Enter prayerfully and quietly into an awareness of God's presence. Take 2-5 minutes to keep silence as you acknowledge God's presence. Centre your thoughts on God and let go of distractions. Sing a praise song to God, begin with worship! Ask God to help you hear Him today. <br>"Be still before the Lord and wait patiently for him" Psalm 37:7 
     </p>   
     <p>
-       <b>LISTENING TO GOD.</b> Prayerfully read through the Bible passage. Use the following outline (COMA) to meditate on God's word. 
+       <b>Listening to God.</b> Prayerfully read through the Bible passage. Use the following outline (COMA) to meditate on God's word. 
        <ul>
-         <li><b>CONTEXT:</b> briefly take note who this passage was originally written to, what was said before this </li>
-         <li><b>OBSERVATION:</b> write down one or two things that you see in the passage. </li>
-         <li><b>MEANING:</b> think through what the passage means. What does it say about God, humans, the world etc.? </li>
-         <li><b>APPLICATION:</b> consider a specific area from the passage that you want to apply in your life. Share it with a friend.</li>
+         <li><b>Context:</b> briefly take note who this passage was originally written to, what was said before this </li>
+         <li><b>Observation:</b> write down one or two things that you see in the passage. </li>
+         <li><b>Meaning:</b> think through what the passage means. What does it say about God, humans, the world etc.? </li>
+         <li><b>Application:</b> consider a specific area from the passage that you want to apply in your life. Share it with a friend.</li>
        </ul>
-       <b>PRAY:</b> write out a prayerto God in response to His word 
+    </p>   
+    <p>
+       <b>Pray.</b> write out a prayer to God in response to His word. 
     </p>
     <p>
-       <b>PRAYING FOR THE WORLD, CHURCH, SELF.</b> End your time with God by speaking to Him about His world around you.
+       <b>Praying for the World, Church, Self.</b> End your time with God by speaking to Him about His world around you.
     </p>
    `;
  }
