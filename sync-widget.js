@@ -39,6 +39,7 @@ let backupIntervalId = null;
 const $ = (id) => document.getElementById(id);
 const ui = {
   authBtn: $('fs-auth-btn'),
+  authStatus: $('fs-auth-status'), 
   userInfo: $('fs-user-info'),
   syncRow: $('fs-sync-row'),
   backup:  $('fs-backup'),
@@ -373,7 +374,12 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     ui.authBtn.textContent = 'Sign Out';
     ui.authBtn.classList.add('fs-signed-in');
-    if (ui.userInfo) ui.userInfo.textContent = user.email || user.displayName || '';
+    
+    // Show "Signed in as ..." beneath the button
+    if (ui.authStatus) {
+      ui.authStatus.textContent = 'Signed in as ' + (user.email || user.displayName || '');
+      ui.authStatus.style.display = '';
+    }
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
     

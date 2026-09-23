@@ -230,6 +230,20 @@ header h1 {
   color: #cc8787; /* colour change to indicate sign-out action */
 }
 
+.menu-auth-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  
+}
+.auth-status-label {
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 0.2rem;
+  white-space: nowrap;
+  display: none;         /* JS toggles this */
+}
+
+
 /* ============================================
   SECTION STYLES
   ============================================ */
