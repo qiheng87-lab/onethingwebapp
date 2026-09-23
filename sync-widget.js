@@ -366,26 +366,54 @@ if (ui.authBtn) {
 }
 if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
 if (ui.restore) ui.restore.addEventListener('click', handleRestore);
+
 onAuthStateChanged(auth, async (user) => {
   if (!ui.authBtn) return;
+  
   if (user) {
     ui.authBtn.textContent = 'Sign Out';
     ui.authBtn.classList.add('fs-signed-in');
     if (ui.userInfo) ui.userInfo.textContent = user.email || user.displayName || '';
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
-    startAutoBackup();
+    
+    let didRestoreAnything = false;
+    
     if (googleAccessToken) {
+      /* 1. Pull responses FIRST — before auto-backup can push empty state */
       try {
-        const didRestore = await performStreakRestore();
+        const didRestore = await performRestore();
         if (didRestore) {
+          console.log('[Sync] Responses restored from Drive');
+          didRestoreAnything = true;
+        }
+      } catch (err) {
+        console.error('[Sync] Response restore failed:', err);
+      }
+      
+      /* 2. Pull streaks */
+      try {
+        const didRestoreStreaks = await performStreakRestore();
+        if (didRestoreStreaks) {
           console.log('[StreakSync] Restored from Drive');
           window.dispatchEvent(new CustomEvent('streaks-restored'));
+          didRestoreAnything = true;
         }
       } catch (err) {
         console.error('[StreakSync] Auto-restore failed:', err);
       }
     }
+    
+    /* 3. If data came down, reload once so app.js renders with fresh localStorage */
+    if (didRestoreAnything && !sessionStorage.getItem('fs_did_restore_reload')) {
+      sessionStorage.setItem('fs_did_restore_reload', '1');
+      location.reload();
+      return;
+    }
+    
+    /* 4. Only now start the 60-second push timer */
+    startAutoBackup();
+    
   } else {
     ui.authBtn.textContent = 'Sync with Google Sign-In';
     ui.authBtn.classList.remove('fs-signed-in');
@@ -394,5 +422,7 @@ onAuthStateChanged(auth, async (user) => {
     stopAutoBackup();
     googleAccessToken = null;
     sessionStorage.removeItem('fs_gtoken');
+    sessionStorage.removeItem('fs_did_restore_reload'); // allow reload next sign-in
   }
 });
+
