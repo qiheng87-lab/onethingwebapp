@@ -30,13 +30,13 @@ googleProvider.setCustomParameters({ prompt: 'consent' });
    STATE
    ========================================== */
 const DRIVE_FILENAME = 'otwa-app-data.json';
+const STREAK_FILENAME = 'devotional_streaks.json';
 let googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
-let backupIntervalId = null; // <-- NEW
+let backupIntervalId = null;
 /* ==========================================
    DOM REFS
    ========================================== */
 const $ = (id) => document.getElementById(id);
-
 const ui = {
   authBtn: $('fs-auth-btn'),
   userInfo: $('fs-user-info'),
@@ -45,7 +45,6 @@ const ui = {
   restore: $('fs-restore'),
   status:  $('fs-status')
 };
-
 function setStatus(msg, isError = false) {
   if (!ui.status) return;
   ui.status.textContent = msg;
@@ -67,6 +66,19 @@ function objectToLocalStorage(obj) {
   localStorage.clear();
   for (const [k, v] of Object.entries(obj)) localStorage.setItem(k, v);
 }
+function localStreaksToObject() {
+  const obj = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('devotion_')) obj[k] = localStorage.getItem(k);
+  }
+  return obj;
+}
+function objectToLocalStreaks(obj) {
+  Object.entries(obj).forEach(([k, v]) => {
+    if (k.startsWith('devotion_')) localStorage.setItem(k, v);
+  });
+}
 /* ==========================================
    TOKEN MANAGEMENT
    ========================================== */
@@ -80,7 +92,7 @@ async function getValidToken() {
   return googleAccessToken;
 }
 /* ==========================================
-   DRIVE API HELPERS
+   DRIVE API HELPERS — RESPONSES (existing)
    ========================================== */
 async function findBackupFile(token) {
   const q = `name='${DRIVE_FILENAME}' and trashed=false`;
@@ -130,9 +142,6 @@ async function downloadBackup(fileId, token) {
   if (!res.ok) throw new Error(`Drive download failed: ${res.status}`);
   return res.json();
 }
-/* ==========================================
-   CORE SYNC LOGIC (UI-agnostic)
-   ========================================== */
 async function performBackup() {
   const token = await getValidToken();
   const payload = {
@@ -154,12 +163,9 @@ async function performRestore() {
   }
   return false;
 }
-
 /* ==========================================
-   STREAK DRIVE SYNC
+   DRIVE API HELPERS — STREAKS (new)
    ========================================== */
-const STREAK_FILENAME = 'devotional_streaks.json';
-/* --- Find existing streak file in appDataFolder --- */
 async function findStreakFile(token) {
   const q = `name='${STREAK_FILENAME}' and trashed=false`;
   const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${encodeURIComponent(q)}&fields=files(id,modifiedTime,name)`;
@@ -168,7 +174,6 @@ async function findStreakFile(token) {
   const data = await res.json();
   return data.files?.[0] || null;
 }
-/* --- Upload streak data (reuses your existing multipartBody helper) --- */
 async function uploadStreakBackup(token, payload, fileId = null) {
   const meta = { name: STREAK_FILENAME, mimeType: 'application/json' };
   if (!fileId) meta.parents = ['appDataFolder'];
@@ -188,7 +193,6 @@ async function uploadStreakBackup(token, payload, fileId = null) {
   if (!res.ok) throw new Error(`Streak upload failed: ${await res.text()}`);
   return res.json();
 }
-/* --- Download streak data --- */
 async function downloadStreakBackup(fileId, token) {
   const res = await fetch(
     `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
@@ -197,21 +201,6 @@ async function downloadStreakBackup(fileId, token) {
   if (!res.ok) throw new Error(`Streak download failed: ${res.status}`);
   return res.json();
 }
-/* --- Helpers: serialize only devotion keys --- */
-function localStreaksToObject() {
-  const obj = {};
-  for (let i = 0; i < localStorage.length; i++) {
-    const k = localStorage.key(i);
-    if (k && k.startsWith('devotion_')) obj[k] = localStorage.getItem(k);
-  }
-  return obj;
-}
-function objectToLocalStreaks(obj) {
-  Object.entries(obj).forEach(([k, v]) => {
-    if (k.startsWith('devotion_')) localStorage.setItem(k, v);
-  });
-}
-/* --- Core streak sync logic --- */
 async function performStreakBackup() {
   const token = await getValidToken();
   const payload = {
@@ -246,22 +235,29 @@ async function pushStreakBackup() {
     }
   }
 }
-
 /* ==========================================
-   AUTO-BACKUP TIMER  <-- NEW SECTION
+   AUTO-BACKUP TIMER
    ========================================== */
 function startAutoBackup() {
   stopAutoBackup();
   backupIntervalId = setInterval(async () => {
+    // 1. Responses backup
     try {
       await performBackup();
-      console.log('[AutoBackup] Silent backup complete');
+      console.log('[AutoBackup] Responses backup complete');
     } catch (err) {
-      console.error('[AutoBackup] Silent backup failed:', err);
+      console.error('[AutoBackup] Responses backup failed:', err);
       if (err.status === 401 || err.message?.includes('401')) {
         googleAccessToken = null;
         sessionStorage.removeItem('fs_gtoken');
       }
+    }
+    // 2. Streak backup (new — piggybacks same timer)
+    try {
+      await performStreakBackup();
+      console.log('[AutoBackup] Streak backup complete');
+    } catch (err) {
+      console.error('[AutoBackup] Streak backup failed:', err);
     }
   }, 60000); // 60 seconds
 }
@@ -284,7 +280,6 @@ async function handleSignIn() {
     }
     googleAccessToken = cred.accessToken;
     sessionStorage.setItem('fs_gtoken', googleAccessToken);
-
     /* streak restore first */
     try {
       const didRestoreStreaks = await performStreakRestore();
@@ -294,16 +289,14 @@ async function handleSignIn() {
     } catch (e) {
       console.error('[StreakSync] Auto-restore failed:', e);
     }
-
-    // <-- NEW: Auto-restore on fresh sign-in, then reload if data changed
+    /* existing response restore */
     try {
       const didRestore = await performRestore();
       if (didRestore) {
-        location.reload(); // refresh app with restored data
+        location.reload();
       }
     } catch (restoreErr) {
       console.error('Auto-restore failed:', restoreErr);
-      // Stay on page; backup interval will start via onAuthStateChanged
     }
   } catch (err) {
     console.error(err);
@@ -311,7 +304,7 @@ async function handleSignIn() {
   }
 }
 async function handleSignOut() {
-  stopAutoBackup(); // <-- NEW
+  stopAutoBackup();
   await signOut(auth);
   googleAccessToken = null;
   sessionStorage.removeItem('fs_gtoken');
@@ -347,8 +340,6 @@ async function handleRestore() { // Manual button
 /* ==========================================
    EVENT WIRING
    ========================================== */
-// Keep the Drive token warm while the user is actively using the app.
-// This prevents the 60-second interval from hitting an expired token.
 let isWarmingToken = false;
 document.addEventListener('click', async () => {
   if (!auth.currentUser || googleAccessToken || isWarmingToken) return;
@@ -364,8 +355,6 @@ document.addEventListener('click', async () => {
   }
   isWarmingToken = false;
 });
-
-
 if (ui.authBtn) {
   ui.authBtn.addEventListener('click', () => {
     if (auth.currentUser) {
@@ -377,7 +366,6 @@ if (ui.authBtn) {
 }
 if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
 if (ui.restore) ui.restore.addEventListener('click', handleRestore);
-
 onAuthStateChanged(auth, async (user) => {
   if (!ui.authBtn) return;
   if (user) {
@@ -387,7 +375,6 @@ onAuthStateChanged(auth, async (user) => {
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
     startAutoBackup();
-    /* NEW: silent streak restore on load / sign-in */
     if (googleAccessToken) {
       try {
         const didRestore = await performStreakRestore();

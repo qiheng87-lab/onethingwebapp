@@ -412,6 +412,8 @@ window.renderStreakUI = renderStreakUI; // ensure sync-widget can find it
 // Run once on load so the fire icon shows immediately
 renderStreakUI();
 
+/* Re-render streak UI when sync-widget restores data from Drive */
+window.addEventListener('streaks-restored', renderStreakUI);
 
 // ============================================
 // DISPLAY DEVOTION
@@ -744,11 +746,6 @@ function hideError() {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 App starting...');
-
-/* Re-render streak UI when sync-widget.js restores streak data from another device */
-window.addEventListener('streaks-restored', () => {
-  renderStreakUI();
-});
 
   loadDevotionals();
 
