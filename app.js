@@ -340,6 +340,10 @@ function toggleDevotionCompletion(dateStr) {
   updateFinishedButtonState(dateStr);
   console.log('➡️ toggle finished, calling renderStreakUI');
   renderStreakUI();
+    /* fire-and-forget streak sync */
+  if (typeof pushStreakBackup === 'function') {
+    pushStreakBackup().catch(console.warn);
+  }
 }
 function updateFinishedButtonState(dateStr) {
   const finishedBtn = document.getElementById('finishedBtn');
@@ -404,7 +408,7 @@ function renderStreakUI() {
   console.log('🔎 Found streak-count element?', !!countEl);
   if (countEl) countEl.textContent = streak;
   }
-
+window.renderStreakUI = renderStreakUI; // ensure sync-widget can find it
 // Run once on load so the fire icon shows immediately
 renderStreakUI();
 
@@ -740,7 +744,12 @@ function hideError() {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 App starting...');
-  
+
+/* Re-render streak UI when sync-widget.js restores streak data from another device */
+window.addEventListener('streaks-restored', () => {
+  renderStreakUI();
+});
+
   loadDevotionals();
 
     // ⭐ FINISHED BUTTON EVENT LISTENER ⭐

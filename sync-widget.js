@@ -154,6 +154,99 @@ async function performRestore() {
   }
   return false;
 }
+
+/* ==========================================
+   STREAK DRIVE SYNC
+   ========================================== */
+const STREAK_FILENAME = 'devotional_streaks.json';
+/* --- Find existing streak file in appDataFolder --- */
+async function findStreakFile(token) {
+  const q = `name='${STREAK_FILENAME}' and trashed=false`;
+  const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${encodeURIComponent(q)}&fields=files(id,modifiedTime,name)`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) throw { status: res.status, message: await res.text() };
+  const data = await res.json();
+  return data.files?.[0] || null;
+}
+/* --- Upload streak data (reuses your existing multipartBody helper) --- */
+async function uploadStreakBackup(token, payload, fileId = null) {
+  const meta = { name: STREAK_FILENAME, mimeType: 'application/json' };
+  if (!fileId) meta.parents = ['appDataFolder'];
+  const boundary = 'bnd_' + Math.random().toString(36).slice(2);
+  const body = multipartBody(meta, payload, boundary);
+  const url = fileId
+    ? `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=multipart`
+    : `https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart`;
+  const res = await fetch(url, {
+    method: fileId ? 'PATCH' : 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': `multipart/related; boundary=${boundary}`
+    },
+    body
+  });
+  if (!res.ok) throw new Error(`Streak upload failed: ${await res.text()}`);
+  return res.json();
+}
+/* --- Download streak data --- */
+async function downloadStreakBackup(fileId, token) {
+  const res = await fetch(
+    `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  if (!res.ok) throw new Error(`Streak download failed: ${res.status}`);
+  return res.json();
+}
+/* --- Helpers: serialize only devotion keys --- */
+function localStreaksToObject() {
+  const obj = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('devotion_')) obj[k] = localStorage.getItem(k);
+  }
+  return obj;
+}
+function objectToLocalStreaks(obj) {
+  Object.entries(obj).forEach(([k, v]) => {
+    if (k.startsWith('devotion_')) localStorage.setItem(k, v);
+  });
+}
+/* --- Core streak sync logic --- */
+async function performStreakBackup() {
+  const token = await getValidToken();
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    origin: location.origin,
+    data: localStreaksToObject()
+  };
+  const existing = await findStreakFile(token);
+  await uploadStreakBackup(token, payload, existing?.id);
+}
+async function performStreakRestore() {
+  const token = await getValidToken();
+  const existing = await findStreakFile(token);
+  if (!existing) return false;
+  const remote = await downloadStreakBackup(existing.id, token);
+  if (remote && remote.data) {
+    objectToLocalStreaks(remote.data);
+    return true;
+  }
+  return false;
+}
+/* --- Public API called by app.js --- */
+async function pushStreakBackup() {
+  try {
+    await performStreakBackup();
+    console.log('[StreakSync] Push OK');
+  } catch (err) {
+    console.error('[StreakSync] Push failed:', err);
+    if (err.status === 401 || err.message?.includes('401')) {
+      googleAccessToken = null;
+      sessionStorage.removeItem('fs_gtoken');
+    }
+  }
+}
+
 /* ==========================================
    AUTO-BACKUP TIMER  <-- NEW SECTION
    ========================================== */
@@ -191,6 +284,17 @@ async function handleSignIn() {
     }
     googleAccessToken = cred.accessToken;
     sessionStorage.setItem('fs_gtoken', googleAccessToken);
+
+    /* streak restore first */
+    try {
+      const didRestoreStreaks = await performStreakRestore();
+      if (didRestoreStreaks) {
+        window.dispatchEvent(new CustomEvent('streaks-restored'));
+      }
+    } catch (e) {
+      console.error('[StreakSync] Auto-restore failed:', e);
+    }
+
     // <-- NEW: Auto-restore on fresh sign-in, then reload if data changed
     try {
       const didRestore = await performRestore();
@@ -274,23 +378,33 @@ if (ui.authBtn) {
 if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
 if (ui.restore) ui.restore.addEventListener('click', handleRestore);
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (!ui.authBtn) return;
   if (user) {
-    // Signed in state
     ui.authBtn.textContent = 'Sign Out';
-    ui.authBtn.classList.add('fs-signed-in'); // hook for your CSS
+    ui.authBtn.classList.add('fs-signed-in');
     if (ui.userInfo) ui.userInfo.textContent = user.email || user.displayName || '';
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
-    startAutoBackup(); // resume silent 1-minute sync
+    startAutoBackup();
+    /* NEW: silent streak restore on load / sign-in */
+    if (googleAccessToken) {
+      try {
+        const didRestore = await performStreakRestore();
+        if (didRestore) {
+          console.log('[StreakSync] Restored from Drive');
+          window.dispatchEvent(new CustomEvent('streaks-restored'));
+        }
+      } catch (err) {
+        console.error('[StreakSync] Auto-restore failed:', err);
+      }
+    }
   } else {
-    // Signed out state
     ui.authBtn.textContent = 'Sync with Google Sign-In';
     ui.authBtn.classList.remove('fs-signed-in');
     if (ui.userInfo) ui.userInfo.textContent = '';
     if (ui.syncRow)  ui.syncRow.style.display = 'none';
-    stopAutoBackup(); // stop timer
+    stopAutoBackup();
     googleAccessToken = null;
     sessionStorage.removeItem('fs_gtoken');
   }
