@@ -235,12 +235,17 @@ header h1 {
   flex-direction: column;
   align-items: flex-start;  
 }
+
 .auth-status-label {
   font-size: 0.75rem;
   color: #555;
   margin-top: 0.2rem;
   white-space: nowrap;
-  display: none;         /* JS toggles this */
+  /* display: block; ...or remove entirely, spans are inline by default */
+}
+/* Utility class for hiding */
+.auth-status-label.is-hidden {
+  display: none;
 }
 
 

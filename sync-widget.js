@@ -374,11 +374,11 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     ui.authBtn.textContent = 'Sign Out';
     ui.authBtn.classList.add('fs-signed-in');
-    
+
     // Show "Signed in as ..." beneath the button
     if (ui.authStatus) {
       ui.authStatus.textContent = 'Signed in as ' + (user.email || user.displayName || '');
-      ui.authStatus.style.display = '';
+      ui.authStatus.classList.remove('is-hidden');   // <-- reveal it
     }
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
@@ -423,7 +423,10 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     ui.authBtn.textContent = 'Sync with Google Sign-In';
     ui.authBtn.classList.remove('fs-signed-in');
-    if (ui.userInfo) ui.userInfo.textContent = '';
+    if (ui.authStatus) {
+      ui.authStatus.textContent = '';
+      ui.authStatus.classList.add('is-hidden');      // <-- hide it
+    }
     if (ui.syncRow)  ui.syncRow.style.display = 'none';
     stopAutoBackup();
     googleAccessToken = null;
