@@ -9,6 +9,7 @@
    ============================================ */
 
 :root {
+  color-scheme: light;
   --primary-color: #3498db;
   --primary-dark: #2980b9;
   --secondary-color: #2c3e50;
@@ -18,7 +19,6 @@
   --text-color: #333;
   --text-light: #666;
   --border-color: #ddd;
-  color-scheme: light;
 }
 
 html,
@@ -1103,8 +1103,8 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
+   DARK MODE SUPPORT - removed for now, but can be re-enabled if needed
+
 
 @media (prefers-color-scheme: dark) {
   html,
@@ -1227,3 +1227,4 @@ main::-webkit-scrollbar-thumb:hover {
     color: #ff6b6b;
   }
 }
+   ============================================ */
