@@ -771,7 +771,6 @@ main {
 main h2 {
   color: var(--secondary-color);
   margin-bottom: 1rem;
-  font-size: calc(var(--dev-content-scale) * 1.25);
   padding-bottom: 0.5rem;
   word-break: break-word;
   font-weight: 600;
@@ -815,7 +814,7 @@ main.devotional-content {
 }
 
 main.devotional-content h2 {
-    font-size: var(--dev-content-scale, 1rem);
+    font-size: var(--dev-content-scale, 1.25rem);
     /* optional smooth transition */
     transition: font-size 0.2s ease;
 }
