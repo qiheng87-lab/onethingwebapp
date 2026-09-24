@@ -771,7 +771,9 @@ main {
 main h2 {
   color: var(--secondary-color);
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: var(--dev-content-scale, 1.25rem);
+    /* optional smooth transition */
+    transition: font-size 0.2s ease;
   /* border-bottom: 3px solid var(--primary-color); /* line under title */
   padding-bottom: 0.5rem;
   word-break: break-word;
@@ -833,7 +835,7 @@ main.devotional-content {
 
 .passage-section h3 {
   color: var(--primary-color);
-  font-size: calc(var(--dev-content-scale) * 1.25);
+  font-size: calc(var(--dev-content-scale) * 1.1);
   margin-bottom: 0.6rem;
   font-weight: 600;
 }
