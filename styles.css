@@ -62,7 +62,8 @@ body {
 }
 .landing-page button {
   padding: 1rem 1.75rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   border: none;
   border-radius: 10px;
   background: #2c3e50;
@@ -73,7 +74,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;   /* Gives the all-caps breathing room */
-  color: #1a1a1a;           /* Soft black is cleaner than pure black */
+  color: #3a3a3a;           /* Soft black is cleaner than pure black */
   font-size: 1.75rem;
   font-weight: 700;
   margin: 0;
