@@ -771,10 +771,7 @@ main {
 main h2 {
   color: var(--secondary-color);
   margin-bottom: 1rem;
-  font-size: var(--dev-content-scale, 1.25rem);
-    /* optional smooth transition */
-    transition: font-size 0.2s ease;
-  /* border-bottom: 3px solid var(--primary-color); /* line under title */
+  font-size: calc(var(--dev-content-scale) * 1.25);
   padding-bottom: 0.5rem;
   word-break: break-word;
 }
@@ -812,6 +809,12 @@ main h2 {
 /* This is the ONLY element that scales */
 main.devotional-content {
     font-size: var(--dev-content-scale, 1rem);
+    /* optional smooth transition */
+    transition: font-size 0.2s ease;
+}
+
+main.devotional-content h2 {
+    font-size: var(--dev-content-scale, 1.25rem);
     /* optional smooth transition */
     transition: font-size 0.2s ease;
 }
