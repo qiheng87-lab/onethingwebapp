@@ -744,6 +744,11 @@ function hideError() {
 // EVENT LISTENERS
 // ============================================
 
+//Landing Page
+document.getElementById('start-btn').addEventListener('click', () => {
+  document.getElementById('landing').classList.add('dismissed');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 App starting...');
 

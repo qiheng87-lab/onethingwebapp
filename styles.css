@@ -18,6 +18,7 @@
   --text-color: #333;
   --text-light: #666;
   --border-color: #ddd;
+  color-scheme: light;
 }
 
 html,
@@ -31,6 +32,44 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* ============================================
+   FOR LANDING PAGE
+   ============================================ */
+.landing-page {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 2rem;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+.landing-page.dismissed {
+  opacity: 0;
+  pointer-events: none;
+}
+.landing-page p {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  max-width: 280px;
+  line-height: 1.4;
+}
+.landing-page button {
+  padding: 1rem 1.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #2c3e50;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 .container {
   max-width: 100%;
