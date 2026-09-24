@@ -69,7 +69,15 @@ body {
   color: #fff;
   cursor: pointer;
 }
-
+.landing-page h1 {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;   /* Gives the all-caps breathing room */
+  color: #1a1a1a;           /* Soft black is cleaner than pure black */
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+}
 
 .container {
   max-width: 100%;
