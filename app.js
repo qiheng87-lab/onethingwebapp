@@ -7,51 +7,18 @@ const btnSync    = document.getElementById('gdrive-syncnow');
 const status     = document.getElementById('sync-status');
 let tokenClient = null;
 let accessToken = null;
-/*
+
 // ============================================
 // SERVICE WORKER MANAGEMENT
 // ============================================
 
-async function unregisterAllServiceWorkers() {
-  if ('serviceWorker' in navigator) {
-    try {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      
-      for (const registration of registrations) {
-        console.log('🗑️ Unregistering Service Worker:', registration.scope);
-        await registration.unregister();
-      }
-      
-      // Clear all caches
-      const cacheNames = await caches.keys();
-      for (const cacheName of cacheNames) {
-        console.log('🗑️ Deleting cache:', cacheName);
-        await caches.delete(cacheName);
-      }
-      
-      console.log('✅ All Service Workers and caches cleared');
-    } catch (error) {
-      console.error('Error clearing Service Workers:', error);
-    }
-  }
-}
-
-// Run on page load
-unregisterAllServiceWorkers();
-
-// Also check for updates periodically
 if ('serviceWorker' in navigator) {
-  setInterval(() => {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister();
-      });
-    });
-  }, 60000); // Every minute
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((reg) => console.log('SW registered:', reg.scope))
+      .catch((err) => console.error('SW registration failed:', err));
+  });
 }
-
-*/
-
 
 // ============================================
 // HAMBURGER MENU MANAGEMENT
