@@ -242,6 +242,11 @@ async function pushStreakBackup() {
 function startAutoBackup() {
   stopAutoBackup();
   backupIntervalId = setInterval(async () => {
+    if (!googleAccessToken) {
+      console.log('[AutoBackup] No token available; skipping cycle.');
+      return;
+    }
+    
     // 1. Responses backup
     try {
       await performBackup();
@@ -253,15 +258,17 @@ function startAutoBackup() {
         sessionStorage.removeItem('fs_gtoken');
       }
     }
-    // 2. Streak backup (new — piggybacks same timer)
+    
+    // 2. Streak backup
     try {
       await performStreakBackup();
       console.log('[AutoBackup] Streak backup complete');
     } catch (err) {
       console.error('[AutoBackup] Streak backup failed:', err);
     }
-  }, 60000); // 60 seconds
+  }, 60000);
 }
+
 function stopAutoBackup() {
   if (backupIntervalId) {
     clearInterval(backupIntervalId);
@@ -341,6 +348,8 @@ async function handleRestore() { // Manual button
 /* ==========================================
    EVENT WIRING
    ========================================== */
+
+/* Removed for debug verification
 let isWarmingToken = false;
 document.addEventListener('click', async () => {
   if (!auth.currentUser || googleAccessToken || isWarmingToken) return;
@@ -356,6 +365,8 @@ document.addEventListener('click', async () => {
   }
   isWarmingToken = false;
 });
+End block removed for debug verification */
+
 if (ui.authBtn) {
   ui.authBtn.addEventListener('click', () => {
     if (auth.currentUser) {
