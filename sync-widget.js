@@ -42,6 +42,7 @@ const ui = {
   authStatus: $('fs-auth-status'), 
   userInfo: $('fs-user-info'),
   syncRow: $('fs-sync-row'),
+  cloudSaveGroup: $('cloudSaveGroup'),
   backup:  $('fs-backup'),
   restore: $('fs-restore'),
   status:  $('fs-status')
@@ -379,6 +380,47 @@ if (ui.authBtn) {
 if (ui.backup)  ui.backup.addEventListener('click', handleBackup);
 if (ui.restore) ui.restore.addEventListener('click', handleRestore);
 
+
+/* ---------- Manual Cloud Save ---------- */
+const saveCloudBtn = document.getElementById('saveCloudBtn');
+function showToast(message, isError = false) {
+  let toast = document.getElementById('cloud-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'cloud-toast';
+    toast.className = 'cloud-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.toggle('error', isError);
+  toast.classList.add('show');
+  if (toast._hideTimer) clearTimeout(toast._hideTimer);
+  toast._hideTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+if (saveCloudBtn) {
+  saveCloudBtn.addEventListener('click', async () => {
+    if (!auth.currentUser) {
+      showToast('Please sign in to save to the cloud', true);
+      return;
+    }
+    saveCloudBtn.disabled = true;
+    try {
+      // Call your existing backup function here.
+      // Replace 'performBackup' with whatever your actual backup function is named
+      // (e.g., runBackupNow(), performBackup(), etc.)
+      await performBackup();
+      showToast('Your responses have been saved');
+    } catch (err) {
+      console.error('[ManualSave] Failed:', err);
+      showToast('Save failed. Please try again.', true);
+    } finally {
+      saveCloudBtn.disabled = false;
+    }
+  });
+}
+
 onAuthStateChanged(auth, async (user) => {
   if (!ui.authBtn) return;
   
@@ -391,6 +433,7 @@ onAuthStateChanged(auth, async (user) => {
       ui.authStatus.textContent = 'Signed in as ' + (user.email || user.displayName || '');
       ui.authStatus.classList.remove('is-hidden');   // <-- reveal it
     }
+    if (ui.cloudSaveGroup) ui.cloudSaveGroup.style.display = '';
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
     
@@ -438,6 +481,7 @@ onAuthStateChanged(auth, async (user) => {
       ui.authStatus.textContent = '';
       ui.authStatus.classList.add('is-hidden');      // <-- hide it
     }
+    if (ui.cloudSaveGroup) ui.cloudSaveGroup.style.display = 'none';
     if (ui.syncRow)  ui.syncRow.style.display = 'none';
     stopAutoBackup();
     googleAccessToken = null;

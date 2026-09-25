@@ -968,6 +968,55 @@ article p:first-child {
 }
 
 /* ============================================
+   SAVE TO CLOUD BUTTON
+   ============================================ */
+
+.save-cloud-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #667eea;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+.save-cloud-btn:hover {
+  background: #5568d3;
+}
+.save-cloud-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+/* Floating toast */
+.cloud-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #2e7d32;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: all 0.35s ease;
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 90vw;
+  text-align: center;
+}
+.cloud-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.cloud-toast.error {
+  background: #c62828;
+}
+/* ============================================
    FINISHED DEVOTIONAL BUTTON
    ============================================ */
 .button-group {
@@ -982,7 +1031,7 @@ article p:first-child {
     font-size: calc(var(--dev-content-scale) * 1);
     font-weight: 600;
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #5164b7;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -998,7 +1047,7 @@ article p:first-child {
     transform: translateY(0);
 }
 .finished-btn.completed {
-    background: linear-gradient(135deg, #34a853 0%, #0d652d 100%);
+    background: #2f974a;
     box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
 }
 .finished-btn.completed:hover {
