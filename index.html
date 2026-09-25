@@ -28,7 +28,23 @@
 
 <!-- Use below for web testing 
  <link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.2.01"> -->    
-<link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.4.02">      
+<link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.4.02">  
+
+<!-- Script to dismiss landing page for subsequent loads on the same day-->
+<script>
+  (function () {
+    const lastShown = localStorage.getItem('devo-landing-date');
+    const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
+    if (lastShown === today) {
+      document.documentElement.classList.add('landing-seen');
+    }
+  })();
+</script>
+<style>
+  /* Hide immediately if already seen today — prevents flash on reload */
+  html.landing-seen #landing { display: none !important; }
+</style>
+
 </head>
 <body>
     <div id="landing" class="landing-page">

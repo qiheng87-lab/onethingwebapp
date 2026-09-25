@@ -747,11 +747,15 @@ function hideError() {
 //Landing Page
 document.getElementById('start-btn').addEventListener('click', () => {
   document.getElementById('landing').classList.add('dismissed');
+  
+  const today = new Date().toLocaleDateString('en-CA');
+  localStorage.setItem('devo-landing-date', today);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 App starting...');
 
+  
   loadDevotionals();
 
     // ⭐ FINISHED BUTTON EVENT LISTENER ⭐

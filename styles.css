@@ -984,7 +984,7 @@ article p:first-child {
   transition: background 0.2s ease, opacity 0.2s ease;
 }
 .save-cloud-btn:hover {
-  background: #5568d3;
+  background: #667eea;
 }
 .save-cloud-btn:disabled {
   opacity: 0.65;
@@ -996,7 +996,7 @@ article p:first-child {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(120%);
-  background: #2e7d32;
+  background: #2c3e50;
   color: #fff;
   padding: 12px 24px;
   border-radius: 8px;
