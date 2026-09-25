@@ -1,12 +1,12 @@
 {
   "name": "One Thing (Web App)",
   "short_name": "One Thing",
-  "start_url": "/",
+  "start_url": "/onethingwebapp/",
   "display": "standalone",
   "background_color": "#f9f5f0",
   "theme_color": "#2c3e50",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "/onethingwebapp/",
   "description": "One Thing Devotional Resource by Glory Presbyterian Church (English Service) Singapore",
   "icons": [
     {
