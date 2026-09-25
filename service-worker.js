@@ -6,8 +6,8 @@ const STATIC_ASSETS = [
   '/onethingwebapp/app.js',
   '/onethingwebapp/sync-widget.js',
   '/onethingwebapp/manifest.json',
-  '/onethingwebapp/icon-192x192.png',
-  '/onethingwebapp/icon-512x512.png'
+  '/onethingwebapp/icon-192.png',
+  '/onethingwebapp/icon-512.png'
 ];
 /* ---------- INSTALL: precache core shell ---------- */
 self.addEventListener('install', (event) => {
