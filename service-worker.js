@@ -1,13 +1,13 @@
 const CACHE_NAME = 'One Thing (Web App)';
 // Same-origin app shell — adjust paths if deployed to a GitHub Pages project subfolder
 const STATIC_ASSETS = [
-  '/onethingwebapp/',
-  '/onethingwebapp/index.html',
-  '/onethingwebapp/app.js',
-  '/onethingwebapp/sync-widget.js',
-  '/onethingwebapp/manifest.json',
-  '/onethingwebapp/icon-192.png',
-  '/onethingwebapp/icon-512.png'
+  './',
+  './index.html',
+  './app.js',
+  './sync-widget.js',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 /* ---------- INSTALL: precache core shell ---------- */
 self.addEventListener('install', (event) => {
