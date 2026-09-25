@@ -411,7 +411,7 @@ if (saveCloudBtn) {
       // Replace 'performBackup' with whatever your actual backup function is named
       // (e.g., runBackupNow(), performBackup(), etc.)
       await performBackup();
-      showToast('Your responses have been saved');
+      showToast('Your responses have been manually saved');
     } catch (err) {
       console.error('[ManualSave] Failed:', err);
       showToast('Save failed. Please try again.', true);
