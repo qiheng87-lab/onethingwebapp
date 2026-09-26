@@ -743,7 +743,7 @@ finishedBtn.addEventListener('click', () => {
   // Close calendar when clicking outside
   document.addEventListener('click', (e) => {
     if (!calendarContainer.contains(e.target) && 
-        !calendarToggle.contains(e.target) && 
+        !dateDisplay.contains(e.target) && 
         calendarOpen) {
       closeCalendar();
     }
