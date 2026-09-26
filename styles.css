@@ -19,6 +19,7 @@
   --text-color: #333;
   --text-light: #666;
   --border-color: #ddd;
+  --app-font-scale: 1rem;
 }
 
 html,
@@ -321,12 +322,13 @@ header h1 {
    background-color: var(--bg-secondary);
    padding: 2rem;
    border-radius: 12px;
+   font-size: var(--app-font-scale);
    margin: 1.5rem 0;
 }
 .content-section h2 {
    margin-top: 0;
    color: var(--primary-color);
-   font-size: 1.8rem;
+   font-size: calc(var(--app-font-scale) * 1.8);
    margin-bottom: 1.5rem;
 }
 .content-section p {
@@ -401,7 +403,7 @@ header h1 {
        padding: 1.5rem;
    }
    .content-section h2 {
-       font-size: 1.5rem;
+       font-size: calc(var(--app-font-scale) * 1.5);
    }
 }
 @media (max-width: 480px) {
@@ -422,7 +424,7 @@ header h1 {
        margin: 1rem 0;
    }
    .content-section h2 {
-       font-size: 1.3rem;
+       font-size: calc(var(--app-font-scale) * 1.3);
    }
 }
 
@@ -813,6 +815,7 @@ main h2 {
     padding: 0.3rem 0.7rem;
     border: 1px solid #ccc;
     background: #fff;
+    color: var(--secondary-color);
     border-radius: 4px;
     font-size: 0.9rem;
     line-height: 1;
@@ -828,15 +831,15 @@ main h2 {
     color: #555;
     font-variant-numeric: tabular-nums;
 }
-/* This is the ONLY element that scales */
+
 main.devotional-content {
-    font-size: var(--dev-content-scale, 1rem);
+    font-size: var(--app-font-scale);
     /* optional smooth transition */
     transition: font-size 0.2s ease;
 }
 
 main.devotional-content h2 {
-    font-size: var(--dev-content-scale, 1.25rem);
+    font-size: calc(var(--app-font-scale)*1.25;
     /* optional smooth transition */
     transition: font-size 0.2s ease;
 }
@@ -860,7 +863,7 @@ main.devotional-content h2 {
 
 .passage-section h3 {
   color: var(--primary-color);
-  font-size: calc(var(--dev-content-scale) * 1);
+  font-size: calc(var(--app-font-scale) * 1);
   margin-bottom: 0.6rem;
   font-weight: 600;
 }
@@ -868,7 +871,7 @@ main.devotional-content h2 {
 .passage-section p {
   color: var(--text-light);
   line-height: 1.7;
-  font-size: calc(var(--dev-content-scale) * 1);
+  font-size: calc(var(--app-font-scale) * 1);
   font-style: italic;
   white-space: pre-wrap;
   word-break: break-word;
@@ -882,7 +885,7 @@ article {
   line-height: 1.7;
   color: var(--text-light);
   margin-bottom: 1.5rem;
-  font-size: calc(var(--dev-content-scale) * 1);
+  font-size: calc(var(--app-font-scale) * 1);
   white-space: pre-wrap;
 }
 
@@ -915,7 +918,7 @@ article p:first-child {
 .questions-section h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
-  font-size: calc(var(--dev-content-scale) * 1.1);
+  font-size: calc(var(--app-font-scale) * 1.1);
   font-weight: 700;
 }
 
@@ -932,7 +935,7 @@ article p:first-child {
   color: var(--secondary-color);
   font-weight: 600;
   margin-bottom: 0.5rem;
-  font-size: calc(var(--dev-content-scale) * 1);
+  font-size: calc(var(--app-font-scale) * 1);
   word-break: break-word;
 }
 
@@ -943,7 +946,7 @@ article p:first-child {
   border: 2px solid var(--border-color);
   border-radius: 6px;
   font-family: inherit;
-  font-size: calc(var(--dev-content-scale) * 1);
+  font-size: calc(var(--app-font-scale) * 1);
   color: var(--text-color);
   resize: vertical;
   transition: all 0.2s ease;
@@ -1041,7 +1044,7 @@ article p:first-child {
 }
 .finished-btn {
     padding: 0.875rem 2rem;
-    font-size: calc(var(--dev-content-scale) * 1);
+    font-size: calc(var(--app-font-scale) * 1);
     font-weight: 600;
     color: white;
     background: #5164b7;

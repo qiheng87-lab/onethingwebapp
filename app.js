@@ -243,7 +243,7 @@ async function loadDevotionals() {
         size = parseFloat(size.toFixed(3));
         current = size;
         // Apply scale ONLY to the <main> element via CSS variable
-        content.style.setProperty('--dev-content-scale', `${size}rem`);
+        document.documentElement.style.setProperty('--app-font-scale', `${size}rem`);
         // Update visible percentage (e.g., "100%")
         if (display) display.textContent = `${Math.round(size * 100)}%`;
         // Save preference
