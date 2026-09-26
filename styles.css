@@ -839,7 +839,7 @@ main.devotional-content {
 }
 
 main.devotional-content h2 {
-    font-size: calc(var(--app-font-scale)*1.25;
+    font-size: calc(var(--app-font-scale))*1.25;
     /* optional smooth transition */
     transition: font-size 0.2s ease;
 }
