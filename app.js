@@ -166,7 +166,7 @@ function updateDateDisplay() {
 // ============================================
 
 const dateDisplay = document.getElementById('dateDisplay');
-const calendarToggle = document.getElementById('calendarToggle');
+// const calendarToggle = document.getElementById('calendarToggle'); disabled, testing dateDisplay to replace calendarToggle
 const calendarContainer = document.getElementById('calendarContainer');
 const monthYear = document.getElementById('monthYear');
 const calendarDays = document.getElementById('calendarDays');
@@ -668,7 +668,8 @@ function toggleCalendar() {
 
   if (calendarOpen) {
     calendarContainer.classList.add('open');
-    calendarToggle.classList.add('active');
+    // calendarToggle.classList.add('active');
+    dateDisplay.classList.add('active');          // changed from calendarToggle
     calendarDate = new Date(currentDate);
     renderCalendar();
   } else {
@@ -679,7 +680,8 @@ function toggleCalendar() {
 function closeCalendar() {
   calendarOpen = false;
   calendarContainer.classList.remove('open');
-  calendarToggle.classList.remove('active');
+  // calendarToggle.classList.remove('active');
+  dateDisplay.classList.remove('active');         // changed from calendarToggle
 }
 
 function previousMonth() {
@@ -735,7 +737,8 @@ finishedBtn.addEventListener('click', () => {
 });
   
   // Calendar toggle
-  calendarToggle.addEventListener('click', toggleCalendar);
+  // calendarToggle.addEventListener('click', toggleCalendar); old with calendar button
+  dateDisplay.addEventListener('click', toggleCalendar); // new with dateDisplay
 
   // Close calendar when clicking outside
   document.addEventListener('click', (e) => {

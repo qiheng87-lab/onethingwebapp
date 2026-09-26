@@ -463,8 +463,21 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+   /* Prevent iOS/Android text selection / magnifier on long-press */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Optional: tone down the grey iOS flash, or style your own */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Immediate touch-down feedback */
+.current-date:active {
+  opacity: 0.7;        /* or a background-color change */
+}
+/* "Calendar is open" state */
+.current-date.active {
+  color: #007bff;      /* your accent color */
+}
 .nav-btn {
   background: var(--secondary-color);
   color: white;
