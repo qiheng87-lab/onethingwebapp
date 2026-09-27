@@ -289,7 +289,8 @@ async function handleSignIn() {
     }
     googleAccessToken = cred.accessToken;
     sessionStorage.setItem('fs_gtoken', googleAccessToken);
-    /* streak restore first */
+   /* disabled for debugging
+    //streak restore first
     try {
       const didRestoreStreaks = await performStreakRestore();
       if (didRestoreStreaks) {
@@ -298,7 +299,7 @@ async function handleSignIn() {
     } catch (e) {
       console.error('[StreakSync] Auto-restore failed:', e);
     }
-    /* existing response restore */
+    //existing response restore
     try {
       const didRestore = await performRestore();
       if (didRestore) {
@@ -307,6 +308,7 @@ async function handleSignIn() {
     } catch (restoreErr) {
       console.error('Auto-restore failed:', restoreErr);
     }
+  block above disabled for debugging */
   } catch (err) {
     console.error(err);
     setStatus('Sign-in cancelled or failed.', true);
@@ -349,24 +351,6 @@ async function handleRestore() { // Manual button
 /* ==========================================
    EVENT WIRING
    ========================================== */
-
-/* Removed for debug verification
-let isWarmingToken = false;
-document.addEventListener('click', async () => {
-  if (!auth.currentUser || googleAccessToken || isWarmingToken) return;
-  isWarmingToken = true;
-  try {
-    const result = await reauthenticateWithPopup(auth.currentUser, googleProvider);
-    const cred = GoogleAuthProvider.credentialFromResult(result);
-    googleAccessToken = cred.accessToken;
-    sessionStorage.setItem('fs_gtoken', googleAccessToken);
-    console.log('[Token] Refreshed silently on user click');
-  } catch (e) {
-    // Ignore: user might dismiss the popup; interval will try again later
-  }
-  isWarmingToken = false;
-});
-End block removed for debug verification */
 
 if (ui.authBtn) {
   ui.authBtn.addEventListener('click', () => {
