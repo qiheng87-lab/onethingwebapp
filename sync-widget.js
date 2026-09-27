@@ -93,6 +93,47 @@ async function getValidToken() {
   sessionStorage.setItem('fs_gtoken', googleAccessToken);
   return googleAccessToken;
 }
+
+/* ==========================================
+RELOAD UPON SIGN IN MANAGEMENT
+========================================== */
+let restoreLock = null;
+
+async function restoreAndReloadOnce(token) {
+  if (sessionStorage.getItem('fs_did_restore_reload')) return false;
+  if (restoreLock) return restoreLock;
+  restoreLock = (async () => {
+    googleAccessToken = token;
+    let didRestoreAnything = false;
+    try {
+      const didRestore = await performRestore();
+      if (didRestore) {
+        console.log('[Sync] Responses restored from Drive');
+        didRestoreAnything = true;
+      }
+    } catch (err) {
+      console.error('[Sync] Response restore failed:', err);
+    }
+    try {
+      const didRestoreStreaks = await performStreakRestore();
+      if (didRestoreStreaks) {
+        console.log('[StreakSync] Restored from Drive');
+        window.dispatchEvent(new CustomEvent('streaks-restored'));
+        didRestoreAnything = true;
+      }
+    } catch (err) {
+      console.error('[StreakSync] Auto-restore failed:', err);
+    }
+    if (didRestoreAnything) {
+      sessionStorage.setItem('fs_did_restore_reload', '1');
+      location.reload();
+      return true;
+    }
+    return false;
+  })();
+  return restoreLock;
+}
+
 /* ==========================================
    DRIVE API HELPERS — RESPONSES (existing)
    ========================================== */
@@ -289,26 +330,7 @@ async function handleSignIn() {
     }
     googleAccessToken = cred.accessToken;
     sessionStorage.setItem('fs_gtoken', googleAccessToken);
-   /* disabled for debugging
-    //streak restore first
-    try {
-      const didRestoreStreaks = await performStreakRestore();
-      if (didRestoreStreaks) {
-        window.dispatchEvent(new CustomEvent('streaks-restored'));
-      }
-    } catch (e) {
-      console.error('[StreakSync] Auto-restore failed:', e);
-    }
-    //existing response restore
-    try {
-      const didRestore = await performRestore();
-      if (didRestore) {
-        location.reload();
-      }
-    } catch (restoreErr) {
-      console.error('Auto-restore failed:', restoreErr);
-    }
-  block above disabled for debugging */
+    await restoreAndReloadOnce(cred.accessToken);
   } catch (err) {
     console.error(err);
     setStatus('Sign-in cancelled or failed.', true);
@@ -421,10 +443,11 @@ onAuthStateChanged(auth, async (user) => {
     if (ui.syncRow)  ui.syncRow.style.display = 'flex';
     googleAccessToken = sessionStorage.getItem('fs_gtoken') || null;
     
+    /* disabled for debugging
     let didRestoreAnything = false;
     
     if (googleAccessToken) {
-      /* 1. Pull responses FIRST — before auto-backup can push empty state */
+      // 1. Pull responses FIRST — before auto-backup can push empty state 
       try {
         const didRestore = await performRestore();
         if (didRestore) {
@@ -435,7 +458,7 @@ onAuthStateChanged(auth, async (user) => {
         console.error('[Sync] Response restore failed:', err);
       }
       
-      /* 2. Pull streaks */
+      // 2. Pull streaks 
       try {
         const didRestoreStreaks = await performStreakRestore();
         if (didRestoreStreaks) {
@@ -448,11 +471,16 @@ onAuthStateChanged(auth, async (user) => {
       }
     }
     
-    /* 3. If data came down, reload once so app.js renders with fresh localStorage */
+    // 3. If data came down, reload once so app.js renders with fresh localStorage 
     if (didRestoreAnything && !sessionStorage.getItem('fs_did_restore_reload')) {
       sessionStorage.setItem('fs_did_restore_reload', '1');
       location.reload();
       return;
+    }
+      end of disabled block */
+    if (googleAccessToken) {
+      const didReload = await restoreAndReloadOnce(googleAccessToken);
+      if (didReload) return;
     }
     
     /* 4. Only now start the 60-second push timer */
