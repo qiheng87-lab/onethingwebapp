@@ -975,7 +975,7 @@ article p:first-child {
   color: #555;
   line-height: 1.7;
   font-size: calc(var(--app-font-scale) * 1);
-  white-space: pre-line; /* treats \n as line breaks */
+  white-space: pre-wrap;
   word-break: break-word;
   margin: 0;
 }
@@ -1010,6 +1010,10 @@ article p:first-child {
   line-height: 1.7;
   font-size: calc(var(--app-font-scale) * 1);
   word-break: break-word;
+}
+
+.pray-text {
+  white-space: pre-line;   /* treats \n as line breaks */
 }
 /* ============================================
    RESPONSIVE TWEAKS FOR PRAYER BLOCKS

@@ -457,7 +457,6 @@ function displayDevotion() {
   });
 
   // ⭐ PRAYER — separate styled section (italics) ⭐
-  console.log('praypoints raw:', JSON.stringify(devotion.praypoints));
   if (devotion.prayer) {
     const prayerSec = document.createElement('div');
     prayerSec.className = 'prayer-section';
