@@ -427,16 +427,9 @@ function displayDevotion() {
   // Render questions
   const questionsContainer = document.getElementById('questionsContainer');
 
-  // DIAGNOSTIC LOGS
-console.log('Data questions count:', devotion.questions.length);
-console.log('DOM children BEFORE clear:', questionsContainer ? questionsContainer.children.length : 'null');
-
   questionsContainer.innerHTML = '';
 
-console.log('DOM children AFTER clear:', questionsContainer ? questionsContainer.children.length : 'null');
-
-  devotion.questions.forEach((question, i) => {
-    console.log('Rendering question', i, '- id:', question.id);
+  devotion.questions.forEach((question) => {
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.innerHTML = `
