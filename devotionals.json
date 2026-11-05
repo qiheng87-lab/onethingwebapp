@@ -6,6 +6,10 @@
       "passage": "",
       "passageText": "",
       "article": "this is a test article",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -26,6 +30,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -35,6 +44,10 @@
       "passage": "Philippians 1:1-2",
       "passageText": "1 Paul and Timothy, servants of Christ Jesus,\n\nTo all the saints in Christ Jesus who are at Philippi, with the overseers and deacons:\n\n2 Grace to you and peace from God our Father and the Lord Jesus Christ.\n\n",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -55,6 +68,11 @@
           "id": 4,
           "text": "Application // From God and Jesus comes grace (undeserved favor) and the peace of God (4:7). As Paul reminds the Phlippian church of this, let us too be reminded and think about when in our lives have we experienced this grace and peace. Where will you need God's grace and peace this week? Take some time to praise God for His grace and peace. ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -64,6 +82,10 @@
       "passage": "Philippians 1:3-6",
       "passageText": "3 I thank my God in all my remembrance of you, 4 always in every prayer of mine for you all making my prayer with joy, 5 because of your partnership in the gospel from the first day until now. 6 And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ.",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -84,6 +106,11 @@
           "id": 4,
           "text": "Application // God is working in our lives. Where have you seen God's good work in you this past year - even if incomplete? In the last year, which believer have you seen God do His good work in? What does that good work look like (it could be salvation, transformation in character, fleeing sin, sharing the gospel)? Take some time to pray for him/her with joy as we see God do His good work.\n",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -93,6 +120,10 @@
       "passage": "Philippians 1:7-8",
       "passageText": "7 It is right for me to feel this way about you all, because I hold you in my heart, for you are all partakers with me of grace, both in my imprisonment and in the defense and confirmation of the gospel. 8 For God is my witness, how I yearn for you all with the affection of Christ Jesus.",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -113,6 +144,11 @@
           "id": 4,
           "text": "Application // Partnership in the gospel means joint-ownership �\" sharing both in spreading the gospel (furtherance) and strengthening others in their faith (confirmation). Paul lived this out even from prison, sustained by others who partnered with him in his hardship. This week, who could you partner with in gospel work �\" whether by sharing Christ with someone, helping a believer grow, or standing with someone in their hardship? Who is one person you could reach out to?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -122,6 +158,10 @@
       "passage": "Philippians 1:9-11",
       "passageText": "9 And it is my prayer that your love may abound more and more, with knowledge and all discernment, 10 so that you may approve what is excellent, and so be pure and blameless for the day of Christ, 11 filled with the fruit of righteousness that comes through Jesus Christ, to the glory and praise of God.",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -142,6 +182,11 @@
           "id": 4,
           "text": "Application // Paul doesn't just pray that the Philippians would love more, but that their love would grow in wisdom, able to test what truly matters and choose it. Think of a decision or relationship in your life right now where love needs to be paired with discernment, not just good intentions. Ask God this week to grow your love in knowledge and discernment so that your life would be marked by the fruit of righteousness, for His glory �\" not your own.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -151,6 +196,10 @@
       "passage": "Review",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -171,6 +220,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -180,6 +234,10 @@
       "passage": "Philippians 1:3-8",
       "passageText": "3 I thank my God in all my remembrance of you, 4 always in every prayer of mine for you all making my prayer with joy, 5 because of your partnership in the gospel from the first day until now. 6 And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ. 7 It is right for me to feel this way about you all, because I hold you in my heart, for you are all partakers with me of grace, both in my imprisonment and in the defense and confirmation of the gospel. 8 For God is my witness, how I yearn for you all with the affection of Christ Jesus.",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -200,6 +258,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -209,6 +272,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -229,6 +296,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -238,6 +310,10 @@
       "passage": "Matthew 25:1-13",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -258,6 +334,11 @@
           "id": 4,
           "text": "Application // The foolish virgins expected to meet the groom but were unprepared when he was delayed. Are you prepared for Jesus coming? Why or why not? (What does it mean to be prepared? We will see more in tomorrow's passage.)",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -267,6 +348,10 @@
       "passage": "Matthew 25:14-30",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -287,6 +372,11 @@
           "id": 4,
           "text": "Application // The one-talent servant buried his gift out of fear, doing nothing with what he was given. Is there a gift, opportunity, or responsibility God has entrusted to you that you've been sitting on �\" out of fear, comparison to others, or thinking it's \"too small\" to matter? What would it look like to put it to use this week, trusting God with the outcome?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -296,6 +386,10 @@
       "passage": "Matthew 25:31-40",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -316,6 +410,11 @@
           "id": 4,
           "text": "Application // The sheep didn't serve \"the least of these\" in order to earn a reward �\" their care for others simply flowed out of who they were as Jesus's people. Is there someone overlooked, in need, or easy to pass by that God is putting in front of you right now (the hungry, the stranger, the sick, the imprisoned)? What would it look like to serve them this week, not to prove your faith, but as an overflow of it?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -325,6 +424,10 @@
       "passage": "Matthew 25:41-46",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -345,6 +448,11 @@
           "id": 4,
           "text": "Application // The goats weren't condemned for what they did, but for what they failed to do �\" and they seemed unaware that their neglect of others was neglect of Jesus Himself. Is there a blind spot in your life where you might be overlooking someone in need without realizing it's Jesus you're overlooking? Ask God this week to open your eyes to those around you, and to move you from awareness to action.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -354,6 +462,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -374,6 +486,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -383,6 +500,10 @@
       "passage": "Matthew25:40",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -403,6 +524,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -412,6 +538,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -432,6 +562,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -441,6 +576,10 @@
       "passage": "Ephesians 1:1-14",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -461,6 +600,11 @@
           "id": 4,
           "text": "Application // Paul overwhelms the Ephesian church by beginning his letter wtih all that God has done for us in Christ. Take time to slowly reread verses 3-14 and identify one blessing that stands out to you personally right now. Spend time in prayer thanking God specifically for that blessing, \"to the praise of his glory.\"",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -470,6 +614,10 @@
       "passage": "Ephesians 1:15-23",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -490,6 +638,11 @@
           "id": 4,
           "text": "Application // Christ's supremacy over the universe is God's gift to the church �\" He fills it as His body, so it can display Him to the world (v22-23). Where do you need to rely less on your own strength, and more on Christ actively filling and empowering His body through you this week? Take time to pray for our church, trusting Christ to sustain it in any struggle or weakness we face.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -499,6 +652,10 @@
       "passage": "Ephesians 3:1-6",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -519,6 +676,11 @@
           "id": 4,
           "text": "Application // God's plan all along was for people from every nation to become one new body in Christ, full heirs together with no one excluded. Who is a person or people group you're aware of that hasn't yet heard this good news? Take time this week to pray for them by name, and consider what step you could take to be part of God revealing this mystery to them: whether through prayer, giving, going, or simply sharing the gospel with someone near you.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -528,6 +690,10 @@
       "passage": "Ephesians 3:7-13",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -548,6 +714,11 @@
           "id": 4,
           "text": "Application // God's plan for making His wisdom known is through the church, not despite it. How does knowing this change the way you view your church's role in missions and evangelism? Is there a way you can actively participate in the church's mission to make Christ known (eg by praying for missionaries, giving, going, or sharing the gospel with someone this week)?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -557,6 +728,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -577,6 +752,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -586,6 +766,10 @@
       "passage": "Ephesians 1:22-23",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -606,6 +790,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -615,6 +804,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -635,6 +828,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -644,6 +842,10 @@
       "passage": "Luke 9:37-45",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -664,6 +866,11 @@
           "id": 4,
           "text": "Application // Right after a miracle that amazed the crowd, Jesus points His disciples to the cross. Where have you expected following Jesus to look easy or impressive, only to find it harder than you thought? Bring that honestly to Jesus and ask Him to help you follow Him even when it doesn't look like what you expected.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -673,6 +880,10 @@
       "passage": "Luke 9:46-50",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -693,6 +904,11 @@
           "id": 4,
           "text": "Application // While Jesus was preparing to suffer and serve, His disciples were consumed with who was greatest, and who was in or out. Where have you been seeking recognition instead of serving others? Is there someone you've dismissed for not being \"one of us\"? Ask Jesus to reshape how you see greatness and belonging this week.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -702,6 +918,10 @@
       "passage": "Luke 9:51-56",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -722,6 +942,11 @@
           "id": 4,
           "text": "Application // Jesus was focused on going to the cross to save people, while His disciples wanted to call down judgment on those who rejected Him. Where have you responded to rejection with a desire for people to \"get what they deserve,\" instead of desiring their salvation? Ask Jesus for His same heart this week.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -731,6 +956,10 @@
       "passage": "Luke 9:57-61",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -751,6 +980,11 @@
           "id": 4,
           "text": "Application // Jesus's call takes first place over everything (comfort, family, etc) and once we commit, there's no looking back (v62). Where have you expected following Jesus to fit comfortably into your plans, or found yourself glancing back at what you left behind? Ask Jesus this week to help you put Him first, fully, without turning back.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -760,6 +994,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -780,6 +1018,11 @@
           "id": 4,
           "text": "Application // ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -789,6 +1032,10 @@
       "passage": "Luke 9:57-61",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -809,6 +1056,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -818,6 +1070,10 @@
       "passage": "Luke9:57-62",
       "passageText": "57 As they were going along the road, someone said to him, “I will follow you wherever you go.” 58 And Jesus said to him, “Foxes have holes, and birds of the air have nests, but the Son of Man has nowhere to lay his head.” 59 To another he said, “Follow me.” But he said, “Lord, let me first go and bury my father.” 60 And Jesus said to him, “Leave the dead to bury their own dead. But as for you, go and proclaim the kingdom of God.” 61 Yet another said, “I will follow you, Lord, but let me first say farewell to those at my home.” 62 Jesus said to him, “No one who puts his hand to the plow and looks back is fit for the kingdom of God.”",
       "article": "There are moments in life when a single decision changes everything.\nIn Luke 9, Jesus encounters three people who express a desire to follow Him. Yet each faces a choice. Would they allow competing priorities, personal attachments, or future uncertainties to stand in the way of wholehearted discipleship?\nJesus concludes with these challenging words:\n“No one who puts a hand to the plow and looks back is fit for service in the kingdom of God.”\nAt first glance, His words seem demanding. Yet behind them is an invitation�\"to a life centered on Him.\nNearly forty-eight years ago, I said yes to following Jesus through missionary service with Operation Mobilization. There were seasons of financial pressure, difficult decisions, and uncertain paths ahead. Yet if I were given the opportunity to begin again, I would make the same choice.\nWhy?\nBecause I have discovered that Jesus is worthy.\nThe world constantly invites us to look back�\"to what we might have achieved, accumulated, or experienced had we chosen a different path. Jesus invites us to look forward. He calls us to trust Him and believe that no sacrifice made for His sake is ever wasted.\nWhether Jesus leads us across the street or across the world, His invitation remains the same: “Follow Me.” When we fix our eyes on Him, we discover that the greatest joy in life is not found in what we leave behind, but in the One we follow.\nFor those who choose to follow Him, there is no better way to live�\"and no reason to turn back.",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -838,6 +1094,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -847,6 +1108,10 @@
       "passage": "Nehemiah 1:1-3",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -867,6 +1132,11 @@
           "id": 4,
           "text": "Application // Nehemiah was a Jewish exile living comfortably in Persia, yet he took initiative to exercise concern for his fellow Jews in Jerusalem and identify with their circumstances. Are comfortable or the settled routines of daily life causing you to slip into patterns of self-centeredness or self-concern, more than a concern for others (e.g. fellow believers, those around you, family, friends)?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -876,6 +1146,10 @@
       "passage": "Nehemiah 1:4-7",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -896,6 +1170,11 @@
           "id": 4,
           "text": "Application // \"In Nehemiah's life, far from being a conventional religious exercise, prayer was a vital daily experience. Nothing mattered more than entering the Lord's presence to express his anguish about his people's needs, confess his inadequacy, reflect on his personal response to the news from Jerusalem, and seek for guidance about what might and must be done.\" (Raymond Brown) Reflecting on this quote, what are specific areas you hope to grow in your prayer life? Ask God to grant a greater desire to constantly be with God in prayer.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -905,6 +1184,10 @@
       "passage": "Nehemiah 1:8-10",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -925,6 +1208,11 @@
           "id": 4,
           "text": "Application // We belong to God's redeemed people by putting our faith in Christ for the salvation of our souls. Just as Nehemiah trusted God to keep His word, we too can trust in God's promises in His word towards us. Is there a promise from God's word that you can be reminded of today in the midst of what you are going through?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -934,6 +1222,10 @@
       "passage": "Nehemiah 1:11",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -954,6 +1246,11 @@
           "id": 4,
           "text": "Application // Nehemiah held an important and trusted position in the royal court. Yet he continued to view himself as God's servant, and the king as merely \"this man\". How could a focus on God's kingship and service unto Him instead of your worldly position and place change how you go about your daily living/work before others?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -963,6 +1260,10 @@
       "passage": " ",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -983,6 +1284,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -992,6 +1298,10 @@
       "passage": "Nehemiah 1:1-11",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1012,6 +1322,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1021,6 +1336,10 @@
       "passage": "Nehemiah 1:1-11",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1041,6 +1360,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1050,6 +1374,10 @@
       "passage": "Nehemiah 2:1-5",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1070,6 +1398,11 @@
           "id": 4,
           "text": "Application // Even though burdened in heart, Nehemiah prayed persistently, patiently and expectantly, waiting upon God to provide the right opportunity to make his request to the king. Is God revealing a specific situation where you need to be patient in prayer rather than rushing into action? Is He encouraging you to persist in prayer and not be discouraged?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1079,6 +1412,10 @@
       "passage": "Nehemiah 2:6-8",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1099,6 +1436,11 @@
           "id": 4,
           "text": "Application // Nehemiah knew that the favour of God was what gave him success, rather than his own wisdom or eloquence. How readily do you attribute your success to God's gracious blessing, rather than your own ability? Does it lead you to gratitude and reverence unto Him?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1108,6 +1450,10 @@
       "passage": "Nehemiah 2:9-16",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1128,6 +1474,11 @@
           "id": 4,
           "text": "Application // Nehemiah did not expect that rebuilding Jerusalem would be easy, but he was willing to undertake this journey, knowing that it was what God had put into his heart to do (v12). Is there something God is putting in your heart to do out of love for Him and others, even though it may seem challenging? Thoughtfully and prayerfully plan the first step of faith you can take towards this.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1137,6 +1488,10 @@
       "passage": "Nehemiah 2:17-20",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1157,6 +1512,11 @@
           "id": 4,
           "text": "Application // Nehemiah's encouragement to his fellow Jews strengthened them in the face of opposition. Who is one person you know that needs encouragement? Pray for God to give you a timely word of encouragement from Him to offer this person.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1166,6 +1526,10 @@
       "passage": " ",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1186,6 +1550,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1195,6 +1564,10 @@
       "passage": "Nehemiah 2:1-20",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1215,6 +1588,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1224,6 +1602,10 @@
       "passage": "Nehemiah 2:1-20",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1244,6 +1626,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1253,6 +1640,10 @@
       "passage": "Nehemiah 3:1-5",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1273,6 +1664,11 @@
           "id": 4,
           "text": "Application // Jesus Christ, the Son of God and our great High Priest, willingly came not to be served but to serve, and to offer his life to save sinners like us (cf. Mark 10:45, Hebrews 9:11-14). Does the sacrificial love of Christ motivate you towards a greater willingness to serve Him, even when it involves \"getting your hands dirty\" or stepping out of your comfort zone? What may be one area where He is calling you to do so?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1282,6 +1678,10 @@
       "passage": "Nehemiah 3:6-12",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1302,6 +1702,11 @@
           "id": 4,
           "text": "Application // Raymond Brown writes: \"Nehemiah specially mentions citizens who were skilled in other occupations, people not accustomed to the physical drudgery involved in building construction�these people were fully prepared to leave their lucrative professions for an undefined period to engage in gruelling work which would test their physical resources to the limit.\" Are you experiencing the joy of labouring alongside other Christians to advance God's kingdom, even despite the challenges and sacrifices involved? Thank God for this privilege and joy, asking Him for continued strength in this work. If not, ask God how you can join with others in the church to serve Him. ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1311,6 +1716,10 @@
       "passage": "Nehemiah 3:13-21",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1331,6 +1740,11 @@
           "id": 4,
           "text": "Application // Our giving and service unto others, a cause or project should not be motivated by the benefit we derive from it. Rather, it should stem from a desire to love God and others, seeking practical ways to serve and bless them, especially those who belong to the family of God. What is one specific way you can be a blessing to others in God's Church in this season (e.g. discipling someone, serving on a mission trip, giving financially to a ministry)? ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1340,6 +1754,10 @@
       "passage": "Nehemiah 3:22-32",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1360,6 +1778,11 @@
           "id": 4,
           "text": "Application // Joyfully celebrating and encouraging one another's mutual service to the Lord promotes unity in the church, while jealousy or constant comparison only breeds disunity. Take time to reflect on these lyrics from \"All Praise to Our Redeeming Lord\" (Charles Wesley):\n\n           He bids us build each other up:\n             And, gathered into one,\n           To our high calling's glorious hope\n             We hand in hand go on.\n\n           The gift which He on one bestows,\n             We all delight to prove;\n           The grace through every vessel flows,\n             In purest streams of love.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1369,6 +1792,10 @@
       "passage": " ",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1389,6 +1816,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1398,6 +1830,10 @@
       "passage": "Nehemiah 3:1-32",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1418,6 +1854,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1427,6 +1868,10 @@
       "passage": "Nehemiah 3:1-32",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1447,6 +1892,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1456,6 +1906,10 @@
       "passage": "Nehemiah 4:1-5",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1476,6 +1930,11 @@
           "id": 4,
           "text": "Application // Raymond Brown explains: \"It is important for us to empathize with [Nehemiah], not criticize him. Christians react to cruelty and injustice in the light of two great biblical events which Nehemiah could not possibly discern as clearly as we can�the death of Christ and the life to come.\" Reflect on how you may have responded to those who stubbornly oppose God and Christians (yourself or others). Do you strike a good balance in seeking to uphold God's holy name and also displaying the love of Christ towards them? In which of the two do you need God's help? ",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1485,6 +1944,10 @@
       "passage": "Nehemiah 4:6-9",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1505,6 +1968,11 @@
           "id": 4,
           "text": "Application // The Jews prayed in trust and dependence upon God, knowing that He was on their side (v9 \"our God\") and had the power to help them. Do you have an adequate personal understanding of God's compassion and power that turns you towards Him for help before other people/things? Pray Ephesians 3:14�21 over yourself and someone who might need to experience God's love and power in greater measure. You may write it out as a personalised prayer below.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1514,6 +1982,10 @@
       "passage": "Nehemiah 4:10-14",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1534,6 +2006,11 @@
           "id": 4,
           "text": "Application // Paul commanded the Christians in Thessalonica to \"admonish the idle, encourage the fainthearted, help the weak, be patient with them all\" (1 Thessalonians 5:14). Is there someone you know who is currently in need of loving and patient admonishment, encouragement, or help? Pray for him/her and how you can play a part in doing so.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1543,6 +2020,10 @@
       "passage": "Nehemiah 4:15-23",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1563,6 +2044,11 @@
           "id": 4,
           "text": "Application // Nehemiah encouraged the Jews towards both responsible effort and trust in God at the same time, exhibiting both traits himself. Do you tend to use dependence on God to excuse a lack of effort, or neglect to trust God by relying on your efforts alone for success? Confess any specific areas in your life where these may be so, asking for God to help you practice simple but specific routines that can serve as effective habits/reminders.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1572,6 +2058,10 @@
       "passage": " ",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1592,6 +2082,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1601,6 +2096,10 @@
       "passage": "Nehemiah 4:1-23",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1621,6 +2120,11 @@
           "id": 4,
           "text": "Application // Write down your application and prayer",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1630,6 +2134,10 @@
       "passage": "Nehemiah 4:1-23",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1648,6 +2156,11 @@
         },
         {
           "id": 4,
+          "text": "",
+          "type": "textarea"
+        },
+        {
+          "id": 5,
           "text": "",
           "type": "textarea"
         }
@@ -1659,6 +2172,10 @@
       "passage": "",
       "passageText": "",
       "article": "",
+      "questionType": "",
+      "prayer": "",
+      "praytopic": "",
+      "praypoints": "",
       "questions": [
         {
           "id": 1,
@@ -1679,6 +2196,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1688,6 +2210,10 @@
       "passage": "Isaiah 9:1-7",
       "passageText": "1  But there will be no gloom for her who was in anguish. In the former time he brought into contempt the land of Zebulun and the land of Naphtali, but in the latter time he has made glorious the way of the sea, the land beyond the Jordan, Galilee of the nations.\n\n2 The people who walked in darkness\n    have seen a great light;\nthose who dwelt in a land of deep darkness,\n    on them has light shone.\n3 You have multiplied the nation;\n    you have increased its joy;\nthey rejoice before you\n    as with joy at the harvest,\n    as they are glad when they divide the spoil.\n4 For the yoke of his burden,\n    and the staff for his shoulder,\n    the rod of his oppressor,\n    you have broken as on the day of Midian.\n5 For every boot of the tramping warrior in battle tumult\n    and every garment rolled in blood\n    will be burned as fuel for the fire.\n6 For to us a child is born,\n    to us a son is given;\nand the government shall be upon his shoulder,\n    and his name shall be called\nWonderful Counselor, Mighty God,\n    Everlasting Father, Prince of Peace.\n7 Of the increase of his government and of peace\n    there will be no end,\non the throne of David and over his kingdom,\n    to establish it and to uphold it\nwith justice and with righteousness\n    from this time forth and forevermore.\nThe zeal of the Lord of hosts will do this.",
       "article": "",
+      "questionType": "Questions from Passage",
+      "prayer": "",
+      "praytopic": "Gospel Work",
+      "praypoints": "Matthew 24:13-14 \"But the one who endures to the end will be saved. And this gospel of the kingdom will be proclaimed throughout the whole world as a testimony to all nations, and then the end will come.\" \n�  Pray for the gospel witness of the church, especially in places where persecution is strongly experienced.\n�  Pray for God to grant endurance and strength to these believers to shine His light even in the darkest places.",
       "questions": [
         {
           "id": 1,
@@ -1708,6 +2234,11 @@
           "id": 4,
           "text": "Application // Jesus is the ultimate fulfilment of Isaiah�s prophecy. Read John 1:1-5, 9-13. Have you come to believe in Jesus as the true Hope and Light of the world who gives life and enables you to become a child of God? Take time to give thanks to God for giving us the hope that is found in Jesus alone.",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1717,6 +2248,10 @@
       "passage": "Isaiah 64:1-9",
       "passageText": "1 Oh that you would rend the heavens and come down,\n    that the mountains might quake at your presence�\n2 as when fire kindles brushwood\n    and the fire causes water to boil�\nto make your name known to your adversaries,\n    and that the nations might tremble at your presence!\n3 When you did awesome things that we did not look for,\n    you came down, the mountains quaked at your presence.\n4 From of old no one has heard\n    or perceived by the ear,\nno eye has seen a God besides you,\n    who acts for those who wait for him.\n5 You meet him who joyfully works righteousness,\n    those who remember you in your ways.\nBehold, you were angry, and we sinned;\n    in our sins we have been a long time, and shall we be saved?\n6 We have all become like one who is unclean,\n    and all our righteous deeds are like a polluted garment.\nWe all fade like a leaf,\n    and our iniquities, like the wind, take us away.\n7 There is no one who calls upon your name,\n    who rouses himself to take hold of you;\nfor you have hidden your face from us,\n    and have made us melt in the hand of our iniquities.\n\n8 But now, O Lord, you are our Father;\n    we are the clay, and you are our potter;\n    we are all the work of your hand.\n9 Be not so terribly angry, O Lord,\n    and remember not iniquity forever.\n    Behold, please look, we are all your people.",
       "article": "When you did awesome things that we did not look for,\nyou came down, the mountains quaked at your presence.\nFrom of old no one has heard or perceived by the ear, no eye has seen a God besides you, who acts for those who wait for him.\nIsaiah 64:3-4\n\nIn Israel�s history, God�s coming down to Mount Sinai (Exodus 19) marked the presence of God in their midst. With thunder, lightning and a dense cloud, the holy God descended to speak to His people and prepare them for a new life in His presence after their freedom from slavery in Egypt. \nIn this prayer (following the prophecies of the punishment of exile to Assyria in Chap 1-39 and Babylon in Chap 40-55), Isaiah cries out in distress to God who judges sin yet draws near to act for the good of Israel.\nEarlier, Isaiah had prophesied God�s promised action: �the Lord himself will give you a sign: The virgin will conceive and give birth to a son, and will call him Immanuel� (Isaiah 7:14). And we now know that God was preparing to act for those in distress! Doing the most unthinkable thing, He sent Jesus to the cross to give humanity a way out of our sins and reconcile us to Himself.  \n\nAs we begin the season of Advent, a time of reflection on Jesus� promised arrival, both in memory of His incarnation and in anticipation of His return in glory, let us keep our eyes open to see what God is doing, acting in power and love for the good of our world and in our lives.\nLet us hold on to the hope of a God �who acts for those who wait for Him� (v4) and who will come down again to dwell among His people again.",
+      "questionType": "Reflection",
+      "prayer": "",
+      "praytopic": "Myself",
+      "praypoints": "Take time to pray for your own personal needs.\nWalk with God through every aspect of your life � your personal, family, work, school, community, and church aspects of your life. Say, �Speak whatever to me, Lord, I�m listening!�",
       "questions": [
         {
           "id": 1,
@@ -1727,6 +2262,21 @@
           "id": 2,
           "text": "When all around us is devastation and hopelessness, Lord, renew our eyes to see You at work in our different situations today, so that we may continue to hold on to You, our Living Hope. Amen.",
           "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "",
+          "type": "textarea"
+        },
+        {
+          "id": 4,
+          "text": "",
+          "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1736,6 +2286,10 @@
       "passage": "1 Corinthians 1:3-9",
       "passageText": "3 Grace to you and peace from God our Father and the Lord Jesus Christ.\n\n4 I give thanks to my God always for you because of the grace of God that was given you in Christ Jesus, 5 that in every way you were enriched in him in all speech and all knowledge� 6 even as the testimony about Christ was confirmed among you� 7 so that you are not lacking in any gift, as you wait for the revealing of our Lord Jesus Christ, 8 who will sustain you to the end, guiltless in the day of our Lord Jesus Christ. 9 God is faithful, by whom you were called into the fellowship of his Son, Jesus Christ our Lord.",
       "article": "In 2000, a Barna survey showed that 75% agreed that the Bible teaches that �God only helps those who help themselves.� This idea has roots in ancient Greek thought and Algernon Sidney gave it its form in 1698, yet it could not be further from the truth. The Asian culture of distant fathers and virtues of self-reliance and perseverance feed even more into this notion. No wonder many children of God who acknowledge Jesus only as Savior, struggle and fight as much as the rest of the world to fend and provide for themselves, living like spiritual orphans as if the God who calls Himself their Father is not interested in their daily lives. As such, many see a relationship with God as just merely a church routine of ever-growing expectations of prayer, faith and activity without knowing the faithful God. \nYet 1 Corinthians begins with reminding God�s people of the glorious hope they have in Christ where the church has been given all things it needs: Grace of God (v4), riches in God (all speech and knowledge v5), all gifts (v7). On top of all these, as we await Jesus� second Advent, we have a great Savior who will sustain us guiltless to the end (v8). \nOur God, the �Father to the fatherless� (Psalm 68:5) is faithful, not a neglectful parent who only drops in to check our homework. He is a God who helped the �utterly helpless, (for) Christ came at just the right time and died for us sinners (Romans 5:6 NLT).� He sent Jesus when no one was looking (Isaiah 64:3) so we can trust Him for the everyday and trust Jesus to return. This gives us a restedness in life and hope as we await the second advent of Jesus.",
+      "questionType": "Reflection",
+      "prayer": "",
+      "praytopic": "Family",
+      "praypoints": "�  Pray that every member of the family would personally know and trust the Lord, growing in repentance, faith, and obedience to Christ.\n�  Ask God to shape the home into a place where Scripture is honored, prayer is practiced, and Christlike love is demonstrated daily.\n�  Pray that the family would resist worldly influences and instead pursue holiness, faithfulness, and joyful service to God.\n\nLook out for the prayer items this morning on our Telegram Channel (t.me/GPCES)",
       "questions": [
         {
           "id": 1,
@@ -1756,6 +2310,11 @@
           "id": 4,
           "text": "",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1765,6 +2324,10 @@
       "passage": "Luke 1:26-38",
       "passageText": "26 In the sixth month the angel Gabriel was sent from God to a city of Galilee named Nazareth, 27 to a virgin betrothed to a man whose name was Joseph, of the house of David. And the virgin's name was Mary. 28 And he came to her and said, �Greetings, O favored one, the Lord is with you!� 29 But she was greatly troubled at the saying, and tried to discern what sort of greeting this might be. 30 And the angel said to her, �Do not be afraid, Mary, for you have found favor with God. 31 And behold, you will conceive in your womb and bear a son, and you shall call his name Jesus. 32 He will be great and will be called the Son of the Most High. And the Lord God will give to him the throne of his father David, 33 and he will reign over the house of Jacob forever, and of his kingdom there will be no end.�\n\n34 And Mary said to the angel, �How will this be, since I am a virgin?�\n\n35 And the angel answered her, �The Holy Spirit will come upon you, and the power of the Most High will overshadow you; therefore the child to be born will be called holy�the Son of God. 36 And behold, your relative Elizabeth in her old age has also conceived a son, and this is the sixth month with her who was called barren. 37 For nothing will be impossible with God.� 38 And Mary said, �Behold, I am the servant of the Lord; let it be to me according to your word.� And the angel departed from her.",
       "article": "",
+      "questionType": "Questions from Passage",
+      "prayer": "",
+      "praytopic": "Cambodia Mission Trip (28 Nov-5 Dec)",
+      "praypoints": "� For a smooth and fruitful mobile clinic ministry in the prison and villages.\n� For open doors to conduct the clinics and minister to the inmates, while our partner NGO has opportunities to share the Gospel with them.\n� For God's wisdom upon the team, good relationships with the authorities, and favour in every step, so that both the medical and Gospel ministries can be carried out effectively for His glory.\n� Pray for safety for the team as they travel on the road",
       "questions": [
         {
           "id": 1,
@@ -1785,6 +2348,11 @@
           "id": 4,
           "text": "Application // Jesus� birth marked the beginning of the ultimate fulfilment of Isaiah�s prophecy, while His glorious return as King will complete it. How can the certainty of Jesus� return give you a steadfast hope amidst the challenges you experience in life and all that is wrong in the world?",
           "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },
@@ -1794,25 +2362,34 @@
       "passage": " ",
       "passageText": "",
       "article": "",
+      "questionType": "Weekly Review",
+      "prayer": "",
+      "praytopic": "the World",
+      "praypoints": "�  Pray for countries and regions experiencing strife\n�  For God to protect the innocent and help to reach them\n�  For peace to be established, and justice to prevail",
       "questions": [
         {
           "id": 1,
-          "text": "",
+          "text": "What were some high points in this week? When did I experience joy and life?",
           "type": "textarea"
         },
         {
           "id": 2,
-          "text": "",
+          "text": "What were some low points in this week? When did I feel sad, resentment, anger, frustration?",
           "type": "textarea"
         },
         {
           "id": 3,
-          "text": "",
+          "text": "How did I see God work in my life this week? How did God answer prayer?",
           "type": "textarea"
         },
         {
           "id": 4,
-          "text": "",
+          "text": "What is one thing that God said to me about the happenings of my week? ",
+          "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "What is one thing that you can ask God in response to what He is saying to you? Commit this to God in prayer.",
           "type": "textarea"
         }
       ]
@@ -1822,16 +2399,20 @@
       "title": "",
       "passage": "Isaiah 9:1-7; Luke 1:26-38",
       "passageText": "Isaiah 9:1 But there will be no gloom for her who was in anguish. In the former time he brought into contempt the land of Zebulun and the land of Naphtali, but in the latter time he has made glorious the way of the sea, the land beyond the Jordan, Galilee of the nations.\n\n2 The people who walked in darkness\n    have seen a great light;\nthose who dwelt in a land of deep darkness,\n    on them has light shone.\n3 You have multiplied the nation;\n    you have increased its joy;\nthey rejoice before you\n    as with joy at the harvest,\n    as they are glad when they divide the spoil.\n4 For the yoke of his burden,\n    and the staff for his shoulder,\n    the rod of his oppressor,\n    you have broken as on the day of Midian.\n5 For every boot of the tramping warrior in battle tumult\n    and every garment rolled in blood\n    will be burned as fuel for the fire.\n6 For to us a child is born,\n    to us a son is given;\nand the government shall be upon his shoulder,\n    and his name shall be called\nWonderful Counselor, Mighty God,\n    Everlasting Father, Prince of Peace.\n7 Of the increase of his government and of peace\n    there will be no end,\non the throne of David and over his kingdom,\n    to establish it and to uphold it\nwith justice and with righteousness\n    from this time forth and forevermore.\nThe zeal of the Lord of hosts will do this.\n\nLuke 1:26 In the sixth month the angel Gabriel was sent from God to a city of Galilee named Nazareth, 27 to a virgin betrothed to a man whose name was Joseph, of the house of David. And the virgin's name was Mary. 28 And he came to her and said, �Greetings, O favored one, the Lord is with you!� 29 But she was greatly troubled at the saying, and tried to discern what sort of greeting this might be. 30 And the angel said to her, �Do not be afraid, Mary, for you have found favor with God. 31 And behold, you will conceive in your womb and bear a son, and you shall call his name Jesus. 32 He will be great and will be called the Son of the Most High. And the Lord God will give to him the throne of his father David, 33 and he will reign over the house of Jacob forever, and of his kingdom there will be no end.�\n\n34 And Mary said to the angel, �How will this be, since I am a virgin?�\n\n35 And the angel answered her, �The Holy Spirit will come upon you, and the power of the Most High will overshadow you; therefore the child to be born will be called holy�the Son of God. 36 And behold, your relative Elizabeth in her old age has also conceived a son, and this is the sixth month with her who was called barren. 37 For nothing will be impossible with God.� 38 And Mary said, �Behold, I am the servant of the Lord; let it be to me according to your word.� And the angel departed from her.",
-      "article": "",
+      "article": "An Advent Prayer (prayerist.com)\nDear God,\nIn this Advent of expectation draw us together in unity,\nthat our praise and worship might echo in these walls and also through our lives.\nIn this Advent of expectation draw us together in mission,\nthat the hope within might be the song we sing, and the melody of our lives.\nIn this Advent of expectation draw us together in service,\nthat the path we follow might lead us from a stable to a glimpse of eternity.\nAmen.",
+      "questionType": "Sermon Notes and Application",
+      "prayer": "",
+      "praytopic": "Church Family",
+      "praypoints": "\"As iron sharpens iron, so one person sharpens another.� � Proverbs 27:17\n�  Pray that church members will help each other grow in faith and challenge one another to live for Jesus, just as iron sharpens iron.\n�  Pray that through fellowship and teaching, everyone will grow stronger in their discipleship, supporting one another in love and obedience.\n�  Pray that the church family will stand together in guidance, prayer, and encouragement, helping each other through challenges and keeping each other focused on Christ.",
       "questions": [
         {
           "id": 1,
-          "text": "",
+          "text": "You can take notes here as you listen to the sermon/ read the text on your own",
           "type": "textarea"
         },
         {
           "id": 2,
-          "text": "",
+          "text": "Write down an application point or prayer to God.",
           "type": "textarea"
         },
         {
@@ -1841,6 +2422,11 @@
         },
         {
           "id": 4,
+          "text": "",
+          "type": "textarea"
+        },
+        {
+          "id": 5,
           "text": "",
           "type": "textarea"
         }
@@ -1852,6 +2438,10 @@
       "passage": "Isaiah 9:1-7",
       "passageText": "1  But there will be no gloom for her who was in anguish. In the former time he brought into contempt the land of Zebulun and the land of Naphtali, but in the latter time he has made glorious the way of the sea, the land beyond the Jordan, Galilee of the nations.\n\n2 The people who walked in darkness\n    have seen a great light;\nthose who dwelt in a land of deep darkness,\n    on them has light shone.\n3 You have multiplied the nation;\n    you have increased its joy;\nthey rejoice before you\n    as with joy at the harvest,\n    as they are glad when they divide the spoil.\n4 For the yoke of his burden,\n    and the staff for his shoulder,\n    the rod of his oppressor,\n    you have broken as on the day of Midian.\n5 For every boot of the tramping warrior in battle tumult\n    and every garment rolled in blood\n    will be burned as fuel for the fire.\n6 For to us a child is born,\n    to us a son is given;\nand the government shall be upon his shoulder,\n    and his name shall be called\nWonderful Counselor, Mighty God,\n    Everlasting Father, Prince of Peace.\n7 Of the increase of his government and of peace\n    there will be no end,\non the throne of David and over his kingdom,\n    to establish it and to uphold it\nwith justice and with righteousness\n    from this time forth and forevermore.\nThe zeal of the Lord of hosts will do this.",
       "article": "Unlike most people I know, who prefer to sleep in complete darkness and would even go as far as using an eye mask to block out every bit of light, I've always felt more comfortable with a small light left on. Even a faint night light in the corner brings a quiet sense of peace and safety.\n\nI wonder if you've ever felt that way, not just at night, but in life itself?  There are seasons when a shadow or darkness hangs over everything: worry about job security and the rising cost of living, pressure to keep up with work, studies, and family expectations, strained relationships, or burdens we carry in silence.  It can feel like being in a long, dark tunnel, with no light in sight, wondering when we'll finally come out the other side.\n\nThat is exactly where God�s people stood when the prophet spoke these words in Isaiah 9:1�7. They lived in deep darkness � oppressed, afraid, and longing for hope. In the middle of the darkness, God gave a promise that brought hope:\n\n\"The people walking in darkness have seen a great light;\non those living in the land of deep darkness\na light has dawned.\" (Isaiah 9:2)\n\nThis wasn�t a promise about a lamp beside a bed. It was the promise of Jesus � the Great Light who was coming to shine in our deepest shadows.  Isaiah tells us exactly who this Child is:\n\nThe Wonderful Counsellor who understands us completely.\nThe Mighty God who possesses the power to save and deliver us.\nThe Everlasting Father who loves and cares for us always.\nThe Prince of Peace who brings wholeness that the world cannot give. \n\nHe came not only to show us the way, but to be the Way. He came to break the power of sin and fear, bring hope into our darkness, and establish a kingdom of peace that will never end.\n\nWhatever darkness you may be facing today, remember this: the Light has already come. No darkness is too deep for Jesus. Whether you are struggling with fear, sadness, confusion, or sin, His light is greater than all of it. You do not need to fix your life before coming to Him. Come as you are and let His light shine into your situation.\n\nBut Jesus did not come only to shine His light on us. He calls us to walk in that light. Just as the people in Isaiah's day were invited to follow God's ways, we too are called to turn away from sin and follow Jesus each day through prayer, reading His Word, and obeying Him.\n\nWe will still face challenges, but we do not walk alone. Jesus goes before us, guides us, and strengthens us. As we keep our eyes on Him, His light will lead us through the darkness and fill our hearts with hope, peace, and joy.",
+      "questionType": "Reflection",
+      "prayer": "",
+      "praytopic": "Reaching Out",
+      "praypoints": "1 Peter 4:10 \"As each has received a gift, use it to serve one another, as good stewards of God's varied grace.\"\n�  Pray that you would faithfully use your spiritual gifts to serve others for God�s glory.\n�  Ask God to give a generous and hospitable heart toward those who need encouragement or support.\n�  Pray that your service would strengthen others and point them toward Christ.",
       "questions": [
         {
           "id": 1,
@@ -1871,6 +2461,11 @@
         {
           "id": 4,
           "text": "Who in my life is still walking in darkness and needs to hear about this Great Light? How can I reflect His light to them this week?",
+          "type": "textarea"
+        },
+        {
+          "id": 5,
+          "text": "",
           "type": "textarea"
         }
       ]

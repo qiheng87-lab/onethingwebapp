@@ -955,6 +955,73 @@ article p:first-child {
 }
 
 /* ============================================
+   PRAYER SECTION
+   ============================================ */
+.prayer-section {
+  background: var(--light-bg);
+  border-left: 4px solid #764ba2;        /* purple accent from page header */
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.5rem;
+}
+.prayer-section h3 {
+  color: var(--secondary-color);
+  font-size: calc(var(--app-font-scale) * 1.1);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+.prayer-text {
+  font-style: italic;
+  color: #555;
+  line-height: 1.7;
+  font-size: calc(var(--app-font-scale) * 1);
+  white-space: pre-line; /* treats \n as line breaks */
+  word-break: break-word;
+  margin: 0;
+}
+/* ============================================
+   PRAYER POINTS BOX (topic + points together)
+   ============================================ */
+.pray-box {
+  background: #f5f8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--primary-color);
+}
+.pray-box h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-size: calc(var(--app-font-scale) * 1.1);
+  font-weight: 700;
+  word-break: break-word;
+}
+.pray-box ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+.pray-box li {
+  margin-bottom: 0.5rem;
+}
+.pray-box p {
+  color: var(--text-light);
+  line-height: 1.7;
+  font-size: calc(var(--app-font-scale) * 1);
+  word-break: break-word;
+}
+/* ============================================
+   RESPONSIVE TWEAKS FOR PRAYER BLOCKS
+   ============================================ */
+@media (max-width: 480px) {
+  .prayer-section,
+  .pray-box {
+    padding: 0.875rem;
+  }
+}
+
+/* ============================================
    BUTTON GROUPS
    ============================================ */
 

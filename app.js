@@ -415,6 +415,7 @@ function displayDevotion() {
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
+  document.getElementById('questionsTitle').textContent = devotion.questionType;
   
   // Convert \n\n to <p> tags
   const paragraphs = devotion.article
@@ -454,6 +455,38 @@ function displayDevotion() {
       localStorage.setItem(`devotion_${dateStr}_q${questionId}`, textarea.value);
     });
   });
+
+  // ⭐ PRAYER — separate styled section (italics) ⭐
+  if (devotion.prayer) {
+    const prayerSec = document.createElement('div');
+    prayerSec.className = 'prayer-section';
+    prayerSec.innerHTML = `
+      <h3>Prayer</h3>
+      <p class="prayer-text">${devotion.prayer}</p>
+    `;
+    questionsContainer.appendChild(prayerSec);
+  }
+  // ⭐ PRAY TOPIC + PRAY POINTS — together in one box ⭐
+  if (devotion.praytopic || devotion.praypoints) {
+    const prayBox = document.createElement('div');
+    prayBox.className = 'pray-box';
+    let boxHtml = '';
+    if (devotion.praytopic) {
+      boxHtml += `<h3>${devotion.praytopic}</h3>`;
+    }
+    if (devotion.praypoints) {
+      if (Array.isArray(devotion.praypoints)) {
+        const items = devotion.praypoints.map(pt => `<li>${pt}</li>`).join('');
+        boxHtml += `<ul class="pray-list">${items}</ul>`;
+      } else {
+        boxHtml += `<p class="pray-text">${devotion.praypoints}</p>`;
+      }
+    }
+    prayBox.innerHTML = boxHtml;
+    questionsContainer.appendChild(prayBox);
+  }
+  // ⭐ END PRAYER BLOCK ⭐
+
   // ⭐ UPDATE FINISHED BUTTON STATE ⭐
   updateFinishedButtonState(dateStr);
   renderStreakUI();
