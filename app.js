@@ -650,14 +650,14 @@ function renderCalendar() {
     }
 
     // Add click handler only if devotional exists
-    if (hasDevotional) {
+   /* if (hasDevotional) {
       dayElement.classList.add('clickable');
       dayElement.addEventListener('click', () => {
         currentDate = new Date(year, month, day);
         displayDevotion();
         renderCalendar();
       });
-    }
+    } */
 
     calendarDays.appendChild(dayElement);
   }
