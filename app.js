@@ -426,8 +426,17 @@ function displayDevotion() {
   document.getElementById('article').innerHTML = paragraphs;
   // Render questions
   const questionsContainer = document.getElementById('questionsContainer');
+
+  // DIAGNOSTIC LOGS
+console.log('Data questions count:', devotion.questions.length);
+console.log('DOM children BEFORE clear:', questionsContainer ? questionsContainer.children.length : 'null');
+
   questionsContainer.innerHTML = '';
-  devotion.questions.forEach((question) => {
+
+console.log('DOM children AFTER clear:', questionsContainer ? questionsContainer.children.length : 'null');
+
+  devotion.questions.forEach((question, i) => {
+    console.log('Rendering question', i, '- id:', question.id);
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.innerHTML = `
@@ -605,7 +614,7 @@ function updateNavigationButtons() {
 // CALENDAR FUNCTIONS
 // ============================================
 
-function renderCalendar() {
+/* function renderCalendar() {
   const year = calendarDate.getFullYear();
   const month = calendarDate.getMonth();
 
@@ -661,7 +670,7 @@ function renderCalendar() {
 
     calendarDays.appendChild(dayElement);
   }
-}
+} */
 
 function toggleCalendar() {
   calendarOpen = !calendarOpen;
