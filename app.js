@@ -415,7 +415,7 @@ function displayDevotion() {
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
-  //document.getElementById('questionsTitle').textContent = devotion.questionType;
+  document.getElementById('questionsTitle').textContent = devotion.questionType;
   
   // Convert \n\n to <p> tags
   const paragraphs = devotion.article
@@ -475,15 +475,11 @@ function displayDevotion() {
       boxHtml += `<h3>${devotion.praytopic}</h3>`;
     }
     if (devotion.praypoints) {
-      if (Array.isArray(devotion.praypoints)) {
-        const items = devotion.praypoints.map(pt => `<li>${pt}</li>`).join('');
-        boxHtml += `<ul class="pray-list">${items}</ul>`;
-      } else {
         boxHtml += `<p class="pray-text">${devotion.praypoints}</p>`;
-      }
+      
     }
     prayBox.innerHTML = boxHtml;
-    questionsContainer.appendChild(prayBox);
+   // questionsContainer.appendChild(prayBox);
   }
   // ⭐ END PRAYER BLOCK ⭐
 
