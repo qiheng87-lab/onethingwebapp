@@ -869,6 +869,9 @@ main.devotional-content {
 /* ============================================
    ARTICLE
    ============================================ */
+#title:empty {
+  display: none;
+}
 
 article {
   line-height: 1.7;
