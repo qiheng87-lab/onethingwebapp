@@ -872,7 +872,7 @@ main.devotional-content {
 
 article {
   line-height: 1.7;
-  color: var(--text-light);
+  color: var(--text-color);
   margin-bottom: 1.5rem;
   font-size: calc(var(--app-font-scale) * 1);
   white-space: pre-wrap;
