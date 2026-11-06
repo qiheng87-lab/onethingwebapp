@@ -394,6 +394,8 @@ function displayDevotion() {
   document.getElementById('passageText').textContent = '';
   document.getElementById('article').innerHTML = '';
   document.getElementById('questionsContainer').innerHTML = '';
+  const prayBoxContainer = document.getElementById('prayBoxContainer');
+  if (prayBoxContainer) prayBoxContainer.innerHTML = '';
   if (!devotion) {
     document.getElementById('title').textContent = 'No Devotional';
     document.getElementById('article').innerHTML = `
@@ -467,7 +469,7 @@ function displayDevotion() {
     questionsContainer.appendChild(prayerSec);
   }
   // ⭐ PRAY TOPIC + PRAY POINTS — together in one box ⭐
-  if (devotion.praytopic || devotion.praypoints) {
+   if ((devotion.praytopic || devotion.praypoints) && prayBoxContainer) {
     const prayBox = document.createElement('div');
     prayBox.className = 'pray-box';
     let boxHtml = '';
@@ -479,7 +481,7 @@ function displayDevotion() {
       
     }
     prayBox.innerHTML = boxHtml;
-   // questionsContainer.appendChild(prayBox);
+    prayBoxContainer.appendChild(prayBox);   
   }
   // ⭐ END PRAYER BLOCK ⭐
 
