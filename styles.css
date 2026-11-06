@@ -1012,9 +1012,11 @@ article p:first-child {
   word-break: break-word;
 }
 
-.pray-text {
-  white-space: pre-line;   /* treats \n as line breaks */
+.pray-box .pray-text {
+  line-height: 1.8;
+  white-space: pre-line;
 }
+
 /* ============================================
    RESPONSIVE TWEAKS FOR PRAYER BLOCKS
    ============================================ */
