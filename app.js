@@ -415,7 +415,7 @@ function displayDevotion() {
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
-  document.getElementById('questionsTitle').textContent = devotion.questionType;
+  //document.getElementById('questionsTitle').textContent = devotion.questionType;
   
   // Convert \n\n to <p> tags
   const paragraphs = devotion.article
