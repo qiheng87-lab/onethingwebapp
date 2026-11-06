@@ -160,6 +160,11 @@
           "id": 2,
           "text": "Write down an application point or prayer to God.",
           "type": "textarea"
+        },
+        {
+          "id": 3,
+          "text": "",
+          "type": "textarea"
         }
       ]
     },

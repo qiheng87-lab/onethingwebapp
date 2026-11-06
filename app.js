@@ -433,6 +433,9 @@ function displayDevotion() {
   questionsContainer.innerHTML = '';
 
   devotion.questions.forEach((question) => {
+    // Skip blank questions entirely
+    if (!question.text || !question.text.trim()) return;
+    
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.innerHTML = `
