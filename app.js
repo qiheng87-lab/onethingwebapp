@@ -616,7 +616,8 @@ function refreshBookmarkToggle(date, title = '') {
   btn.dataset.date = date;
   btn.dataset.title = title;
   const on = isBookmarked(date);
-  btn.textContent = on ? '★ Bookmarked' : '☆ Bookmark';
+  const label = btn.querySelector('.bookmark-label');
+  if (label) label.textContent = on ? 'Bookmarked' : 'Bookmark';
   btn.setAttribute('aria-pressed', String(on));
 }
 
@@ -624,7 +625,7 @@ function refreshBookmarkToggle(date, title = '') {
 function openDevotional(date) {
   if (!devotionalData.some(d => d.date === date)) return;
   currentDate = new Date(date + 'T00:00:00'); // adjust if your currentDate is not a Date object
-  document.querySelector('.menu-btn[data-section="today"]')?.click();
+  document.querySelector('.menu-btn[data-section="daily-devotional"]')?.click();
   displayDevotion();
 }
 
@@ -650,7 +651,7 @@ function renderBookmarksList() {
 
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
-    removeBtn.textContent = 'Remove';
+    removeBtn.textContent = 'Remove Bookmark';
     removeBtn.addEventListener('click', () => toggleBookmark(date));
 
     li.append(link, removeBtn);

@@ -837,10 +837,26 @@ main.devotional-content {
     font-size: var(--app-font-scale);
 }
 
-.bookmark-btn { cursor: pointer; padding: 6px 12px; border-radius: 6px; border: 1px solid currentColor; background: none; }
-.bookmark-btn[aria-pressed="true"] { font-weight: 600; }
-.bookmarks-list { list-style: none; padding: 0; }
-.bookmarks-list li { display: flex; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+.bookmark-row {
+  display: flex;
+  justify-content: flex-end;   /* pushes the button to the right */
+}
+
+.bookmark-btn {
+  display: inline-flex;        /* icon and text side by side */
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: #777;
+  font-size: 0.95rem;
+}
+.bookmark-btn:hover,
+.bookmark-btn[aria-pressed="true"] { color: #333; }
+.bookmark-btn[aria-pressed="true"] .ribbon { fill: currentColor; }
+.bookmark-btn:focus-visible { outline: 2px solid #333; outline-offset: 2px; }
 
 
 /* ============================================
