@@ -74,7 +74,9 @@ function initializeMenuBar() {
 }
 
 initializeMenuBar();
-
+document.querySelectorAll('.menu-btn[data-section="bookmarks"]').forEach(btn => {
+  btn.addEventListener('click', renderBookmarksList);
+});
 // ============================================
 // LOAD STATIC CONTENT (Sermon Series, Why Spend Time, Connect with GPC)
 // ============================================
@@ -405,7 +407,8 @@ function displayDevotion() {
         Use the calendar or arrow buttons to navigate to a different date.
       </p>
     `;
-    
+    Bookmarks.refreshBookmarkToggle(null); // hide bookmark button
+
     showError('No devotional available for this date.');
     updateDateDisplay();
     closeCalendar();
@@ -414,6 +417,7 @@ function displayDevotion() {
   }
   hideError();
   // Display devotional content
+  Bookmarks.refreshBookmarkToggle(devotion.date, devotion.title || devotion.passage);
   document.getElementById('title').textContent = devotion.title;
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
@@ -435,7 +439,7 @@ function displayDevotion() {
   devotion.questions.forEach((question) => {
     // Skip blank questions entirely
     if (!question.text || !question.text.trim()) return;
-    
+
     const questionDiv = document.createElement('div');
     questionDiv.className = 'question';
     questionDiv.innerHTML = `
@@ -562,6 +566,119 @@ function renderCalendar() {
   }
 }
 
+/* ==========================================
+   BOOKMARKS
+   ========================================== */
+const BOOKMARKS_KEY = 'bookmark_dates'; // not "devotion_" so streak logic ignores it
+
+function getBookmarks() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveBookmarks(list) {
+  localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(list));
+  window.dispatchEvent(new CustomEvent('bookmarks-changed'));
+}
+
+function isBookmarked(date) {
+  return getBookmarks().some(b => b.date === date);
+}
+
+function toggleBookmark(date, title = '') {
+  let list = getBookmarks();
+  if (list.some(b => b.date === date)) {
+    list = list.filter(b => b.date !== date);
+  } else {
+    list.push({ date, title, savedAt: new Date().toISOString() });
+    list.sort((a, b) => b.date.localeCompare(a.date)); // newest first
+  }
+  saveBookmarks(list);
+  return isBookmarked(date);
+}
+
+function formatBookmarkDate(date) {
+  return new Date(date + 'T00:00:00').toLocaleDateString(undefined, {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+  });
+}
+
+/* Call this whenever a devotional for `date` is rendered */
+function refreshBookmarkToggle(date, title = '') {
+  const btn = document.getElementById('bookmark-toggle');
+  if (!btn) return;
+  if (!date) { btn.hidden = true; return; }
+  btn.hidden = false;
+  btn.dataset.date = date;
+  btn.dataset.title = title;
+  const on = isBookmarked(date);
+  btn.textContent = on ? '★ Bookmarked' : '☆ Bookmark';
+  btn.setAttribute('aria-pressed', String(on));
+}
+
+/* Hook into your existing devotional loader */
+function openDevotional(date) {
+  if (!devotionalData.some(d => d.date === date)) return;
+  currentDate = new Date(date + 'T00:00:00'); // adjust if your currentDate is not a Date object
+  document.querySelector('.menu-btn[data-section="today"]')?.click();
+  displayDevotion();
+}
+
+function renderBookmarksList() {
+  const ul = document.getElementById('bookmarks-list');
+  const empty = document.getElementById('bookmarks-empty');
+  if (!ul) return;
+
+  const list = getBookmarks();
+  ul.textContent = '';
+  if (empty) empty.hidden = list.length > 0;
+
+  list.forEach(({ date, title }) => {
+    const li = document.createElement('li');
+
+    const link = document.createElement('a');
+    link.href = '#';
+    link.textContent = formatBookmarkDate(date) + (title ? ' — ' + title : '');
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openDevotional(date);
+    });
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', () => toggleBookmark(date));
+
+    li.append(link, removeBtn);
+    ul.appendChild(li);
+  });
+}
+
+/* Toggle button click (event delegation, works even if the button is re-rendered) */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('#bookmark-toggle');
+  if (!btn || !btn.dataset.date) return;
+  toggleBookmark(btn.dataset.date, btn.dataset.title || '');
+  refreshBookmarkToggle(btn.dataset.date, btn.dataset.title || '');
+});
+
+/* Keep UI in sync with storage changes (including restores from Drive) */
+window.addEventListener('bookmarks-changed', () => {
+  renderBookmarksList();
+  const btn = document.getElementById('bookmark-toggle');
+  if (btn && btn.dataset.date) {
+    refreshBookmarkToggle(btn.dataset.date, btn.dataset.title || '');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', renderBookmarksList);
+
+/* Public API for the rest of app.js */
+window.Bookmarks = { getBookmarks, isBookmarked, toggleBookmark, refreshBookmarkToggle };
 
 // ============================================
 // NAVIGATION FUNCTIONS

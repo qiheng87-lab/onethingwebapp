@@ -29,7 +29,7 @@
 
 <!-- Use below for web testing 
  <link rel="stylesheet" href="/onethingwebapp/styles.css?v=2.2.01"> -->    
-<link rel="stylesheet" href="./styles.css?v=3.3.02">  
+<link rel="stylesheet" href="./styles.css?v=4.0.01">  
 
 <!-- Script to dismiss landing page for subsequent loads on the same day-->
 <script>
@@ -74,6 +74,9 @@
        <nav class="menu-bar" id="menuBar">
            <button class="menu-btn active" data-section="daily-devotional">
                Today's Devotional
+           </button>
+           <button class="menu-btn" data-section="bookmarks">
+               Bookmarks
            </button>
            <button class="menu-btn" data-section="sermon-series">
                Current Sermon Series Intro
@@ -146,6 +149,8 @@
         </div>
         <!-- Main Content -->
         <main class="devotional-content">
+            <!-- Bookmark Button -->
+            <button id="bookmark-toggle" class="bookmark-btn" aria-pressed="false" hidden>☆ Bookmark</button>
             <!-- Title -->
             <!-- <h2 id="title"></h2> -->
             <!-- Passage Section -->
@@ -183,7 +188,15 @@
                 </div>
         </main>
         </section>
-    <!-- ⭐ SERMON SERIES SECTION ⭐ -->
+    <!-- ⭐ BOOKMARKS SECTION ⭐ -->
+       <section id="bookmarks" class="section">
+           <div class="content-section">
+               <h2>Saved Bookmarks</h2>
+               <ul id="bookmarks-list" class="bookmarks-list"></ul>
+               <p id="bookmarks-empty" hidden>No bookmarks yet. Tap "Bookmark" on any devotional to save it here.</p>
+        </section>
+    
+        <!-- ⭐ SERMON SERIES SECTION ⭐ -->
        <section id="sermon-series" class="section">
            <div class="content-section">
                <h2>Current Sermon Series Introduction</h2>
@@ -209,7 +222,7 @@
     <!-- Use below for web testing
      <script src="/onethingwebapp/app.js?v=2.2.01" defer></script> -->
   
-    <script src="/onethingwebapp/app.js?v=3.3.02" defer></script>
+    <script src="/onethingwebapp/app.js?v=4.0.01" defer></script>
     <script type="module" src="/onethingwebapp/sync-widget.js"></script>
 </body>
 </html>
