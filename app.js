@@ -649,12 +649,7 @@ function renderBookmarksList() {
       openDevotional(date);
     });
 
-    const removeBtn = document.createElement('button');
-    removeBtn.type = 'button';
-    removeBtn.textContent = 'Remove Bookmark';
-    removeBtn.addEventListener('click', () => toggleBookmark(date));
-
-    li.append(link, removeBtn);
+    li.append(link);
     ul.appendChild(li);
   });
 }
