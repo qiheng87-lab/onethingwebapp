@@ -718,13 +718,6 @@ header h1 {
     font-weight: 700;
     box-shadow: 0 0 0 2px var(--primary-color);
 }
-
-/* Show checkmark even on selected completed days */
-.calendar-day.selected.completed::after {
-    content: ' ✓';
-    font-weight: bold;
-    margin-left: 2px;
-}
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
