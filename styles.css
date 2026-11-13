@@ -724,9 +724,6 @@ header h1 {
         padding: 0.5rem;
         font-size: 0.8rem;
     }
-    .calendar-day.completed::after {
-        content: '✓';
-    }
 }
 
 /* ============================================

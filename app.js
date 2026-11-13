@@ -538,16 +538,18 @@ function renderCalendar() {
     }
     // ⭐ APPLY CLASSES IN PRIORITY ORDER ⭐
     
-    // 1. Completed (green)
-    if (isCompleted && hasDevotional) {
-      dayElement.classList.add('completed');
-      dayElement.style.color = 'white';
-    }
-    // 2. Today (blue)
+    // 1. Today (blue)
     if (isToday) {
       dayElement.classList.add('today');
       dayElement.style.color = 'white';
     }
+
+      // 2. Completed (green)
+    if (isCompleted && hasDevotional) {
+      dayElement.classList.add('completed');
+      dayElement.style.color = 'white';
+    }
+    
     // 3. Selected (orange) - HIGHEST PRIORITY BY VIRTUE OF BEING DECLARED LAST
     if (isSelected) {
       dayElement.classList.add('selected');
