@@ -690,22 +690,17 @@ header h1 {
     color: var(--text-light);
     background-color: var(--bg-secondary);
 }
-.calendar-day.has-devotion:hover:not(.selected):not(.completed) {
-    background-color: rgba(102, 126, 234, 0.1);
-}
+
 /* ⭐ COMPLETED - GREEN WITH CHECKMARK (BASE STYLE) ⭐ */
 .calendar-day.completed {
-    background-color: #34a853;
+    background-color: #125f42;
     color: white;
     font-weight: 600;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
-.calendar-day.completed:hover:not(.selected) {
-    background-color: #2d8659;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-}
+
 .calendar-day.completed::after {
-    content: ' ✓';
+    content: '';
     font-weight: bold;
     margin-left: 2px;
 }
@@ -715,9 +710,7 @@ header h1 {
     color: white;
     font-weight: 700;
 }
-.calendar-day.today:hover:not(.selected) {
-    background-color: #5568d3;
-}
+
 /* ⭐ SELECTED - ORANGE (OVERRIDES EVERYTHING) ⭐ */
 .calendar-day.selected {
     background-color: #ff9800;
@@ -725,10 +718,7 @@ header h1 {
     font-weight: 700;
     box-shadow: 0 0 0 2px var(--primary-color);
 }
-.calendar-day.selected:hover {
-    background-color: #f57c00;
-    box-shadow: 0 0 0 2px var(--primary-color);
-}
+
 /* Show checkmark even on selected completed days */
 .calendar-day.selected.completed::after {
     content: ' ✓';
