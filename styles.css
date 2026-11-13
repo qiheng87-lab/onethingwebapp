@@ -643,23 +643,6 @@ header h1 {
   gap: 0.35rem;
 }
 
-/* .calendar-day {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem;
-  border: 2px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  background: white;
-  -webkit-user-select: none;
-  user-select: none;
-  min-height: 40px;
-} */
-
 /* ============================================
    CALENDAR DAY STYLES
    ============================================ */
@@ -713,10 +696,10 @@ header h1 {
 
 /* ⭐ SELECTED - ORANGE (OVERRIDES EVERYTHING) ⭐ */
 .calendar-day.selected {
-    background-color: #ff9800;
-    color: white;
+    /* background-color: #ff9800; */
+    /* color: white; */
     font-weight: 700;
-    box-shadow: 0 0 0 2px var(--primary-color);
+    box-shadow: 0 0 0 2px var(--secondary-color);
 }
 /* ============================================
    RESPONSIVE DESIGN
