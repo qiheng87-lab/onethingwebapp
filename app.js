@@ -544,7 +544,7 @@ function renderCalendar() {
       dayElement.style.color = 'white';
     }
 
-      // 2. Completed (green)
+    // 2. Completed (green)
     if (isCompleted && hasDevotional) {
       dayElement.classList.add('completed');
       dayElement.style.color = 'white';

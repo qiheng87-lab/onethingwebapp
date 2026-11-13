@@ -674,7 +674,21 @@ header h1 {
     background-color: var(--bg-secondary);
 }
 
-/* ⭐ COMPLETED - GREEN WITH CHECKMARK (BASE STYLE) ⭐ */
+/* SELECTED - BORDER */
+.calendar-day.selected {
+    /* background-color: #ff9800; */
+    /* color: white; */
+    font-weight: 600;
+    box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+/* TODAY - BLUE HIGHLIGHT */
+.calendar-day.today {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+
+/* COMPLETED - GREEN  */
 .calendar-day.completed {
     background-color: #125f42;
     color: white;
@@ -687,20 +701,10 @@ header h1 {
     font-weight: bold;
     margin-left: 2px;
 }
-/* TODAY - BLUE HIGHLIGHT */
-.calendar-day.today {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: 700;
+
 }
 
-/* ⭐ SELECTED - ORANGE (OVERRIDES EVERYTHING) ⭐ */
-.calendar-day.selected {
-    /* background-color: #ff9800; */
-    /* color: white; */
-    font-weight: 700;
-    box-shadow: 0 0 0 2px var(--secondary-color);
-}
+
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
