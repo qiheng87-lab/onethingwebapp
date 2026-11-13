@@ -751,66 +751,8 @@ function updateNavigationButtons() {
 }
 
 // ============================================
-// CALENDAR FUNCTIONS
+// CALENDAR TOGGLE
 // ============================================
-
-/* function renderCalendar() {
-  const year = calendarDate.getFullYear();
-  const month = calendarDate.getMonth();
-
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'];
-  monthYear.textContent = `${monthNames[month]} ${year}`;
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  calendarDays.innerHTML = '';
-
-  // Empty cells for days before month starts
-  for (let i = 0; i < firstDay; i++) {
-    const emptyDay = document.createElement('div');
-    emptyDay.className = 'calendar-day empty';
-    calendarDays.appendChild(emptyDay);
-  }
-
-  // Days of month
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dayDate = new Date(year, month, day);
-    const dayStr = formatDate(dayDate);
-    const dayElement = document.createElement('div');
-    dayElement.className = 'calendar-day';
-    dayElement.textContent = day;
-
-    const hasDevotional = devotionalData.some(d => d.date === dayStr);
-    const today = new Date();
-    const isToday = formatDate(today) === dayStr;
-    const isSelected = formatDate(currentDate) === dayStr;
-
-    // Add classes
-    if (isToday) {
-      dayElement.classList.add('today');
-    } else if (isSelected) {
-      dayElement.classList.add('selected');
-    } else if (hasDevotional) {
-      dayElement.classList.add('has-devotion');
-    } else {
-      dayElement.classList.add('no-devotion');
-    }
-
-    // Add click handler only if devotional exists
-   if (hasDevotional) {
-      dayElement.classList.add('clickable');
-      dayElement.addEventListener('click', () => {
-        currentDate = new Date(year, month, day);
-        displayDevotion();
-        renderCalendar();
-      });
-    } 
-
-    calendarDays.appendChild(dayElement);
-  }
-} */
 
 function toggleCalendar() {
   calendarOpen = !calendarOpen;
@@ -905,10 +847,5 @@ finishedBtn.addEventListener('click', () => {
  // Date navigation
   prevBtn.addEventListener('click', previousDay);
   nextBtn.addEventListener('click', nextDay);
- 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') previousDay();
-    if (e.key === 'ArrowRight') nextDay();
-  });
+
 });
