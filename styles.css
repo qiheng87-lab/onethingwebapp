@@ -687,7 +687,7 @@ header h1 {
     background-color: var(--primary-color);
     color: white;
     font-weight: 700;
-
+}
 /* COMPLETED - GREEN  */
 .calendar-day.completed {
     background-color: #125f42;
@@ -702,7 +702,6 @@ header h1 {
     margin-left: 2px;
 }
 
-}
 
 
 /* ============================================
