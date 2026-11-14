@@ -186,7 +186,6 @@ async function loadDevotionals() {
   try {
     // Add timestamp to force fresh fetch
     const timestamp = new Date().getTime();
-    // replace with '/onethingwebapp/devotionals.json' for web testing
     const response = await fetch(`/onethingwebapp/devotionals.json?t=${timestamp}`, {
       // Force network request, ignore cache
       cache: 'no-store',
@@ -206,13 +205,6 @@ async function loadDevotionals() {
     devotionalData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     console.log('✅ Devotionals loaded:', devotionalData.length, 'entries');
-
-    /* blocked out for testing
-    // Set current date to the second devotional entry
-    if (devotionalData.length > 1) {
-      currentDate = new Date(devotionalData[1].date);
-    }
-    */
     
     displayDevotion();
     renderCalendar();
