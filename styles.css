@@ -859,6 +859,29 @@ main.devotional-content {
   display: none;
 }
 
+#image-section {
+  width: 100%;
+  margin-bottom: 1.5rem; /* Matches your article spacing rhythm */
+  display: none;         /* Hidden until JS validates imageURL */
+}
+
+#image-section img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: block;
+  margin: 0 auto;        /* Centers block element horizontally */
+}
+
+/* Optional: Constraint image on wider screens so it doesn't stretch awkwardly */
+@media (min-width: 600px) {
+  #image-section img {
+    max-width: 560px;
+  }
+}
+
 article {
   line-height: 1.7;
   color: var(--text-color);

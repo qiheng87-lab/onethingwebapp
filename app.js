@@ -428,6 +428,24 @@ function displayDevotion() {
   // Render questions
   const questionsContainer = document.getElementById('questionsContainer');
 
+  // IMAGE SECTION CONDITIONAL DISPLAY
+const imageSection = document.getElementById('image-section');
+if (imageSection && devotion.imageURL && devotion.imageURL.trim() !== '') {
+  const img = document.getElementById('articleImage');
+  img.src = devotion.imageURL;
+  img.alt = devotion.title || 'Devotional illustration';
+  
+  imageSection.style.display = 'block';
+  
+  // Gracefully hide if URL exists but file is missing/corrupt
+  img.onerror = () => { 
+    console.warn(`Failed to load: ${devotion.imageURL}`);
+    imageSection.style.display = 'none'; 
+  };
+} else {
+  imageSection.style.display = 'none';
+}
+
   questionsContainer.innerHTML = '';
 
   devotion.questions.forEach((question) => {
