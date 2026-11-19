@@ -387,7 +387,9 @@ function displayDevotion() {
   document.getElementById('passageRef').textContent = '';
   document.getElementById('passageText').textContent = '';
   document.getElementById('article').innerHTML = '';
-  document.getElementById('image').src = '';
+  const imgSection = document.getElementById('image-section');
+  imgSection.style.display = 'none';
+  document.getElementById('articleImage').src = '';
   document.getElementById('questionsContainer').innerHTML = '';
   const prayBoxContainer = document.getElementById('prayBoxContainer');
   if (prayBoxContainer) prayBoxContainer.innerHTML = '';
@@ -415,7 +417,6 @@ function displayDevotion() {
   document.getElementById('passageRef').textContent = devotion.passage;
   document.getElementById('passageText').textContent = devotion.passageText;
   document.getElementById('questionsTitle').textContent = devotion.questionType;
-  document.getElementById('image').src = devotion.imageUrl;
   
   // Convert \n\n to <p> tags
   const paragraphs = devotion.article
