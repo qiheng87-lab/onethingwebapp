@@ -1,7 +1,7 @@
 /* ==========================================
    IMPORTS
    ========================================== */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js';
 import {
   getAuth,
   onAuthStateChanged,
@@ -9,7 +9,7 @@ import {
   signOut,
   reauthenticateWithPopup,
   GoogleAuthProvider
-} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+} from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js';
 /* ==========================================
    CONFIG & INIT
    ========================================== */
